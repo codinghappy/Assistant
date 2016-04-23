@@ -37,7 +37,7 @@
        android:id="@+id/wash_speed_value"
        android:layout_width="wrap_content" 
        android:layout_height="wrap_content" 
-       android:text="40   ml/min"
+       android:text="404  ml/min"
        android:layout_alignParentRight = "true"
     />
     </RelativeLayout>
