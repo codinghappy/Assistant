@@ -1,0 +1,53 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="2"
+    android:paddingTop="40px" >
+
+<LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/params_set"
+        android:layout_weight="1"
+        android:gravity= "center">"
+        <ImageView
+            android:id="@+id/params_set_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/set_params"
+            android:background="#00000000"
+        /> 
+        <TextView
+            android:id="@+id/params_set_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="参数设置"
+            android:paddingLeft="20px"
+        /> 
+</LinearLayout>
+
+<LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/alarm_set"
+        android:layout_weight="1"
+        android:gravity= "center"> 
+        <ImageView
+            android:id="@+id/alarm_set_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/set_alarm"
+            android:background="#00000000"
+        /> 
+        <TextView
+            android:id="@+id/alarm_set_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="报警设置"
+        /> 
+</LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,51 @@
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+<RelativeLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    >
+      <TextView  
+       android:id="@+id/effluent_alerm"
+       android:layout_width="wrap_content" 
+       android:layout_height="wrap_content" 
+       android:text="废液报警"
+       android:layout_alignParentLeft = "true"
+    />
+     <TextView  
+       android:id="@+id/effluent_alerm_value"
+       android:layout_width="wrap_content" 
+       android:layout_height="wrap_content" 
+       android:text="7000"
+       android:layout_alignParentRight = "true"
+    />
+    
+    </RelativeLayout>
+    <Switch
+        android:id="@+id/bubble_alarm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="气泡报警" />
+
+        <Switch
+            android:id="@+id/blood_alarm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="血液检测" />
+
+        <Switch
+        android:id="@+id/leak_alarm"
+        android:text="漏液报警"
+        android:layout_width="match_parent"  
+        android:layout_height="wrap_content" />
+        
+        <Switch
+        android:id="@+id/cover_alarm"
+        android:text="井盖报警"
+        android:layout_width="match_parent"  
+        android:layout_height="wrap_content" />
+
+</LinearLayout>  
