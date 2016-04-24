@@ -13,4 +13,12 @@
         android:layout_height="wrap_content"
         android:text="数据管理" />
 
+    <TextView
+        android:id="@+id/account_info11"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/account_info"
+        android:text="123411" />
+    
 </RelativeLayout>

@@ -114,15 +114,15 @@
     android:text="左转向:"
     />
  
-  <TextView  
-	android:id="@+id/left"
-	android:textSize="30.0sp"
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:textColor="@color/grey33"
-    android:layout_weight="1"
-    android:text="---"
-    />
+  <TextView
+      android:id="@+id/left"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:text="---"
+      android:textColor="@color/LED_R_ON"
+      android:textSize="30.0sp" />
+
     </LinearLayout> 
    <LinearLayout 
     android:orientation="horizontal"
@@ -131,14 +131,14 @@
     android:layout_marginTop="5dp"
     android:layout_marginLeft="10dp"
   >
- <TextView  
-	android:textSize="30.0sp"
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:textColor="@color/grey33"
-    android:layout_weight="2"
-    android:text="清空"
-    />
+
+ <TextView
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_weight="2"
+     android:text="清空"
+     android:textColor="@color/keyr"
+     android:textSize="30.0sp" />
  
   <TextView  
 	android:id="@+id/high"
@@ -160,6 +160,11 @@
     android:layout_marginTop="30dp"
   >
 
+    <android.widget.TextClock
+        android:id="@+id/textClock1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
 
   <LinearLayout 
     android:orientation="horizontal"
