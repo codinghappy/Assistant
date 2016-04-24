@@ -39,8 +39,13 @@ public class MyActivity extends FragmentActivity {
     private List<BaseFragment> initFragments() {
         List<BaseFragment> fragments = new ArrayList<BaseFragment>();
 
-        BaseFragment userFragment = new BloodMonitor();
-        userFragment.setTitle("设备操作");
+        BaseFragment recordFragment = new Account();
+        recordFragment.setTitle("设备操作");
+        recordFragment.setIconId(R.drawable.tab_record_selector);
+        fragments.add(recordFragment);
+        
+        BaseFragment userFragment = new StatusMonitor();
+        userFragment.setTitle("状态显示");
         userFragment.setIconId(R.drawable.tab_user_selector);
         fragments.add(userFragment);
 
@@ -54,10 +59,6 @@ public class MyActivity extends FragmentActivity {
         contactFragment.setIconId(R.drawable.tab_user_selector);
         fragments.add(contactFragment);
 
-        BaseFragment recordFragment = new Account();
-        recordFragment.setTitle("我的账号");
-        recordFragment.setIconId(R.drawable.tab_record_selector);
-        fragments.add(recordFragment);
 
         return fragments;
     }
