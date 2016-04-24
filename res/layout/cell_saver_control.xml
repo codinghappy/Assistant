@@ -9,7 +9,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="jinxue" />
+            android:text="Fill" />
 
         <Button
             android:id="@+id/wash"
@@ -18,13 +18,19 @@
             android:layout_height="wrap_content"
             android:layout_gravity="fill_horizontal"
             android:layout_weight="1"
-            android:text="qingxi" />
+            android:text="Wash" />
     
         <Button
             android:id="@+id/empty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="停止" />    
+            android:text="empty" /> 
+        <Button
+            android:id="@+id/control_puse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="empty" />    
     
 </LinearLayout>
