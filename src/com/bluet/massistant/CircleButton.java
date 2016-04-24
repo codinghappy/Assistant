@@ -63,16 +63,6 @@ public class CircleButton extends ImageView {
 		if (circlePaint != null) {
 			circlePaint.setColor(pressed ? pressedColor : defaultColor);
 		}
-
-		if (pressed) {
-			if(data != null)
-				MainActivity.key_presssed(data);
-			showPressedRing();
-		} else {
-			if(data != null)
-				MainActivity.key_off();
-			hidePressedRing();
-		}
 	}
 
 	@Override

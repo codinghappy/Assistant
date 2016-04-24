@@ -2,6 +2,7 @@ package com.bluet.massistant;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,9 @@ import android.widget.TextView;
 public class BaseFragment extends Fragment {
     private String title;
     private int iconId;
-
+    
+    protected HomeFragmentActivity homeFragment;
+    
     public String getTitle() {
         return title;
     }
@@ -26,7 +29,19 @@ public class BaseFragment extends Fragment {
     public void setIconId(int iconId) {
         this.iconId = iconId;
     }
-
+    
+    public void setHomeFragment(HomeFragmentActivity fragment) {
+    	homeFragment = fragment;
+    }
+    
+    public HomeFragmentActivity getHomeFragment() {
+    	return homeFragment;
+    }
+    
+    public void sendMessage(byte[] message) {
+    	homeFragment.getBluetoothClient().sendHead();
+		homeFragment.getBluetoothClient().sendMessage(message);
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment, null, false);
