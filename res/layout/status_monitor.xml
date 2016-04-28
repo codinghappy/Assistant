@@ -57,10 +57,10 @@
         android:layout_marginTop="5dp"
         android:text="井盖已关闭" />
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageView_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/linearLayout1"
+        android:layout_below="@+id/cover"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="30dp" 
@@ -76,7 +76,7 @@
         android:weightSum="2" >
 
         <Button
-            android:id="@+id/download"
+            android:id="@+id/begin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

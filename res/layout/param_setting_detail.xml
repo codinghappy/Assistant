@@ -66,6 +66,7 @@
     >
       <TextView  
        android:id="@+id/emputy_setting"
+       
        android:layout_width="wrap_content" 
        android:layout_height="wrap_content" 
        android:text="清洗量设置"
@@ -75,7 +76,7 @@
        android:id="@+id/emputy_setting_value"
        android:layout_width="wrap_content" 
        android:layout_height="wrap_content" 
-       android:text="400   ml"
+       android:text="400   mL"
        android:layout_alignParentRight = "true"
     />
     </RelativeLayout>
