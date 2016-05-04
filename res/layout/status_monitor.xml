@@ -4,6 +4,9 @@
     android:layout_height="match_parent"
     android:background="#E6E6E6"
     android:orientation="vertical" >
+    
+
+    
     <TextView
         android:id="@+id/patient_name"
         android:layout_width="wrap_content"
@@ -11,7 +14,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
-        android:text="患者姓名:" />
+        android:text="患者信息：" />
 
     <TextView
         android:id="@+id/patient_number"
@@ -20,34 +23,38 @@
         android:layout_alignLeft="@+id/patient_name"
         android:layout_below="@+id/patient_name"
         android:layout_marginTop="5dp"
-        android:text="编号:" />
+        android:text="耗材信息：" />
+ 
+             <TextView
+               android:id="@+id/blood_in"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/patient_number"
+               android:layout_alignLeft="@+id/patient_name"
+               android:layout_marginTop="15dp"
+               android:textSize="60dp"
+                   android:text="进血" />
 
     <TextView
-        android:id="@+id/blood_in"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/patient_number"
-        android:layout_alignLeft="@+id/patient_name"
-        android:layout_marginTop="15dp"
-        android:text="进血" />
-
-    <TextView
-        android:id="@+id/pre_flush"
+        android:id="@+id/fill_ML"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/patient_name"
         android:layout_below="@+id/blood_in"
         android:layout_marginTop="5dp"
-        android:text="预冲进度:000/300" />
+        android:textSize="20dp" 
+        android:text="总进血量：000mL" />
 
     <TextView
         android:id="@+id/process_cups"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/pre_flush"
+        android:layout_below="@+id/fill_ML"
         android:layout_alignLeft="@+id/patient_name"
         android:layout_marginTop="5dp"
-        android:text="处理杯数:0" />
+        android:textSize="20dp"
+        
+        android:text="总清洗量：000mL" />
     <TextView
         android:id="@+id/cover"
         android:layout_width="wrap_content"
@@ -55,12 +62,33 @@
         android:layout_below="@+id/process_cups"
         android:layout_alignLeft="@+id/patient_name"
         android:layout_marginTop="5dp"
-        android:text="井盖已关闭" />
+        android:textSize="20dp"
+        
+        android:text="总回收量：000mL" />
+        <TextView
+        android:id="@+id/infor_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cover"
+        android:layout_alignLeft="@+id/patient_name"
+        android:layout_marginTop="5dp"
+        android:textSize="15sp"
+        
+        android:text="提示信息显示2" />
+    <TextView
+        android:id="@+id/infor_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/infor_1"
+        android:layout_alignLeft="@+id/patient_name"
+        android:layout_marginTop="5dp"
+        android:textSize="15sp"
+        android:text="提示信息显示11111" />
     <ImageView
         android:id="@+id/imageView_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/cover"
+        android:layout_below="@+id/infor_2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="30dp" 

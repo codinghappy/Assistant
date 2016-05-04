@@ -13,7 +13,7 @@
         android:background="#00000000"
         android:src="@drawable/set_params" />
 
-<LinearLayout
+   <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
