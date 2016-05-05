@@ -6,15 +6,42 @@
     android:orientation="vertical" >
     
 
+<TableLayout  
+   
+    android:layout_width="fill_parent"  
+    android:layout_height="wrap_content"  
+    android:gravity="center"  
+    android:orientation="horizontal" >
+    <TableRow>  
+       <TextView
+        android:id="@+id/patient_name_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:textColor="#2599FA"
+        android:textSize="20dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="2dp"
+        android:text="患者信息：" />
+       <EditText  
+            android:id="@+id/edit"  
+           android:layout_width="wrap_content"  
+            android:layout_height="wrap_content"  
+           
+            android:textSize="10dp"
+            android:textColor="#FAFAFA"
+            android:text="输入患者信息或扫描" />  
+
+     </TableRow>  
+  </TableLayout> 
     
-    <TextView
+     <TextView
         android:id="@+id/patient_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
-        android:text="患者信息：" />
+        android:text=" " />
 
     <TextView
         android:id="@+id/patient_number"
@@ -23,7 +50,7 @@
         android:layout_alignLeft="@+id/patient_name"
         android:layout_below="@+id/patient_name"
         android:layout_marginTop="5dp"
-        android:text="耗材信息：" />
+        android:text=" " />
  
              <TextView
                android:id="@+id/blood_in"
@@ -32,8 +59,9 @@
                android:layout_below="@+id/patient_number"
                android:layout_alignLeft="@+id/patient_name"
                android:layout_marginTop="15dp"
+               android:textColor="#529BC8"
                android:textSize="60dp"
-                   android:text="进血" />
+               android:text="进血" />
 
     <TextView
         android:id="@+id/fill_ML"
@@ -41,8 +69,9 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/patient_name"
         android:layout_below="@+id/blood_in"
-        android:layout_marginTop="5dp"
-        android:textSize="20dp" 
+        android:textColor="#529BC8"
+        android:layout_marginTop="2dp"
+        android:textSize="25dp" 
         android:text="总进血量：000mL" />
 
     <TextView
@@ -51,9 +80,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/fill_ML"
         android:layout_alignLeft="@+id/patient_name"
-        android:layout_marginTop="5dp"
-        android:textSize="20dp"
-        
+        android:textColor="#529BC8"
+        android:layout_marginTop="2dp"
+        android:textSize="25dp"      
         android:text="总清洗量：000mL" />
     <TextView
         android:id="@+id/cover"
@@ -61,8 +90,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/process_cups"
         android:layout_alignLeft="@+id/patient_name"
-        android:layout_marginTop="5dp"
-        android:textSize="20dp"
+        android:textColor="#529BC8"
+        android:layout_marginTop="2dp"
+        android:textSize="25dp"
         
         android:text="总回收量：000mL" />
         <TextView
@@ -74,7 +104,7 @@
         android:layout_marginTop="5dp"
         android:textSize="15sp"
         
-        android:text="提示信息显示2" />
+        android:text="提示信息显示22222" />
     <TextView
         android:id="@+id/infor_2"
         android:layout_width="wrap_content"
