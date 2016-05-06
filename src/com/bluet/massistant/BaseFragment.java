@@ -42,6 +42,11 @@ public class BaseFragment extends Fragment {
     	homeFragment.getBluetoothClient().sendHead();
 		homeFragment.getBluetoothClient().sendMessage(message);
     }
+    
+    public void setTitle() {
+    	getActivity().getWindow().setTitle("自体血液回收机");
+    }
+    
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment, null, false);

@@ -13,7 +13,6 @@ public class Account extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.accounts, null, false);
-        getActivity().getWindow().setTitle("自体血液回收机");
         return view;
     }
 

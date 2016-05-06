@@ -20,6 +20,7 @@ import com.bluet.ui.Account;
 import com.bluet.ui.CellSaverControl;
 import com.bluet.ui.DataManager;
 import com.bluet.ui.ParameterHome;
+import com.bluet.ui.StatusMonitor;
 import com.bluet.utils.BluetoothClient;
 import com.viewpagerindicator.IconPagerAdapter;
 
