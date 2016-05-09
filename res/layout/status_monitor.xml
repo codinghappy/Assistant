@@ -62,20 +62,29 @@
                android:textColor="#529BC8"
                android:textSize="60dp"
                android:text="进血" />
-
+    <TextView
+         android:id="@+id/fill_TEXT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/patient_name"
+        android:layout_below="@+id/blood_in"    
+        android:layout_marginTop="2dp"
+        android:textSize="25dp"
+        android:textColor="@color/grey33" 
+        android:text="@string/Fill_title"  />
     <TextView
         android:id="@+id/fill_ML"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/patient_name"
-        android:layout_below="@+id/blood_in"
-        android:textColor="#529BC8"
+        android:layout_toRightOf="@+id/fill_TEXT"
+        android:layout_below="@+id/blood_in"    
         android:layout_marginTop="2dp"
-        android:textSize="25dp" 
-        android:text="总进血量：000mL" />
+        android:textSize="25dp"
+        android:textColor="@color/grey33" 
+         />
 
     <TextView
-        android:id="@+id/process_cups"
+        android:id="@+id/wash_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/fill_ML"
@@ -83,12 +92,22 @@
         android:textColor="#529BC8"
         android:layout_marginTop="2dp"
         android:textSize="25dp"      
-        android:text="总清洗量：000mL" />
+        android:text="@string/Wash_title"  />
+    <TextView
+        android:id="@+id/wash_ML"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fill_ML"
+        android:layout_toRightOf="@+id/wash_title"
+        android:textColor="#529BC8"
+        android:layout_marginTop="2dp"
+        android:textSize="25dp"      
+        android:text="- - - -" />
     <TextView
         android:id="@+id/cover"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/process_cups"
+        android:layout_below="@+id/wash_title"
         android:layout_alignLeft="@+id/patient_name"
         android:textColor="#529BC8"
         android:layout_marginTop="2dp"

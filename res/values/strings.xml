@@ -62,4 +62,7 @@
     <color name="keyn">#353535</color>
     <color name="keyr">#d51541</color>
     
+    <string name="Fill_title">总进血量：</string>
+    <string name="Wash_title">总清洗量：</string>
+    
 </resources>

@@ -768,7 +768,7 @@ public class MainActivity extends BaseActivity {
 			Log.e("Decode", "当前   " + index);
 			if (in[index] == (byte) 0x01) {// 速度
 				view = (TextView) findViewById(R.id.sp);
-				Log.e("Decode", "速度 ");
+				//Log.e("Decode", "速度 ");
 			} else if (in[index] == (byte) 0x02) {// 加速度
 				view = (TextView) findViewById(R.id.acc);
 				Log.e("Decode", "加速度 ");
