@@ -6,11 +6,11 @@
     android:orientation="vertical" >
     
 
-<TableLayout  
-   
+   <TableLayout   
     android:layout_width="fill_parent"  
     android:layout_height="wrap_content"  
     android:gravity="center"  
+    android:background="#FFFFFF"
     android:orientation="horizontal" >
     <TableRow>  
        <TextView
@@ -18,30 +18,79 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
          android:textColor="#2599FA"
-        android:textSize="20dp"
+        android:textSize="15dp"
         android:layout_marginTop="2dp"
         android:layout_marginLeft="2dp"
-        android:text="患者信息：" />
+        android:text="耗材信息：" />
        <EditText  
             android:id="@+id/edit"  
-           android:layout_width="wrap_content"  
+            android:layout_width="wrap_content"  
             android:layout_height="wrap_content"  
-           
+            android:textSize="8dp"
+            android:textColor="#E5E5E5"
+            android:text="输入患者信息或扫描" />  
+
+     </TableRow>  
+     <TableRow>  
+       <TextView
+        android:id="@+id/BOWL_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:textColor="#2599FA"
+        android:textSize="15dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="0dp"
+        android:text="患者信息：" />
+       <EditText  
+            android:id="@+id/edit1"  
+            android:layout_width="wrap_content"  
+            android:layout_height="wrap_content"  
             android:textSize="10dp"
             android:textColor="#FAFAFA"
             android:text="输入患者信息或扫描" />  
 
-     </TableRow>  
-  </TableLayout> 
+     </TableRow> 
+    </TableLayout>  
     
-     <TextView
-        android:id="@+id/patient_name"
+     <ImageView
+        android:id="@+id/state_backgrond"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="75dp"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/state_backgrond"
+         />
+     <TextView
+        android:id="@+id/Work_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/state_backgrond"
+         android:layout_toRightOf="@+id/state_backgrond"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:text=" " />
+        android:layout_marginLeft="20dp"
+        android:textSize="25dp"
+        android:text="暂停" />
+      <TextView
+        android:id="@+id/Work_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/state_backgrond"
+         android:layout_toRightOf="@+id/state_backgrond"
+        android:layout_marginLeft="170dp"
+         android:textColor="#529BC8"
+        android:textSize="20dp"
+        android:text="模式：自动" />
+      <TextView
+        android:id="@+id/Set_BOWL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/state_backgrond"
+         android:layout_toRightOf="@+id/state_backgrond"
+        android:layout_marginLeft="170dp"
+         android:textColor="#529BC8"
+        android:textSize="20dp"
+        android:text="杯型：225" />
 
     <TextView
         android:id="@+id/patient_number"
@@ -51,24 +100,25 @@
         android:layout_below="@+id/patient_name"
         android:layout_marginTop="5dp"
         android:text=" " />
- 
-             <TextView
-               android:id="@+id/blood_in"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_below="@+id/patient_number"
-               android:layout_alignLeft="@+id/patient_name"
-               android:layout_marginTop="15dp"
-               android:textColor="#529BC8"
-               android:textSize="60dp"
-               android:text="进血" />
+     <TextView
+        android:id="@+id/blood_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/state_backgrond"
+        android:layout_marginTop="82dp"
+        android:layout_marginLeft="3dp"
+        android:textColor="#FFFFFF"
+        android:textSize="30dp"
+        android:text="进血" />
+     
     <TextView
          android:id="@+id/fill_TEXT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/patient_name"
-        android:layout_below="@+id/blood_in"    
-        android:layout_marginTop="2dp"
+        android:layout_alignLeft="@+id/state_backgrond"
+        android:layout_below="@+id/state_backgrond"    
+        android:layout_marginTop="10dp"
         android:textSize="25dp"
         android:textColor="@color/grey33" 
         android:text="@string/Fill_title"  />
@@ -77,8 +127,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/fill_TEXT"
-        android:layout_below="@+id/blood_in"    
-        android:layout_marginTop="2dp"
+        android:layout_below="@+id/state_backgrond"    
+        android:layout_marginTop="10dp"
         android:textSize="25dp"
         android:textColor="@color/grey33" 
          />
@@ -88,9 +138,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/fill_ML"
-        android:layout_alignLeft="@+id/patient_name"
+        android:layout_alignLeft="@+id/state_backgrond"
         android:textColor="#529BC8"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="5dp"
         android:textSize="25dp"      
         android:text="@string/Wash_title"  />
     <TextView
@@ -100,36 +150,35 @@
         android:layout_below="@+id/fill_ML"
         android:layout_toRightOf="@+id/wash_title"
         android:textColor="#529BC8"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="5dp"
         android:textSize="25dp"      
-        android:text="- - - -" />
+        android:text="65536 mL" />
     <TextView
-        android:id="@+id/cover"
+        android:id="@+id/empty_titile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/wash_title"
-        android:layout_alignLeft="@+id/patient_name"
+        android:layout_alignLeft="@+id/state_backgrond"
         android:textColor="#529BC8"
-        android:layout_marginTop="2dp"
-        android:textSize="25dp"
-        
-        android:text="总回收量：000mL" />
+        android:layout_marginTop="5dp"
+        android:textSize="25dp"   
+        android:text="总回收量：66666 mL" />
         <TextView
         android:id="@+id/infor_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/cover"
-        android:layout_alignLeft="@+id/patient_name"
-        android:layout_marginTop="5dp"
+        android:layout_below="@+id/empty_titile"
+        android:layout_alignLeft="@+id/state_backgrond"
+        android:layout_marginTop="7dp"
         android:textSize="15sp"
         
-        android:text="提示信息显示22222" />
+        android:text="该出添加报警信息" />
     <TextView
         android:id="@+id/infor_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/infor_1"
-        android:layout_alignLeft="@+id/patient_name"
+        android:layout_alignLeft="@+id/state_backgrond"
         android:layout_marginTop="5dp"
         android:textSize="15sp"
         android:text="提示信息显示11111" />
@@ -143,6 +192,15 @@
         android:layout_marginLeft="30dp" 
         android:layout_marginRight="30dp" 
         android:src="@drawable/blood_in" />
+     <TextView
+        android:id="@+id/pump_speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"        
+        android:layout_alignBottom ="@+id/imageView_status"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="5dp"
+        android:textSize="15sp"
+        android:text="400ml/min" />
 
     <LinearLayout
         android:id="@+id/linearLayout1"

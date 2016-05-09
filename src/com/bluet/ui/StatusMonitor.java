@@ -27,7 +27,7 @@ public class StatusMonitor extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.status_monitor, null, false);
         Fill_text_view= (TextView) view.findViewById(R.id.fill_ML);
-        Fill_text_view.setText("---Ml");
+        Fill_text_view.setText("65536 mL");
         image_view = (ImageView) view.findViewById(R.id.imageView_status);
         switch(status){
           case 1: //进血
