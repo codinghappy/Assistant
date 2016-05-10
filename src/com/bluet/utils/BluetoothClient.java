@@ -71,24 +71,11 @@ public class BluetoothClient {
 		if (mChatService.getState() != BluetoothChatService.STATE_CONNECTED) {
 			return;
 		}
-		Trig_TXLED(send.length);
 		mChatService.write(send);
 		// Reset out string buffer to zero and clear the edit text field
 		mOutStringBuffer.setLength(0);
 	}
 
-	public void Trig_TXLED(int c) {
-		// TX_Count += c;
-		// TX.setText("TX " + TX_Count);
-		// TX.setBackgroundColor(getResources().getColor(R.color.LED_R_ON));
-		// TX.setTextColor(getResources().getColor(R.color.Baclk));
-		//
-		// if (RtmrBlink.getIsTicking())
-		// RtmrBlink.restart();
-		// else {
-		// RtmrBlink.start();
-		// }
-	}
 
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		switch (requestCode) {
