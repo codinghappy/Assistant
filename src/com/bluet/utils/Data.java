@@ -46,6 +46,10 @@ public class Data {
 		notifyChanged();
 	}
 	
+	public int getCurrentSpeed() {
+		return mCurrentSpeed;
+	}
+	
 	public String GetCurrentInfo(byte tag) {
 		String info = new String();
 		switch (tag) {
