@@ -213,13 +213,13 @@ public class BluetoothClient {
 			
 			switch (in[tag_id]) {
 			case Data.TAG_SPEED:
-				Data.current_speed = temp;
+				Data.getInstance().setCurrentSpeed(temp);
 				break;
 			default:
 				break;
 			}
 			
-			Log.i("Decode", Data.GetCurrentInfo(in[tag_id]));
+			Log.i("Decode", Data.getInstance().GetCurrentInfo(in[tag_id]));
 			
 //			if (in[index] == (byte) 0x01) {// 速度
 //				Log.i("Decode", "速度 ");

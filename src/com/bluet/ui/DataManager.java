@@ -24,7 +24,7 @@ public class DataManager extends BaseFragment {
         debug = (Button) view.findViewById(R.id.button_debug);
         debug.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				debugInfo.setText(Data.allInfo());
+				debugInfo.setText(Data.getInstance().allInfo());
 			}
 		});
         return view;

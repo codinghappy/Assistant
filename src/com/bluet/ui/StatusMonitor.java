@@ -16,8 +16,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.TextView;
+import com.bluet.utils.Data;;
 
-public class StatusMonitor extends BaseFragment {
+public class StatusMonitor extends BaseFragment implements Data.DataChangeListener {
 	Button begin;
 	Button stop;
 	ImageView image_view;
@@ -65,7 +66,13 @@ public class StatusMonitor extends BaseFragment {
         
         getActivity().getWindow().setTitle("自体血液回收机");
         //getActivity().getWindow().getWindowManager();
+        Data.getInstance().addListener(this);
         return view;
     }
+	@Override
+	public void dataChanged() {
+		// TODO Auto-generated method stub
+		Fill_text_view.setText(Data.getInstance().allInfo());
+	}
 
 }
