@@ -166,7 +166,7 @@ public class BluetoothClient {
 						head_en = true;
 						buf_index = 0;
 						frame_len = 0;
-						Log.e("Decode", "find head!");
+						Log.i("Decode", "find head!");
 					}
 					findhead = 0;
 					break;
@@ -178,7 +178,7 @@ public class BluetoothClient {
 
 				if (buf_index == 0) {
 					frame_len = buf[i] & 0xff;
-					Log.e("Decode", "frame_len " + frame_len);
+					Log.i("Decode", "frame_len " + frame_len);
 				}
 				databuf[buf_index++] = buf[i];
 
@@ -196,50 +196,51 @@ public class BluetoothClient {
 	void get_data(byte[] in, int len) {
 		int i, isget = 0;
 		short sum = 0, temp;
-		Log.e("Decode", "本帧需要校验字节" + ((in[0] & 0xff)));
+		Log.i("Decode", "本帧需要校验字节" + ((in[0] & 0xff)));
 		for (i = 0; i < (in[0] & 0xff); i++) {
 			sum += (in[i + 1] & 0xff);
 		}
 		temp = (short) (((in[len - 3] & 0xff) << 8) | ((in[len - 4] & 0xff)));
 		if (temp != sum) {
-			Log.e("Decode", "check sum err!");
+			Log.i("Decode", "check sum err!");
 			return;
 		}
-		Log.e("Decode", "check sum OK!");
+		Log.i("Decode", "check sum OK!");
 		int index = 2;
 //		TextView view = null;
 		isget = 0;
 		do { // 提取数据
-			Log.e("Decode", "当前   " + index);
+			Log.i("Decode", "当前   " + index);
 			if (in[index] == (byte) 0x01) {// 速度
 //				view = (TextView) findViewById(R.id.sp);
-				Log.e("Decode", "速度 ");
+				Log.i("Decode", "速度 ");
 			} else if (in[index] == (byte) 0x02) {// 加速度
 //				view = (TextView) findViewById(R.id.acc);
-				Log.e("Decode", "加速度 ");
+				Log.i("Decode", "加速度 ");
 			} else if (in[index] == (byte) 0x03) {// 高度
 //				view = (TextView) findViewById(R.id.high);
-				Log.e("Decode", "高度 ");
+				Log.i("Decode", "高度 ");
 			} else if (in[index] == (byte) 0x04) {// 电量
 //				view = (TextView) findViewById(R.id.pow);
-				Log.e("Decode", "电量 ");
+				Log.i("Decode", "电量 ");
 			} else if (in[index] == (byte) 0x05) {// 左转向
 //				view = (TextView) findViewById(R.id.left);
-				Log.e("Decode", "左转向 ");
+				Log.i("Decode", "左转向 ");
 			}
 			index++; // 字节数量
 			if (in[index] == (byte) 0x01) {
 				temp = (short) (in[index + 1] & 0xff);
-				Log.e("Decode", "1字节 ");
+				Log.i("Decode", "1字节 ");
+				
 				index += 2;
 				isget += 3;
 			} else if (in[index] == (byte) 0x02) {
-				Log.e("Decode", "2字节 ");
+				Log.i("Decode", "2字节 ");
 				temp = (short) (((in[index + 2] & 0xff) << 8) | ((in[index + 1] & 0xff)));
 				index += 3;
 				isget += 4;
 			}
-
+			Log.i("Value = ", String.valueOf(temp));
 //			if (view != null) {
 //				view.setText("" + temp);
 //			}

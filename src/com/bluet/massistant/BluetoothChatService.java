@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.UUID;
 
+import com.bluet.utils.BluetoothClient;
+
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothServerSocket;
@@ -388,7 +390,7 @@ public class BluetoothChatService {
                     buffer2=buffer.clone();
                     for(i=0;i<buffer.length;i++)buffer[i]=0;
                     // Send the obtained bytes to the UI Activity
-                    mHandler.obtainMessage(MainActivity.MESSAGE_READ, bytes, -1, buffer2)
+                    mHandler.obtainMessage(BluetoothClient.MESSAGE_READ, bytes, -1, buffer2)
                             .sendToTarget();
                     /*
                     try {  
