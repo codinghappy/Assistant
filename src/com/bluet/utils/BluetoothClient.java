@@ -8,12 +8,9 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bluet.massistant.BluetoothChatService;
 import com.bluet.massistant.DeviceListActivity;
-import com.bluet.massistant.R;
 
 public class BluetoothClient {
 	// Intent request codes
@@ -194,26 +191,11 @@ public class BluetoothClient {
 		}
 		Log.i("Decode", "check sum OK!");
 		int index = 2;
-//		TextView view = null;
 		isget = 0;
 		do { // 提取数据
 			Log.i("Decode", "当前   " + index);
-			if (in[index] == (byte) 0x01) {// 速度
-//				view = (TextView) findViewById(R.id.sp);
-				Log.i("Decode", "速度 ");
-			} else if (in[index] == (byte) 0x02) {// 加速度
-//				view = (TextView) findViewById(R.id.acc);
-				Log.i("Decode", "加速度 ");
-			} else if (in[index] == (byte) 0x03) {// 高度
-//				view = (TextView) findViewById(R.id.high);
-				Log.i("Decode", "高度 ");
-			} else if (in[index] == (byte) 0x04) {// 电量
-//				view = (TextView) findViewById(R.id.pow);
-				Log.i("Decode", "电量 ");
-			} else if (in[index] == (byte) 0x05) {// 左转向
-//				view = (TextView) findViewById(R.id.left);
-				Log.i("Decode", "左转向 ");
-			}
+			int tag_id = index;
+			
 			index++; // 字节数量
 			if (in[index] == (byte) 0x01) {
 				temp = (short) (in[index + 1] & 0xff);
@@ -228,8 +210,27 @@ public class BluetoothClient {
 				isget += 4;
 			}
 			Log.i("Value = ", String.valueOf(temp));
-//			if (view != null) {
-//				view.setText("" + temp);
+			
+			switch (in[tag_id]) {
+			case Data.TAG_SPEED:
+				Data.current_speed = temp;
+				break;
+			default:
+				break;
+			}
+			
+			Log.i("Decode", Data.GetCurrentInfo(in[tag_id]));
+			
+//			if (in[index] == (byte) 0x01) {// 速度
+//				Log.i("Decode", "速度 ");
+//			} else if (in[index] == (byte) 0x02) {// 加速度
+//				Log.i("Decode", "加速度 ");
+//			} else if (in[index] == (byte) 0x03) {// 高度
+//				Log.i("Decode", "高度 ");
+//			} else if (in[index] == (byte) 0x04) {// 电量
+//				Log.i("Decode", "电量 ");
+//			} else if (in[index] == (byte) 0x05) {// 左转向
+//				Log.i("Decode", "左转向 ");
 //			}
 		} while (isget < len - 6);
 
