@@ -23,12 +23,18 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
 	Button stop;
 	ImageView image_view;
 	TextView  Fill_text_view;
+	TextView  Wash_text_view;
+	TextView  Empty_text_view;
 	int status = 0;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.status_monitor, null, false);
         Fill_text_view= (TextView) view.findViewById(R.id.fill_ML);
-        Fill_text_view.setText(Data.getInstance().allInfo());
+        Fill_text_view.setText(Data.getInstance().GetInfo_Fill());
+        
+        Wash_text_view=(TextView) view.findViewById(R.id.wash_ML); 
+        Wash_text_view.setText(Data.getInstance().GetInfo_Fill());
+        Empty_text_view=(TextView) view.findViewById(R.id.empty);
         image_view = (ImageView) view.findViewById(R.id.imageView_status);
         switch(status){
           case 1: //进血
@@ -47,11 +53,7 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
         
         begin = (Button) view.findViewById(R.id.begin);
         begin.setOnClickListener(new OnClickListener() {
-        	 public void onClick(View v) {
-        		// Toast toast=Toast.makeText(getActivity(), "zhangfeng", Toast.LENGTH_SHORT);
-        		// toast.show();
-
-                
+        	 public void onClick(View v) {                
                  status++;
                  if(status == 5)status=1;
         	 }
@@ -65,14 +67,15 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
        });
         
         getActivity().getWindow().setTitle("自体血液回收机");
-        //getActivity().getWindow().getWindowManager();
         Data.getInstance().addListener(this);
         return view;
     }
 	@Override
 	public void dataChanged() {
 		// TODO Auto-generated method stub
-		Fill_text_view.setText(Data.getInstance().allInfo());
+		Fill_text_view.setText(Data.getInstance().GetInfo_Fill());
+		Wash_text_view.setText(Data.getInstance().hex2str(444));
+		
 		
 		if (Data.getInstance().getCurrentSpeed() == 4 ) {
 			image_view.setImageResource(R.drawable.control_print);

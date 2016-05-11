@@ -215,6 +215,13 @@ public class BluetoothClient {
 			case Data.TAG_SPEED:
 				Data.getInstance().setCurrentSpeed(temp);
 				break;
+			case Data.TAG_WASH:
+				Data.getInstance().setFillTotalVolume(temp);
+			case Data.TAG_EMPTY:
+				Data.getInstance().setFillTotalVolume(temp);
+			case Data.TAG_WORK_MODE:
+				Data.getInstance().setFillTotalVolume(temp);
+				break;
 			default:
 				break;
 			}
