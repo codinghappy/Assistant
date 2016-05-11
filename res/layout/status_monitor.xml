@@ -65,12 +65,13 @@
         android:id="@+id/Work_state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/state_backgrond"
+        android:layout_alignTop="@+id/state_backgrond"
          android:layout_toRightOf="@+id/state_backgrond"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="0dp"
         android:layout_marginLeft="20dp"
+        android:textColor="#F00000"
         android:textSize="25dp"
-        android:text="暂停" />
+        android:text="暂停中" />
       <TextView
         android:id="@+id/Work_mode"
         android:layout_width="wrap_content"
@@ -106,11 +107,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignLeft="@+id/state_backgrond"
-        android:layout_marginTop="82dp"
-        android:layout_marginLeft="3dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginLeft="6dp"
         android:textColor="#FFFFFF"
-        android:textSize="30dp"
-        android:text="进血" />
+        android:textSize="25dp"
+        android:text="待机" />
      
     <TextView
          android:id="@+id/fill_TEXT"
@@ -120,7 +121,7 @@
         android:layout_below="@+id/state_backgrond"    
         android:layout_marginTop="10dp"
         android:textSize="25dp"
-        android:textColor="@color/grey33" 
+        android:textColor="#529BC8"
         android:text="@string/Fill_title"  />
     <TextView
         android:id="@+id/fill_ML"
@@ -130,7 +131,7 @@
         android:layout_below="@+id/state_backgrond"    
         android:layout_marginTop="10dp"
         android:textSize="25dp"
-        android:textColor="@color/grey33" 
+        android:textColor="#529BC8"
          />
 
     <TextView
@@ -215,7 +216,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="开始" />
+            android:text="暂停" />
 
         <Button
             android:id="@+id/check"
