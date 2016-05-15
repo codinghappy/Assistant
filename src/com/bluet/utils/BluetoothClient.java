@@ -63,6 +63,12 @@ public class BluetoothClient {
 		buf[6] = (byte) 0x04;
 		sendMessage(buf);
 	}
+	public void sendTail() {
+		byte[] buf = new byte[2];
+		buf[0] = (byte) 0xcc;
+		buf[1] = (byte) 0x33;
+		sendMessage(buf);
+	}
 
 	public void sendMessage(byte[] send) {
 		if (mChatService.getState() != BluetoothChatService.STATE_CONNECTED) {
@@ -212,16 +218,27 @@ public class BluetoothClient {
 			Log.i("Value = ", String.valueOf(temp));
 			
 			switch (in[tag_id]) {
-			case Data.TAG_SPEED:
-				Data.getInstance().setCurrentSpeed(temp);
+			case Data.TAG_FILL:
+				Data.getInstance().setFillTotalVolume(temp);
 				break;
 			case Data.TAG_WASH:
-				Data.getInstance().setFillTotalVolume(temp);
-			case Data.TAG_EMPTY:
-				Data.getInstance().setFillTotalVolume(temp);
-			case Data.TAG_WORK_MODE:
-				Data.getInstance().setFillTotalVolume(temp);
+				Data.getInstance().setWashTotalVolume(temp);
 				break;
+			case Data.TAG_EMPTY:
+				Data.getInstance().setEmptyTotalVolume(temp);
+				break;
+			case Data.TAG_WORK_STATE:
+				Data.getInstance().setWork_state(temp);
+				break;//
+			case Data.TAG_WORK_MODE:
+				Data.getInstance().GetWorkmodeFromBlue(temp);
+				break;//				//TAG_WORK_MODE
+			case Data.TAG_RUN_STATE:
+				Data.getInstance().setWork_state(temp);
+				break;//				//TAG_WORK_MODE GetBowlFromBlue
+			case Data.TAG_BWOL:
+				Data.getInstance().setWork_state(temp);
+				break;//
 			default:
 				break;
 			}

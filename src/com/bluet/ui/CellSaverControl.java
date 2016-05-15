@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import com.bluet.massistant.BaseFragment;
 import com.bluet.massistant.R;
+import com.bluet.utils.Data;
 
 
 public class CellSaverControl extends BaseFragment {
@@ -25,7 +26,14 @@ public class CellSaverControl extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.cell_saver_control, null, false);
-        
+        switch(Data.getInstance().getWork_State()){
+        case 0:
+        break;
+        case 1:
+        	break;
+        case 2:
+        	break;
+        }
         fill = (Button) view.findViewById(R.id.fill);
         fill.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
