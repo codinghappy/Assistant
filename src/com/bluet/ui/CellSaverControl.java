@@ -11,9 +11,10 @@ import android.widget.TextView;
 import com.bluet.massistant.BaseFragment;
 import com.bluet.massistant.R;
 import com.bluet.utils.Data;
+import com.bluet.utils.Data.DataChangeListener;
 
 
-public class CellSaverControl extends BaseFragment {
+public class CellSaverControl extends BaseFragment implements DataChangeListener {
 	Button fill;
 	byte[] message_fill = new byte[8];
 	Button wash;
@@ -131,23 +132,24 @@ public class CellSaverControl extends BaseFragment {
 				sendMessage(message_wash);
 			}
 		});
+        Data.getInstance().addListener(this);
         return view;
     }
 
     @Override
 	public void dataChanged() {
-        switch(Data.getInstance().getWork_State()){
-        case 0:
-        	WorkState_text_view.setText("222222222222");
-           break;
-        case 1:
-        	WorkState_text_view.setText("00000000");
-        	break;
-        case 2:
-        	WorkState_text_view.setText("33333333333333");
-        	break;
-        	default:break;
-        }
-  //给我在这个文件里加一个显示的函数，我这个显示不了。  	
+    	WorkState_text_view.setText(String.valueOf(Data.getInstance().getWork_State()));
+//        switch(Data.getInstance().getWork_State()){
+//        case 0:
+//        	WorkState_text_view.setText("222222222222");
+//           break;
+//        case 1:
+//        	WorkState_text_view.setText("00000000");
+//        	break;
+//        case 2:
+//        	WorkState_text_view.setText("33333333333333");
+//        	break;
+//        default:break;
+//        }
     }
 }
