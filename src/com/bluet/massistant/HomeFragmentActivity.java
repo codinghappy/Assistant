@@ -45,8 +45,10 @@ public class HomeFragmentActivity extends FragmentActivity {
 	@Override
 	protected void onStart() {
 		super.onStart();
-		mClient = new BluetoothClient(this);
-		mClient.init();
+		if (mClient == null) {
+		  mClient = new BluetoothClient(this);
+		  mClient.init();
+		}
 		if (mClient.mBluetoothAdapter == null)
 			return;
 		// If BT is not on, request that it be enabled.
