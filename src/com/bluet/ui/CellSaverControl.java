@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.bluet.massistant.BaseFragment;
 import com.bluet.massistant.R;
@@ -22,18 +23,14 @@ public class CellSaverControl extends BaseFragment {
 	Button pump_dec;
 	Button control_pause;
 	Button control_stop;
+	TextView  WorkState_text_view;
  //Button pump_dec;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.cell_saver_control, null, false);
-        switch(Data.getInstance().getWork_State()){
-        case 0:
-        break;
-        case 1:
-        	break;
-        case 2:
-        	break;
-        }
+        WorkState_text_view=(TextView) view.findViewById(R.id.control_work_state_show);
+        
+
         fill = (Button) view.findViewById(R.id.fill);
         fill.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
@@ -137,4 +134,20 @@ public class CellSaverControl extends BaseFragment {
         return view;
     }
 
+    @Override
+	public void dataChanged() {
+        switch(Data.getInstance().getWork_State()){
+        case 0:
+        	WorkState_text_view.setText("222222222222");
+           break;
+        case 1:
+        	WorkState_text_view.setText("00000000");
+        	break;
+        case 2:
+        	WorkState_text_view.setText("33333333333333");
+        	break;
+        	default:break;
+        }
+  //给我在这个文件里加一个显示的函数，我这个显示不了。  	
+    }
 }

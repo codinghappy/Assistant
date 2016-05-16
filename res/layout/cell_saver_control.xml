@@ -80,7 +80,7 @@
             android:layout_below="@+id/control_print"
             android:background="@drawable/button_mode"
             android:layout_marginLeft="40dp"
-            android:textSize="35dp"
+            android:textSize="20dp"
             android:text="   " />
  <!-- dayin   键值 0209  -->   
          <Button
@@ -91,8 +91,8 @@
             android:layout_below="@+id/control_print"
             android:layout_toRightOf="@+id/fill"
             android:background="@drawable/button_print"
-            android:layout_marginLeft="40dp"
-            android:textSize="35dp"
+            android:layout_marginLeft="60dp"
+            android:textSize="20dp"
             android:text="   " />
  <!-- 进血   键值 0209  -->    
          <Button
@@ -102,8 +102,9 @@
             android:layout_gravity="fill_horizontal"
             android:layout_below="@+id/button_mode"
             android:layout_marginLeft="40dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/control_buton_back"       
-            android:textSize="25dp"
+            android:textSize="20dp"
             android:text="进血" />
          
          <!-- 清洗   键值 020A  -->         
@@ -114,8 +115,9 @@
             android:layout_gravity="fill_vertical"
             android:layout_below="@+id/button_mode"
             android:layout_toRightOf="@+id/fill"
+            android:layout_marginTop="20dp"
             android:background="@drawable/control_buton_back"       
-            android:textSize="25dp"
+            android:textSize="20dp"
             android:text="清洗" />
 
                />
@@ -125,11 +127,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="fill_vertical"
-            
+            android:layout_marginTop="20dp"
             android:layout_below="@+id/button_mode"
             android:layout_toRightOf="@+id/wash"     
             android:background="@drawable/control_buton_back"       
-            android:textSize="25dp"
+            android:textSize="20dp"
             android:text="清空" /> 
 
         <Button
@@ -142,13 +144,23 @@
             android:background="@drawable/control_buton_back"       
             android:textSize="20dp"
             android:text="浓缩" /> 
+        <Button
+            android:id="@+id/contorl_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill_vertical"
+            android:layout_below="@+id/fill"
+            android:layout_toRightOf="@+id/coin"      
+            android:background="@drawable/control_buton_back"       
+            android:textSize="20dp"
+            android:text="操控" /> 
          <Button
             android:id="@+id/control_return"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="fill_vertical"
             android:layout_below="@+id/empty"
-            android:layout_toRightOf="@+id/coin" 
+            android:layout_toRightOf="@+id/contorl_title" 
             android:layout_marginRight="20dp"     
             android:background="@drawable/control_buton_back"       
             android:textSize="20dp"
@@ -164,7 +176,7 @@
             android:background="@drawable/control_buton_back"       
             android:textSize="25dp"
             android:text="  +  " />  
-          <TextView
+          <Button
             android:id="@+id/control_pump"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -193,10 +205,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="fill_vertical"
             android:layout_below="@+id/control_pump_inc"
+            android:background="@drawable/control_pause" 
             android:layout_marginTop="20dp"
             android:layout_marginLeft="40dp"     
-            android:textSize="35dp"
-            android:text="暂停" />  
+            android:textSize="25dp"
+            android:text="    " 
+            />  
          <Button
             android:id="@+id/control_stop"
             android:layout_width="wrap_content"
@@ -204,9 +218,10 @@
             android:layout_gravity="fill_vertical"
             android:layout_below="@+id/control_pump_inc"
             android:layout_toRightOf="@+id/control_pause"
+            android:background="@drawable/control_buton_back" 
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"     
-            android:textSize="35dp"
+            android:textSize="25dp"
             android:text="停止" />    
    </RelativeLayout>
 

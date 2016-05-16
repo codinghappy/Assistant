@@ -23,8 +23,8 @@ public class Data {
 	public static final byte TAG_EMPTY = 0x16;
 	public static final byte TAG_WORK_MODE = 0x11;
 	public static final byte TAG_WORK_STATE = 0x12;//工作流程
-	public static final byte TAG_RUN_STATE = 0x13;
-	public static final byte TAG_BWOL=0X17;
+	public static final byte TAG_RUN_STATE = 0x17;
+	public static final byte TAG_BWOL=0X13;
 	
 	
 	
@@ -40,6 +40,7 @@ public class Data {
 	private static int mEmptyTotalVolume;
 
 	private static int mWorkState;
+	private static int mRunState;
 	private static int mBowl;
 	private static int mWorkMOde;
 	
@@ -84,6 +85,10 @@ public class Data {
 		mBowl = bowl;
 		notifyChanged();
 	}
+	public void GetRunStateFromBlue(int runstate) {
+		mRunState = runstate;
+		notifyChanged();
+	}
 	public int getCurrentSpeed() {
 		return mCurrentSpeed;
 	}
@@ -107,7 +112,7 @@ public class Data {
 			info = "模式:" + String.valueOf(mWorkState);
 			break;	
 		case TAG_RUN_STATE:
-			info = "暂停:" + String.valueOf(mWorkState);
+			info = "暂停:" + String.valueOf(mRunState);
 			break;	
 		default:
 			break;
@@ -134,6 +139,9 @@ public class Data {
 	}
 	public int getWork_State() {
 		return mWorkState;
+	}
+	public int getRun_State() {
+		return mRunState;
 	}
 	public int getBowl() {
 		return mBowl;

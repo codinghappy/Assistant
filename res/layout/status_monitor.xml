@@ -62,7 +62,7 @@
         android:src="@drawable/state_backgrond"
          />
      <TextView
-        android:id="@+id/Work_state"
+        android:id="@+id/Run_state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/state_backgrond"
@@ -102,7 +102,7 @@
         android:layout_marginTop="5dp"
         android:text=" " />
      <TextView
-        android:id="@+id/blood_in"
+        android:id="@+id/work_state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -119,7 +119,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/state_backgrond"
         android:layout_below="@+id/state_backgrond"    
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:textSize="20dp"
         android:textColor="#529BC8"
         android:text="@string/Fill_title"  />
@@ -128,12 +128,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/fill_TEXT"
+        android:layout_alignParentBottom ="@+id/fill_TEXT" 
         android:layout_below="@+id/state_backgrond"    
-        android:layout_marginTop="10dp"
-        android:textSize="25dp"
+        android:layout_marginTop="5dp"
+        android:textSize="35dp"
         android:textColor="#529BC8"
          />
-
+      <TextView
+        android:id="@+id/fill_ML_Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/state_backgrond"
+        android:layout_toRightOf="@+id/fill_ML"
+        android:layout_alignParentBottom="@+id/fill_ML"
+        android:textColor="#529BC8"
+       
+        android:layout_marginTop="25dp"
+        android:textSize="15dp"   
+        android:text=" mL" />
     <TextView
         android:id="@+id/wash_title"
         android:layout_width="wrap_content"
@@ -141,19 +153,30 @@
         android:layout_below="@+id/fill_TEXT"
         android:layout_alignLeft="@+id/state_backgrond"
         android:textColor="#529BC8"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="20dp"
         android:textSize="20dp"      
         android:text="@string/Wash_title"  />
     <TextView
         android:id="@+id/wash_ML"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/fill_ML"
+        android:layout_below="@+id/fill_TEXT"
         android:layout_toRightOf="@+id/wash_title"
         android:textColor="#529BC8"
         android:layout_marginTop="5dp"
-        android:textSize="25dp"      
-        android:text="65536 mL" />
+        android:textSize="35dp"      
+        android:text="  " />
+      <TextView
+        android:id="@+id/wash_ML_Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fill_TEXT"
+        android:layout_toRightOf="@+id/wash_ML"
+        android:layout_alignParentBottom="@+id/wash_ML"
+        android:textColor="#529BC8"
+        android:layout_marginTop="25dp"
+        android:textSize="15dp"   
+        android:text=" mL" />
     <TextView
         android:id="@+id/empty_titile"
         android:layout_width="wrap_content"
@@ -161,7 +184,7 @@
         android:layout_below="@+id/wash_title"
         android:layout_alignLeft="@+id/state_backgrond"
         android:textColor="#529BC8"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="20dp"
         android:textSize="20dp"   
         android:text="总回收量： " />
    <TextView
@@ -172,7 +195,7 @@
         android:layout_toRightOf="@+id/empty_titile"
         android:textColor="#529BC8"
         android:layout_marginTop="5dp"
-        android:textSize="25dp"   
+        android:textSize="35dp"   
         android:text=" " />
       <TextView
         android:id="@+id/empty_ML_Text"
@@ -182,7 +205,7 @@
         android:layout_toRightOf="@+id/empty_ML"
         android:layout_alignParentBottom="@+id/empty_ML"
         android:textColor="#529BC8"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="25dp"
         android:textSize="15dp"   
         android:text=" mL" />
      <TextView
@@ -205,55 +228,78 @@
         android:textSize="15sp"
         android:text="提示信息显示11111" />
     <ImageView
-        android:id="@+id/imageView_status"
+        android:id="@+id/imageView_status1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/infor_2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginLeft="30dp" 
-        android:layout_marginRight="30dp" 
-        android:src="@drawable/blood_in" />
+        android:layout_marginTop="30dp"
+          />
+        <ImageView
+        android:id="@+id/imageView_status2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/infor_2"
+        android:layout_toRightOf="@+id/imageView_status1"
+        android:layout_marginTop="70dp"
+          />
+            <ImageView
+        android:id="@+id/imageView_status3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/infor_2"
+        android:layout_toRightOf="@+id/imageView_status2"
+        android:layout_marginTop="30dp"
+        />
      <TextView
         android:id="@+id/pump_speed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"        
-        android:layout_alignBottom ="@+id/imageView_status"        
+        android:layout_below="@+id/imageView_status2"  
+        android:layout_toRightOf="@+id/imageView_status1"     
         android:layout_marginTop="5dp"
         android:textSize="25sp"
         android:text="400 " />
      <TextView
         android:id="@+id/pump_speed_ml"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"        
-        android:layout_alignBottom ="@+id/imageView_status"  
+        android:layout_height="wrap_content"      
+       android:layout_below="@+id/imageView_status2"
+        android:layout_alignParentBottom ="@+id/pump_speed"  
         android:layout_toRightOf="@+id/pump_speed"      
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="15dp"
         android:textSize="15sp"
         android:text="ml/min" />
      
-    <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="fill_parent"
+            <ImageView
+        android:id="@+id/stop_back"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        android:weightSum="2" >
+        android:layout_below="@+id/imageView_status1"    
+        android:src="@drawable/image_stopback"
+        android:layout_marginTop="20dp"
+        />
 
         <Button
             android:id="@+id/begin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="暂停" />
+            android:background="@drawable/control_pause" 
+           android:layout_below="@+id/imageView_status1"
+           android:layout_marginTop="30dp"
+           android:layout_marginLeft="60dp"
+            android:text="   " />
 
         <Button
             android:id="@+id/button_stop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="停止" />
-    </LinearLayout>
+            android:background="@drawable/control_stop" 
+           android:layout_below="@+id/imageView_status1"
+           android:layout_toRightOf="@+id/begin"  
+           android:layout_marginTop="30dp"
+           android:layout_marginLeft="110dp"
+            android:text="   " />
+    
 
 
 

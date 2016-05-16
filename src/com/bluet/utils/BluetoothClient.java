@@ -234,10 +234,10 @@ public class BluetoothClient {
 				Data.getInstance().GetWorkmodeFromBlue(temp);
 				break;//				//TAG_WORK_MODE
 			case Data.TAG_RUN_STATE:
-				Data.getInstance().setWork_state(temp);
+				Data.getInstance().GetRunStateFromBlue(temp);
 				break;//				//TAG_WORK_MODE GetBowlFromBlue
 			case Data.TAG_BWOL:
-				Data.getInstance().setWork_state(temp);
+				Data.getInstance().GetBowlFromBlue(temp);
 				break;//
 			default:
 				break;

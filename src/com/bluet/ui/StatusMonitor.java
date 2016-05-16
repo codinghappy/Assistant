@@ -22,22 +22,26 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
 	Button begin;
 	Button stop;	
 	byte[] message_button = new byte[8];
-	ImageView image_view;
+	ImageView image_status1;
+	ImageView image_status2;
+	ImageView image_status3;
+	
 	TextView  Fill_text_view;
 	TextView  Wash_text_view;
 	TextView  Empty_text_view;
 	TextView  Bowl_text_view;
 	TextView  Mode_text_view;
 	TextView  WorkState_text_view;
+	TextView  Run_state_view;
 	int status = 0;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.status_monitor, null, false);
         Fill_text_view= (TextView) view.findViewById(R.id.fill_ML);
-        Fill_text_view.setText("- - -"+"mL");
+        Fill_text_view.setText("- - -" );
         
         Wash_text_view=(TextView) view.findViewById(R.id.wash_ML); 
-        Wash_text_view.setText("- - -"+"mL");
+        Wash_text_view.setText("- - -" );
               
         Empty_text_view=(TextView) view.findViewById(R.id.empty_ML);
         Empty_text_view.setText("- - -" );
@@ -46,9 +50,12 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
         Bowl_text_view.setText("杯型：---");
         Mode_text_view=(TextView) view.findViewById(R.id.Work_mode);
         Mode_text_view.setText("模式：---");
-        WorkState_text_view=(TextView) view.findViewById(R.id.Work_state);
+        WorkState_text_view=(TextView) view.findViewById(R.id.work_state);
         WorkState_text_view.setText(" ");
-        image_view = (ImageView) view.findViewById(R.id.imageView_status);
+        Run_state_view= (TextView) view.findViewById(R.id.Run_state);
+        image_status1 = (ImageView) view.findViewById(R.id.imageView_status1);
+        image_status2 = (ImageView) view.findViewById(R.id.imageView_status2);
+        image_status3 = (ImageView) view.findViewById(R.id.imageView_status3);
         stop =(Button)  view.findViewById(R.id.button_stop);
         stop.setOnClickListener(new OnClickListener() {
         	 public void onClick(View v) {  				
@@ -82,7 +89,7 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
         	 
         });
         
-        image_view.setOnClickListener(new OnClickListener() {
+        image_status1.setOnClickListener(new OnClickListener() {
        	 public void onClick(View v) {
        		Toast toast=Toast.makeText(getActivity(), "点击了图片", Toast.LENGTH_SHORT);
        		toast.show();
@@ -96,18 +103,20 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
 	@Override
 	public void dataChanged() {
 		// TODO Auto-generated method stub
-		Fill_text_view.setText(Data.getInstance().GetInfo_Fill()+"mL");
-		Wash_text_view.setText(Data.getInstance().allInfo_wash()+"mL");
+		
+		Fill_text_view.setText(Data.getInstance().GetInfo_Fill() );
+		Wash_text_view.setText(Data.getInstance().allInfo_wash() );
 	    Empty_text_view.setText(Data.getInstance().allInfo_empty() );
-	    switch(Data.getInstance().getWork_State()){
+	    switch(Data.getInstance().getRun_State()){
 	    case 0 :
-	    	WorkState_text_view.setText("运行中");
+	    	Run_state_view.setText("  ");
 	    	break;
 	    case 1:
-	    	WorkState_text_view.setText("暂停中");
+	    	Run_state_view.setText("暂停中");
+	    	begin.getBackground();
 	    	break;
 	    case 2:
-	    	WorkState_text_view.setText("停止中");
+	    	Run_state_view.setText("暂停中");
 	    	break;
 	    	default:break;
 	    
@@ -137,33 +146,54 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
 		switch(Data.getInstance().getWork_State()){
 		case 0:
 			WorkState_text_view.setText("待机");
-			image_view.setImageResource(R.drawable.control_print);
+			
+			image_status1.setImageResource(R.drawable.imageblood);
+			image_status2.setImageResource(R.drawable.image_arrow_left);
+			image_status3.setImageResource(R.drawable.imagebwol);
+			
 			break;
 		case 1:
 			WorkState_text_view.setText("预冲");
-			image_view.setImageResource(R.drawable.icon_record_normal);
+			image_status1.setImageResource(R.drawable.imagenacl);
+			image_status2.setImageResource(R.drawable.image_arrow_left);			
+			image_status3.setImageResource(R.drawable.imagebwol);
 			break;
 		case 2:
 			WorkState_text_view.setText("进血");
-			image_view.setImageResource(R.drawable.blood_in);
+			image_status1.setImageResource(R.drawable.imageblood);
+			image_status2.setImageResource(R.drawable.image_arrow_left);
+			image_status3.setImageResource(R.drawable.imagebwol);
 			break;
 		case 3:
 			WorkState_text_view.setText("清洗");
-			image_view.setImageResource(R.drawable.icon_record_normal);
+			image_status1.setImageResource(R.drawable.imagenacl);
+			image_status2.setImageResource(R.drawable.image_arrow_left);
+			image_status3.setImageResource(R.drawable.imagebwol);
 			break;
 		case 4:
 			WorkState_text_view.setText("清空");
-			image_view.setImageResource(R.drawable.icon_record_normal);
+			
+			image_status1.setImageResource(R.drawable.image_rbc);
+			image_status2.setImageResource(R.drawable.image_arrow_right);
+			image_status3.setImageResource(R.drawable.imagebwol);
 			break;
 		case 5:
 			WorkState_text_view.setText("浓缩");
-			image_view.setImageResource(R.drawable.icon_record_normal);
+			
+			image_status1.setImageResource(R.drawable.image_rbc);
+			image_status2.setImageResource(R.drawable.image_arrow_left);
+			image_status3.setImageResource(R.drawable.imagebwol);
 			break;
 		case 6:
 			WorkState_text_view.setText("回血");
+			
+			image_status1.setImageResource(R.drawable.image_rbc);
+			image_status2.setImageResource(R.drawable.image_arrow_left);
+			image_status3.setImageResource(R.drawable.imagebwol);
 			break;
 
-			default:break;
+			
+		default:break;
 		}
 
 		

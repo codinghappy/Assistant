@@ -54,5 +54,9 @@ public class BaseFragment extends Fragment {
         textView.setText(getTitle());
         return view;
     }
+
+	public void dataChanged() {
+		
+	}
 }
 
