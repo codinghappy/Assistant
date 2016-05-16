@@ -8,9 +8,11 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.bluet.massistant.BluetoothChatService;
 import com.bluet.massistant.DeviceListActivity;
+import com.bluet.massistant.R;
 
 public class BluetoothClient {
 	// Intent request codes
@@ -23,10 +25,16 @@ public class BluetoothClient {
 
 	public BluetoothChatService mChatService = null;
 	public Context mContext = null;
+	public static final int MESSAGE_STATE_CHANGE = 1;
 	public static final int MESSAGE_READ = 2;
 	
-	public BluetoothClient(Context context) {
+	private BluetoothStateChange mBluetoothStateChange;
+	public interface BluetoothStateChange {
+		void onStateChanged(int state);
+	}
+	public BluetoothClient(Context context,BluetoothStateChange bluetoothStateChange) {
 		mContext = context;
+		mBluetoothStateChange = bluetoothStateChange;
 	}
 	
 	private final Handler mHandler = new Handler() {
@@ -36,6 +44,20 @@ public class BluetoothClient {
 			case MESSAGE_READ:
 				byte[] readBuf = (byte[]) msg.obj;
 				decode(readBuf, msg.arg1);
+				break;
+			case MESSAGE_STATE_CHANGE:
+				switch (msg.arg1) {
+				case BluetoothChatService.STATE_CONNECTED:
+					findhead = 0;
+					buf_index = 0;
+					frame_len = 0;
+					head_en = false;
+				case BluetoothChatService.STATE_CONNECTING:
+				case BluetoothChatService.STATE_LISTEN:
+				case BluetoothChatService.STATE_NONE:
+					mBluetoothStateChange.onStateChanged(msg.arg1);
+					break;
+				}
 				break;
 			}
 		}

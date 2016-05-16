@@ -14,6 +14,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.bluet.ui.Account;
@@ -27,26 +31,29 @@ import com.viewpagerindicator.IconPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragmentActivity extends FragmentActivity {
+public class HomeFragmentActivity extends FragmentActivity implements BluetoothClient.BluetoothStateChange {
 
 	private ViewPager mViewPager;
 	private IconTabPageIndicator mIndicator;
 	private BluetoothClient mClient = null;
-
+	private String mLastdevice;
+	private Button mConnectBluttoothBtn;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
 		setContentView(R.layout.demo);
 		
+		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,
+                R.layout.title);
 		initViews();
-		ConectToDevice();
 	}
 
 	@Override
 	protected void onStart() {
 		super.onStart();
 		if (mClient == null) {
-		  mClient = new BluetoothClient(this);
+		  mClient = new BluetoothClient(this, this);
 		  mClient.init();
 		}
 		if (mClient.mBluetoothAdapter == null)
@@ -63,6 +70,8 @@ public class HomeFragmentActivity extends FragmentActivity {
 				mClient.setupChat();
 		}
 		
+		connectLastDevice();
+		
 	}
 	
 	private void initViews() {
@@ -73,6 +82,16 @@ public class HomeFragmentActivity extends FragmentActivity {
 				getSupportFragmentManager());
 		mViewPager.setAdapter(adapter);
 		mIndicator.setViewPager(mViewPager);
+		
+		SharedPreferences config = getSharedPreferences("perference", MODE_PRIVATE);
+		mLastdevice = config.getString("lastdevice_addr", "");
+	    mConnectBluttoothBtn = (Button)findViewById(R.id.connect_bluetooth);
+	    mConnectBluttoothBtn.setOnClickListener(new OnClickListener() {    
+            public void onClick(View v) {    
+        		ConectToDevice();
+            }    
+        }); 
+
 	}
 
 	private List<BaseFragment> initFragments() {
@@ -139,13 +158,7 @@ public class HomeFragmentActivity extends FragmentActivity {
 		}
 	}
 
-	String lastdevice;
-
 	void ConectToDevice() {
-		SharedPreferences config = this.getSharedPreferences("perference",
-				MODE_PRIVATE);
-		lastdevice = config.getString("lastdevice_addr", "");
-
 		new AlertDialog.Builder(this)
 				.setTitle("连接请求")
 				.setIcon(android.R.drawable.ic_menu_info_details)
@@ -155,7 +168,7 @@ public class HomeFragmentActivity extends FragmentActivity {
 							@Override
 							public void onClick(DialogInterface dialog,
 									int which) {
-								if (lastdevice == "") { // 没有设备，那就连接新设备吧
+								if (mLastdevice == "") { // 没有设备，那就连接新设备吧
 
 									Intent serverIntent = new Intent(
 											getApplicationContext(),
@@ -164,10 +177,7 @@ public class HomeFragmentActivity extends FragmentActivity {
 											mClient.REQUEST_CONNECT_DEVICE);
 								} else {
 									// Get the BLuetoothDevice object
-									BluetoothDevice device = mClient.mBluetoothAdapter
-											.getRemoteDevice(lastdevice);
-									// Attempt to connect to the device
-									mClient.mChatService.connect(device);
+									connectLastDevice();
 								}
 							}
 						})
@@ -185,6 +195,14 @@ public class HomeFragmentActivity extends FragmentActivity {
 							}
 						}).show();
 
+	}
+	
+	private void connectLastDevice() {
+		if (mLastdevice.isEmpty())
+			return;
+		BluetoothDevice device = mClient.mBluetoothAdapter.getRemoteDevice(mLastdevice);
+		// Attempt to connect to the device
+		mClient.mChatService.connect(device);
 	}
 	
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -215,5 +233,24 @@ public class HomeFragmentActivity extends FragmentActivity {
 			}
 		}
 		super.onActivityResult(requestCode, resultCode, data);
+	}
+
+	@Override
+	public void onStateChanged(int state) {
+		switch(state) {
+		case BluetoothChatService.STATE_CONNECTED:
+			mConnectBluttoothBtn.setText("已连接");
+            break;
+		case BluetoothChatService.STATE_CONNECTING:
+			mConnectBluttoothBtn.setText("连接中");
+			break;
+		case BluetoothChatService.STATE_LISTEN:
+			mConnectBluttoothBtn.setText("连接已断开");
+			break;
+		case BluetoothChatService.STATE_NONE:
+			mConnectBluttoothBtn.setText("无状态");
+			break;
+		}
+		
 	}
 }

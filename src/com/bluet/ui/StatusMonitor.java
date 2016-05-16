@@ -133,7 +133,7 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
             }
         });
         
-        getActivity().getWindow().setTitle("自体血液回收机");
+//        getActivity().getWindow().setTitle("自体血液回收机");
         Data.getInstance().addListener(this);
         return view;
     }
