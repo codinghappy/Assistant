@@ -64,5 +64,6 @@
     
     <string name="Fill_title">总进血量：</string>
     <string name="Wash_title">总清洗量：</string>
+    <string name="scan_text">将二维码放入框内, 即可自动扫描</string>
     
 </resources>

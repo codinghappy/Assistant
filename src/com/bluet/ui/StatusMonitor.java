@@ -6,6 +6,8 @@ import com.bluet.massistant.R.drawable;
 import com.bluet.massistant.R.id;
 import com.bluet.massistant.R.layout;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,12 +15,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.TextView;
-import com.bluet.utils.Data;;
+import com.bluet.utils.Data;
+import com.example.qr_codescan.MainActivity;
+import com.example.qr_codescan.MipcaActivityCapture;
 
 public class StatusMonitor extends BaseFragment implements Data.DataChangeListener {
+	private final static int SCANNIN_CONSUMABLES = 10;
+	private final static int SCANN_PATIENT = 20;
 	Button begin;
 	Button stop;	
 	byte[] message_button = new byte[8];
@@ -32,7 +39,12 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
 	TextView  Bowl_text_view;
 	TextView  Mode_text_view;
 	TextView  WorkState_text_view;
-	TextView  Run_state_view;
+
+    TextView  Run_state_view;
+	EditText  mETScanConsumables;
+	EditText  mETScanPatient;
+	Button mScanConsumables;
+	Button mScanPatient;
 	int status = 0;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -95,6 +107,31 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
        		toast.show();
        	 }
        });
+        
+        mScanConsumables = (Button) view.findViewById(R.id.scan_consumables);
+        mScanConsumables.setOnClickListener(new View.OnClickListener() {
+            
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub  
+            	Intent intent = new Intent();
+				intent.setClass(getActivity(), MipcaActivityCapture.class);
+				StatusMonitor.this.startActivityForResult(intent, SCANNIN_CONSUMABLES);
+            }
+        });
+        mETScanConsumables = (EditText) view.findViewById(R.id.edit_consumables);
+        mETScanPatient = (EditText) view.findViewById(R.id.edit_patient);
+        mScanPatient = (Button) view.findViewById(R.id.scan_patient);
+        mScanPatient.setOnClickListener(new View.OnClickListener() {
+            
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub  
+            	Intent intent = new Intent();
+				intent.setClass(getActivity(), MipcaActivityCapture.class);
+				StatusMonitor.this.startActivityForResult(intent, SCANN_PATIENT);
+            }
+        });
         
         getActivity().getWindow().setTitle("自体血液回收机");
         Data.getInstance().addListener(this);
@@ -197,6 +234,21 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
 		}
 
 		
+	}
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		 if (resultCode != Activity.RESULT_OK)
+	            return;
+		 Bundle bundle = data.getExtras();
+		 String result = bundle.getString("result");
+         switch(requestCode) {
+         case SCANNIN_CONSUMABLES:
+        	 mETScanConsumables.setText(result); 
+        	 break;
+         case SCANN_PATIENT:
+        	 mETScanPatient.setText(result);
+        	 break;
+         }
 	}
 
 }

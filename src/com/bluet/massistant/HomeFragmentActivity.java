@@ -39,6 +39,7 @@ public class HomeFragmentActivity extends FragmentActivity {
 		setContentView(R.layout.demo);
 		
 		initViews();
+		ConectToDevice();
 	}
 
 	@Override
@@ -60,7 +61,6 @@ public class HomeFragmentActivity extends FragmentActivity {
 				mClient.setupChat();
 		}
 		
-		ConectToDevice();
 	}
 	
 	private void initViews() {
@@ -186,7 +186,6 @@ public class HomeFragmentActivity extends FragmentActivity {
 	}
 	
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
 		switch (requestCode) {
 		case BluetoothClient.REQUEST_CONNECT_DEVICE:
 			// When DeviceListActivity returns with a device to connect
@@ -213,5 +212,6 @@ public class HomeFragmentActivity extends FragmentActivity {
 						Toast.LENGTH_SHORT).show();
 			}
 		}
+		super.onActivityResult(requestCode, resultCode, data);
 	}
 }

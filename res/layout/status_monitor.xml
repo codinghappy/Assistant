@@ -23,12 +23,18 @@
         android:layout_marginLeft="2dp"
         android:text="耗材信息：" />
        <EditText  
-            android:id="@+id/edit"  
+            android:id="@+id/edit_consumables"  
             android:layout_width="wrap_content"  
             android:layout_height="wrap_content"  
             android:textSize="8dp"
             android:textColor="#000011"
-            android:text="输入患者信息或扫描" />  
+            android:text="输入患者信息或扫描" />
+        <Button
+        android:id="@+id/scan_consumables"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:textSize="12dp"
+        android:text="扫描耗材信息" />
 
      </TableRow>  
      <TableRow>  
@@ -42,12 +48,18 @@
         android:layout_marginLeft="0dp"
         android:text="患者信息：" />
        <EditText  
-            android:id="@+id/edit1"  
+            android:id="@+id/edit_patient"  
             android:layout_width="wrap_content"  
             android:layout_height="wrap_content"  
             android:textSize="10dp"
             android:textColor="#000011"
-            android:text="输入患者信息或扫描" />  
+            android:text="输入患者信息或扫描" />
+       <Button
+        android:id="@+id/scan_patient"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:textSize="12dp"
+        android:text="扫描患者信息" />
 
      </TableRow> 
     </TableLayout>  
