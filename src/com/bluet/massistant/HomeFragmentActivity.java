@@ -7,6 +7,7 @@ import android.bluetooth.BluetoothDevice;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -213,6 +214,7 @@ public class HomeFragmentActivity extends FragmentActivity implements BluetoothC
 				// Get the device MAC address
 				String address = data.getExtras().getString(
 						DeviceListActivity.EXTRA_DEVICE_ADDRESS);
+				Save_config("lastdevice_addr", address);
 				// Get the BLuetoothDevice object
 				BluetoothDevice device = mClient.mBluetoothAdapter
 						.getRemoteDevice(address);
@@ -234,7 +236,15 @@ public class HomeFragmentActivity extends FragmentActivity implements BluetoothC
 		}
 		super.onActivityResult(requestCode, resultCode, data);
 	}
-
+	
+	void Save_config(String name, String Value) {
+		SharedPreferences share = this.getSharedPreferences("perference",
+				MODE_PRIVATE);
+		Editor editor = share.edit();// 取得编辑器
+		editor.putString(name, Value);// 存储配置 参数1 是key 参数2 是值
+		editor.commit();// 提交刷新数据
+	}
+	
 	@Override
 	public void onStateChanged(int state) {
 		switch(state) {
