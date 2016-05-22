@@ -261,6 +261,9 @@ public class BluetoothClient {
 			case Data.TAG_BWOL:
 				Data.getInstance().GetBowlFromBlue(temp);
 				break;//
+			case Data.TAG_PUMP_SPEED:
+				Data.getInstance().SetPmpSpeed(temp);
+				break;//	//TAG_PUMP_SPEED
 			default:
 				break;
 			}

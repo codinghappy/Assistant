@@ -39,12 +39,13 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
 	TextView  Bowl_text_view;
 	TextView  Mode_text_view;
 	TextView  WorkState_text_view;
+	TextView  Pump_speed_text_view;
 
     TextView  Run_state_view;
 	EditText  mETScanConsumables;
 	EditText  mETScanPatient;
-	Button mScanConsumables;
-	Button mScanPatient;
+	Button     mScanConsumables;
+	Button    mScanPatient;
 	int status = 0;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -63,11 +64,16 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
         Mode_text_view=(TextView) view.findViewById(R.id.Work_mode);
         Mode_text_view.setText("模式：---");
         WorkState_text_view=(TextView) view.findViewById(R.id.work_state);
-        WorkState_text_view.setText(" ");
+        WorkState_text_view.setText("待机");
         Run_state_view= (TextView) view.findViewById(R.id.Run_state);
         image_status1 = (ImageView) view.findViewById(R.id.imageView_status1);
         image_status2 = (ImageView) view.findViewById(R.id.imageView_status2);
         image_status3 = (ImageView) view.findViewById(R.id.imageView_status3);
+		image_status1.setImageResource(R.drawable.imageblood);
+		image_status2.setImageResource(R.drawable.image_arrow_left);
+		image_status3.setImageResource(R.drawable.imagebwol);
+		Pump_speed_text_view = (TextView) view.findViewById(R.id.pump_speed);
+		Pump_speed_text_view.setText("400");
         stop =(Button)  view.findViewById(R.id.button_stop);
         stop.setOnClickListener(new OnClickListener() {
         	 public void onClick(View v) {  				
@@ -144,6 +150,7 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
 		Fill_text_view.setText(Data.getInstance().GetInfo_Fill() );
 		Wash_text_view.setText(Data.getInstance().allInfo_wash() );
 	    Empty_text_view.setText(Data.getInstance().allInfo_empty() );
+	    Pump_speed_text_view.setText(String.valueOf(Data.getInstance().getPump_speed()));
 	    switch(Data.getInstance().getRun_State()){
 	    case 0 :
 	    	Run_state_view.setText("  ");

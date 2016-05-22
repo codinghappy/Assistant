@@ -25,6 +25,7 @@ public class Data {
 	public static final byte TAG_WORK_STATE = 0x12;//工作流程
 	public static final byte TAG_RUN_STATE = 0x17;
 	public static final byte TAG_BWOL=0X13;
+	public static final byte TAG_PUMP_SPEED = 0x18;
 	
 	
 	
@@ -44,6 +45,12 @@ public class Data {
 	private static int mBowl;
 	private static int mWorkMOde;
 	
+	private static int mFillSpeed;
+	private static int mWashSpeed;
+	private static int mEmptySpeed;
+	private static int mPumpSpeed;
+	
+	private static byte[] pa;
 	private void notifyChanged(){
 		
 		for (DataChangeListener l : listeners) {
@@ -87,6 +94,10 @@ public class Data {
 	}
 	public void GetRunStateFromBlue(int runstate) {
 		mRunState = runstate;
+		notifyChanged();
+	}
+	public void SetPmpSpeed(int PmpSpeed) {
+		mPumpSpeed = PmpSpeed;
 		notifyChanged();
 	}
 	public int getCurrentSpeed() {
@@ -148,6 +159,9 @@ public class Data {
 	}
 	public int getwork_mode() {
 		return mWorkMOde;
+	}
+	public int getPump_speed() {
+		return mPumpSpeed;
 	}
 	public String hex2str(int datatochange){
 		return  String.valueOf(datatochange);

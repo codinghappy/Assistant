@@ -7,7 +7,7 @@
 
    <TableLayout   
     android:layout_width="fill_parent"  
-    android:layout_height="wrap_content"  
+    android:layout_height="60dp"  
     android:gravity="center"  
     android:background="#FFFFFF"
     android:orientation="horizontal" >
@@ -17,14 +17,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
          android:textColor="#2599FA"
-        android:textSize="20dp"
+        android:textSize="12dp"
         android:layout_marginTop="2dp"
         android:layout_marginLeft="2dp"
         android:text="耗材信息：" />
        <EditText  
             android:id="@+id/edit"  
             android:layout_width="wrap_content"  
-            android:layout_height="wrap_content"  
+            android:layout_height="20dp"  
             android:textSize="10dp"
             android:textColor="#E5E5E5"
             android:text="输入患者信息或扫描" />  
@@ -36,14 +36,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
          android:textColor="#2599FA"
-        android:textSize="20dp"
+        android:textSize="12dp"
         android:layout_marginTop="0dp"
         android:layout_marginLeft="0dp"
         android:text="患者信息：" />
        <EditText  
             android:id="@+id/edit1"  
             android:layout_width="wrap_content"  
-            android:layout_height="wrap_content"  
+            android:layout_height="20dp"  
             android:textSize="10dp"
             android:textColor="#FAFAFA"
             android:text="输入患者信息或扫描" />  
@@ -67,9 +67,39 @@
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"            
                  android:layout_marginTop="100dp"
-                 android:layout_marginLeft="70dp"
+                 android:layout_marginLeft="70dp" 
+                 android:textSize="30dp"                
+                 android:text="待机"
+            /> 
+           <TextView
+                 android:id="@+id/control_Run_state"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
                  
-                 android:text="进血"
+                 android:layout_toRightOf="@+id/control_work_state_show"
+                 android:layout_marginTop="100dp"
+                 android:layout_marginLeft="30dp"
+                 android:textColor="#F00000"
+                 android:textSize="15dp"
+                 android:text="   " />
+         <TextView
+                 android:id="@+id/control_bwol_state_show"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content" 
+                 android:layout_toRightOf="@+id/control_work_state_show"        
+                 android:layout_marginTop="100dp"
+                 android:layout_marginLeft="110dp"                 
+                 android:text="杯型：---"
+            /> 
+          <TextView
+                 android:id="@+id/control_mode_state_show"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content" 
+                 android:layout_below="@+id/control_bwol_state_show"
+                 android:layout_toRightOf="@+id/control_work_state_show"        
+                 android:layout_marginTop="10dp"
+                 android:layout_marginLeft="110dp"                 
+                 android:text="杯型：---"
             /> 
 <!-- msihi   键值 0209  -->   
          <Button
