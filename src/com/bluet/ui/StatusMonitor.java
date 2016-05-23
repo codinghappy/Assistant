@@ -189,8 +189,7 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
 	    }
 		switch(Data.getInstance().getWork_State()){
 		case 0:
-			WorkState_text_view.setText("待机");
-			
+			WorkState_text_view.setText("待机");			
 			image_status1.setImageResource(R.drawable.imageblood);
 			image_status2.setImageResource(R.drawable.image_arrow_left);
 			image_status3.setImageResource(R.drawable.imagebwol);

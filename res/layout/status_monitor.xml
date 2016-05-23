@@ -119,6 +119,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignLeft="@+id/state_backgrond"
+           
         android:layout_marginTop="88dp"
         android:layout_marginLeft="6dp"
         android:textColor="#FFFFFF"
