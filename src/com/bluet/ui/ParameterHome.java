@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bluet.massistant.BaseFragment;
@@ -20,7 +23,10 @@ public class ParameterHome extends BaseFragment implements DataChangeListener {
 	TextView  Empty_speed_text_view;
 	TextView  Auto_run_volume_text_view;
 	TextView  Max_wash_volume_text_view;
-	
+    ImageView  param_setting;
+    ImageView  alert_setting;
+    RelativeLayout param_layout;
+    RelativeLayout alert_layout;
 	
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -34,6 +40,22 @@ public class ParameterHome extends BaseFragment implements DataChangeListener {
         Auto_run_volume_text_view = (TextView) view.findViewById(R.id.Set_pra_line5_Value);
         Max_wash_volume_text_view = (TextView) view.findViewById(R.id.Set_pra_line6_Value);
 
+        param_setting = (ImageView) view.findViewById(R.id.ImageView01);
+        param_layout = (RelativeLayout) view.findViewById(R.id.params_set_details);
+        param_setting.setOnClickListener(new OnClickListener() {    
+            public void onClick(View v) {    
+            	alert_layout.setVisibility(RelativeLayout.GONE);
+            	param_layout.setVisibility(RelativeLayout.VISIBLE);
+            }    
+        }); 
+        alert_setting = (ImageView) view.findViewById(R.id.alarm_set_img);
+        alert_layout = (RelativeLayout) view.findViewById(R.id.params_set_alert);
+        alert_setting.setOnClickListener(new OnClickListener() {    
+            public void onClick(View v) {
+            	param_layout.setVisibility(RelativeLayout.GONE);
+            	alert_layout.setVisibility(RelativeLayout.VISIBLE);
+            }    
+        }); 
         Data.getInstance().addListener(this);
         return view;
     }
