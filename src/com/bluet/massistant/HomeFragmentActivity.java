@@ -27,8 +27,14 @@ import com.bluet.ui.DataManager;
 import com.bluet.ui.ParameterHome;
 import com.bluet.ui.StatusMonitor;
 import com.bluet.utils.BluetoothClient;
+import com.bluet.utils.Data;
 import com.viewpagerindicator.IconPagerAdapter;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +44,9 @@ public class HomeFragmentActivity extends FragmentActivity implements BluetoothC
 	private IconTabPageIndicator mIndicator;
 	private BluetoothClient mClient = null;
 	private String mLastdevice;
+	private Timer mAutoSave;
+	private String auto_file_name;
+
 	private Button mConnectBluttoothBtn;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +57,11 @@ public class HomeFragmentActivity extends FragmentActivity implements BluetoothC
 		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,
                 R.layout.title);
 		initViews();
+		mAutoSave = new Timer(5000, new Runnable() {
+			public void run() {
+				Write_a_list();
+			}
+		});		
 	}
 
 	@Override
@@ -250,6 +264,7 @@ public class HomeFragmentActivity extends FragmentActivity implements BluetoothC
 		switch(state) {
 		case BluetoothChatService.STATE_CONNECTED:
 			mConnectBluttoothBtn.setText("已连接");
+			write_head();
             break;
 		case BluetoothChatService.STATE_CONNECTING:
 			mConnectBluttoothBtn.setText("连接中");
@@ -263,4 +278,52 @@ public class HomeFragmentActivity extends FragmentActivity implements BluetoothC
 		}
 		
 	}
+    //写出文件头
+	public void write_head() {
+		String head;
+		auto_file_name = initial_name();
+		head = "目标地址,速度,加速度,电量,左转向,高度,时间\r\n";
+		auto_file_name = "Rec-" + auto_file_name;
+		Write_File(head, auto_file_name);
+		mAutoSave.restart();
+		Log.v("file = ", auto_file_name);
+	}
+
+	// ------------------------------------------------------------------------
+	// 数据内容
+	void Write_a_list() {
+		String data = initial_name() + ":";
+		data += Data.getInstance().getWork_State() + ",";
+		data +="\r\n";
+		Write_File(data, auto_file_name);
+		Log.v("file", "Write_a_list");
+	}
+
+	String initial_name() {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss");
+		return format.format(new Date());
+	}
+
+	public void Write_File(String str, String file_name) {
+		File destDir = new File("/sdcard/Assistant_Data/");
+		if (!destDir.exists()) {
+			destDir.mkdirs();// 创建文件夹
+		}
+		try {
+			FileOutputStream outStream = new FileOutputStream(
+					"/sdcard/Assistant_Data/" + file_name + ".txt", true);
+			OutputStreamWriter writer = new OutputStreamWriter(outStream,
+					"gb2312");
+			writer.write(str);
+			writer.flush();
+			writer.close();// 记得关闭
+			outStream.close();
+		} catch (Exception e) {
+			Toast.makeText(getApplicationContext(),
+					"/sdcard/Assistant_Data/" + ".txt 错误", Toast.LENGTH_SHORT)
+					.show();
+			Log.e("m", "file write error");
+		}
+	}
+
 }
