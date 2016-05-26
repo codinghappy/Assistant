@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:id="@+id/params_set"
-        android:layout_weight="1"
+        
         android:gravity= "center">
 
     <ImageView
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:background="#00000000"
         android:src="@drawable/set_params" />
-"
+
          
     <TextView
          android:id="@+id/params_set_txt"
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:id="@+id/alarm_set"
-        android:layout_weight="1"
+        android:layout_toRightOf="@+id/params_set"
         android:gravity= "center"> 
         <ImageView
             android:id="@+id/alarm_set_img"
@@ -58,62 +58,338 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
          android:background="@drawable/set_backgrond1"
-        android:layout_marginTop="90dp"
+         android:layout_below="@+id/alarm_set"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="0dp"
         android:textColor="#529BC8"
+        android:textSize="20dp"      
+        />
+        <ImageView
+        android:id="@+id/Set_pra_line1_Title_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"         
+        android:layout_alignTop   ="@+id/Set_pra_line1"         
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/set_title1"
+        />       
+      <TextView
+        android:id="@+id/Set_pra_line1_Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"          
+        android:layout_alignTop   ="@+id/Set_pra_line1"  
+        android:layout_marginTop="10dp"  
+        android:layout_toRightOf="@+id/Set_pra_line1_Title_image"     
+        android:layout_marginLeft="10dp"
+        android:textColor="#000000"
+        android:textSize="15dp"
+        android:text="离心杯："/>   
+              <TextView
+        android:id="@+id/Set_pra_line1_Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"          
+        android:layout_alignTop   ="@+id/Set_pra_line1"  
+        android:layout_marginTop="7dp"  
+        android:layout_toRightOf="@+id/Set_pra_line1_Title"     
+        android:layout_marginLeft="2dp"
+        android:textColor="#529BC8"
         android:textSize="20dp"
-        android:text="杯型：225" />
+        android:text="225 "/>      
        <TextView
         android:id="@+id/Set_pra_line2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/Set_pra_line1" 
         android:background="@drawable/set_backgrond2" 
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginLeft="0dp"
         android:textColor="#529BC8"
         android:textSize="20dp"
         android:text=" " />
-        <TextView
+        <ImageView
+        android:id="@+id/Set_pra_line2_Title_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"         
+        android:layout_alignTop   ="@+id/Set_pra_line2"         
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/set_title1"
+        />
+      <TextView
         android:id="@+id/Set_pra_line2_Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"          
-        android:layout_alignTop   ="@+id/Set_pra_line2"         
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
+        android:layout_alignTop   ="@+id/Set_pra_line2"  
+        android:layout_marginTop="12dp"  
+        android:layout_toRightOf="@+id/Set_pra_line2_Title_image"     
+        android:layout_marginLeft="10dp"
         android:textColor="#000000"
         android:textSize="15dp"
-        android:text="进血泵速：400ml/min" />
+        android:text="进血泵速："/>   
+      <TextView
+        android:id="@+id/Set_pra_line2_Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"          
+        android:layout_alignTop   ="@+id/Set_pra_line2"  
+        android:layout_marginTop="7dp"  
+        android:layout_toRightOf="@+id/Set_pra_line2_Title"     
+        android:layout_marginLeft="2dp"
+        android:textColor="#529BC8"
+        android:textSize="20dp"
+        android:text="400 "/>          
        <TextView
+        android:id="@+id/Set_pra_line2_Unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"          
+        android:layout_alignTop   ="@+id/Set_pra_line2"  
+        android:layout_marginTop="17dp"  
+        android:layout_toRightOf="@+id/Set_pra_line2_Value"     
+        android:layout_marginLeft="2dp"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        android:text="mL/min"/>         
+        
+ 
+          <TextView
         android:id="@+id/Set_pra_line3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/Set_pra_line2"  
-        android:background="@drawable/set_backgrond1"      
-        android:layout_marginTop="10dp"
+        android:layout_below="@+id/Set_pra_line2" 
+        android:background="@drawable/set_backgrond1" 
+        android:layout_marginTop="5dp"
         android:layout_marginLeft="0dp"
-        android:textColor="#000000"
-        android:textSize="15dp"
-        android:text="  " />
-         <TextView
-        android:id="@+id/Set_pra_line3_Title"
+        android:textColor="#529BC8"
+        android:textSize="20dp"
+        android:text=" " />
+        <ImageView
+        android:id="@+id/Set_pra_line3_Title_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"         
         android:layout_alignTop   ="@+id/Set_pra_line3"         
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginLeft="20dp"
+        android:src="@drawable/set_title1"
+        />
+      <TextView
+        android:id="@+id/Set_pra_line3_Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"          
+        android:layout_alignTop   ="@+id/Set_pra_line3"  
+        android:layout_marginTop="12dp"  
+        android:layout_toRightOf="@+id/Set_pra_line3_Title_image"     
+        android:layout_marginLeft="10dp"
         android:textColor="#000000"
         android:textSize="15dp"
-        android:text="清洗泵速：400ml/min" />
+        android:text="进血泵速："/>   
+      <TextView
+        android:id="@+id/Set_pra_line3_Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"          
+        android:layout_alignTop   ="@+id/Set_pra_line3"  
+        android:layout_marginTop="7dp"  
+        android:layout_toRightOf="@+id/Set_pra_line3_Title"     
+        android:layout_marginLeft="2dp"
+        android:textColor="#529BC8"
+        android:textSize="20dp"
+        android:text="400 "/>          
+       <TextView
+        android:id="@+id/Set_pra_line35_Unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"          
+        android:layout_alignTop   ="@+id/Set_pra_line3"  
+        android:layout_marginTop="17dp"  
+        android:layout_toRightOf="@+id/Set_pra_line3_Value"     
+        android:layout_marginLeft="2dp"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        android:text="mL/min"/>  
+         
+         
+         
         <TextView
         android:id="@+id/Set_pra_line4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/Set_pra_line3"  
-        android:background="@drawable/set_backgrond1"       
-        android:layout_marginTop="10dp"
+        android:layout_below="@+id/Set_pra_line3" 
+        android:background="@drawable/set_backgrond2" 
+        android:layout_marginTop="5dp"
         android:layout_marginLeft="0dp"
         android:textColor="#529BC8"
         android:textSize="20dp"
-        android:text="      参数4:111112" />
+        android:text=" " />
+        <ImageView
+        android:id="@+id/Set_pra_line4_Title_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"         
+        android:layout_alignTop   ="@+id/Set_pra_line4"         
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/set_title1"
+        />
+      <TextView
+        android:id="@+id/Set_pra_line4_Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"          
+        android:layout_alignTop   ="@+id/Set_pra_line4"  
+        android:layout_marginTop="12dp"  
+        android:layout_toRightOf="@+id/Set_pra_line2_Title_image"     
+        android:layout_marginLeft="10dp"
+        android:textColor="#000000"
+        android:textSize="15dp"
+        android:text="清空泵速："/>   
+      <TextView
+        android:id="@+id/Set_pra_line4_Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"          
+        android:layout_alignTop   ="@+id/Set_pra_line4"  
+        android:layout_marginTop="7dp"  
+        android:layout_toRightOf="@+id/Set_pra_line4_Title"     
+        android:layout_marginLeft="2dp"
+        android:textColor="#529BC8"
+        android:textSize="20dp"
+        android:text="400 "/>          
+       <TextView
+        android:id="@+id/Set_pra_line4_Unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"          
+        android:layout_alignTop   ="@+id/Set_pra_line4"  
+        android:layout_marginTop="17dp"  
+        android:layout_toRightOf="@+id/Set_pra_line4_Value"     
+        android:layout_marginLeft="2dp"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        android:text="mL/min"/>  
+        
+        
+        
+        <TextView
+        android:id="@+id/Set_pra_line5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Set_pra_line4" 
+        android:background="@drawable/set_backgrond2" 
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="0dp"
+        android:textColor="#529BC8"
+        android:textSize="20dp"
+        android:text=" " />
+        <ImageView
+        android:id="@+id/Set_pra_line5_Title_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"         
+        android:layout_alignTop   ="@+id/Set_pra_line5"         
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/set_title1"
+        />
+      <TextView
+        android:id="@+id/Set_pra_line5_Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"          
+        android:layout_alignTop   ="@+id/Set_pra_line5"  
+        android:layout_marginTop="12dp"  
+        android:layout_toRightOf="@+id/Set_pra_line2_Title_image"     
+        android:layout_marginLeft="10dp"
+        android:textColor="#000000"
+        android:textSize="15dp"
+        android:text="单杯清洗量："/>   
+      <TextView
+        android:id="@+id/Set_pra_line5_Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"          
+        android:layout_alignTop   ="@+id/Set_pra_line5"  
+        android:layout_marginTop="7dp"  
+        android:layout_toRightOf="@+id/Set_pra_line5_Title"     
+        android:layout_marginLeft="2dp"
+        android:textColor="#529BC8"
+        android:textSize="20dp"
+        android:text="1000"/>          
+       <TextView
+        android:id="@+id/Set_pra_line5_Unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"          
+        android:layout_alignTop   ="@+id/Set_pra_line5"  
+        android:layout_marginTop="17dp"  
+        android:layout_toRightOf="@+id/Set_pra_line5_Value"     
+        android:layout_marginLeft="2dp"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        android:text="mL"/>   
+        
+       
+       
+       
+        <TextView
+        android:id="@+id/Set_pra_line6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Set_pra_line5" 
+        android:background="@drawable/set_backgrond1" 
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="0dp"
+        android:textColor="#529BC8"
+        android:textSize="20dp"
+        android:text=" " />
+        <ImageView
+        android:id="@+id/Set_pra_line6_Title_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"         
+        android:layout_alignTop   ="@+id/Set_pra_line6"         
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/set_title1"
+        />
+      <TextView
+        android:id="@+id/Set_pra_line6_Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"          
+        android:layout_alignTop   ="@+id/Set_pra_line6"  
+        android:layout_marginTop="12dp"  
+        android:layout_toRightOf="@+id/Set_pra_line6_Title_image"     
+        android:layout_marginLeft="10dp"
+        android:textColor="#000000"
+        android:textSize="15dp"
+        android:text="自动启动量："/>   
+      <TextView
+        android:id="@+id/Set_pra_line6_Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"          
+        android:layout_alignTop   ="@+id/Set_pra_line6"  
+        android:layout_marginTop="7dp"  
+        android:layout_toRightOf="@+id/Set_pra_line6_Title"     
+        android:layout_marginLeft="2dp"
+        android:textColor="#529BC8"
+        android:textSize="20dp"
+        android:text="800 "/>          
+       <TextView
+        android:id="@+id/Set_pra_line6_Unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"          
+        android:layout_alignTop   ="@+id/Set_pra_line6"  
+        android:layout_marginTop="17dp"  
+        android:layout_toRightOf="@+id/Set_pra_line6_Value"     
+        android:layout_marginLeft="2dp"
+        android:textColor="#000000"
+        android:textSize="10dp"
+        android:text="mL"/> 
+        <ImageView
+        android:id="@+id/Set_pra_line6_button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"          
+        android:layout_alignTop   ="@+id/Set_pra_line6"  
+        android:layout_marginTop="5dp"  
+        android:layout_toRightOf="@+id/Set_pra_line6_Title_image"     
+        android:layout_marginLeft="170dp"   
+        android:src="@drawable/set_title"     
+        /> 
+         <ImageView
+        android:id="@+id/Set_pra_line6_button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"          
+        android:layout_alignTop   ="@+id/Set_pra_line6"  
+        android:layout_marginTop="5dp"  
+        android:layout_toRightOf="@+id/Set_pra_line6_Title_image"     
+        android:layout_marginLeft="230dp"   
+        android:src="@drawable/set_title"     
+        />          
 </RelativeLayout>

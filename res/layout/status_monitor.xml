@@ -26,15 +26,15 @@
             android:id="@+id/edit_consumables"  
             android:layout_width="200dp"  
             android:layout_height="30dp"  
-            android:textSize="8dp"
+            android:textSize="10dp"
             android:textColor="#000011"
             android:text="输入患者信息或扫描" />
         <Button
         android:id="@+id/scan_consumables"
-        android:layout_width="30dp"
-        android:layout_height="12dp"
-        android:textSize="12dp"
-        android:text="扫描耗材信息" />
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:textSize="10dp"   
+         />
 
      </TableRow>  
      <TableRow>  
@@ -59,7 +59,8 @@
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:textSize="10dp"
-        android:text="扫描患者信息" />
+         android:background="@drawable/scan"
+        android:text="" />
 
      </TableRow> 
     </TableLayout>  

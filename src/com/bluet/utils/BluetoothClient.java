@@ -264,6 +264,15 @@ public class BluetoothClient {
 			case Data.TAG_PUMP_SPEED:
 				Data.getInstance().SetPmpSpeed(temp);
 				break;//	//TAG_PUMP_SPEED
+			case Data.TAG_FILL_SPEED_SET:
+				Data.getInstance().SetFillSpeed(temp);
+				break;
+			case Data.TAG_WASH_SPEED_SET:
+				Data.getInstance().SetWashSpeed(temp);
+				break;
+			case Data.TAG_EMPTY_SPEED_SET:
+				Data.getInstance().SetEmptySpeed(temp);
+				break;
 			default:
 				break;
 			}

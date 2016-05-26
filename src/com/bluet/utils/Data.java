@@ -2,6 +2,7 @@ package com.bluet.utils;
 import java.util.ArrayList;
 
 import android.R.string;
+import android.widget.TextView;
 
 public class Data {
 	private static Data instance = null;    
@@ -18,14 +19,19 @@ public class Data {
 //	}
 	
 	public static final byte TAG_SPEED = 0x03;
+	public static final byte TAG_WORK_MODE = 0x11;
+	public static final byte TAG_WORK_STATE = 0x12;//工作流程
+	public static final byte TAG_BWOL  = 0X13;
 	public static final byte TAG_FILL  = 0x14;
 	public static final byte TAG_WASH  = 0x15;
 	public static final byte TAG_EMPTY = 0x16;
-	public static final byte TAG_WORK_MODE = 0x11;
-	public static final byte TAG_WORK_STATE = 0x12;//工作流程
 	public static final byte TAG_RUN_STATE = 0x17;
-	public static final byte TAG_BWOL=0X13;
 	public static final byte TAG_PUMP_SPEED = 0x18;
+	
+	
+	public static final byte TAG_FILL_SPEED_SET = 0x31;
+	public static final byte TAG_WASH_SPEED_SET = 0x32;
+	public static final byte TAG_EMPTY_SPEED_SET = 0x33;
 	
 	
 	
@@ -100,6 +106,18 @@ public class Data {
 		mPumpSpeed = PmpSpeed;
 		notifyChanged();
 	}
+	public void SetFillSpeed(int fillspeed) {
+		mFillSpeed = fillspeed;
+		notifyChanged();
+	}
+	public void SetWashSpeed(int washspeed) {
+		mWashSpeed = washspeed;
+		notifyChanged();
+	}
+	public void SetEmptySpeed(int emptyspeed) {
+		mEmptySpeed = emptyspeed;
+		notifyChanged();
+	}
 	public int getCurrentSpeed() {
 		return mCurrentSpeed;
 	}
@@ -162,6 +180,15 @@ public class Data {
 	}
 	public int getPump_speed() {
 		return mPumpSpeed;
+	}
+	public int GetFillspeed() {
+		return mFillSpeed;
+	}
+	public int GetWashspeed() {
+		return mWashSpeed;
+	}
+	public int GetEmptyspeed() {
+		return mEmptySpeed;
 	}
 	public String hex2str(int datatochange){
 		return  String.valueOf(datatochange);
