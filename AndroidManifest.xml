@@ -46,7 +46,7 @@
     <activity android:configChanges="keyboardHidden|orientation" android:name=".DeviceListActivity" android:theme="@android:style/Theme.Dialog" android:label="@string/select_device"></activity>
     
      <activity android:name=".UpdateActivity" ></activity>
-     
+     <activity android:name="com.example.qr_codescan.MipcaActivityCapture" ></activity>
 <!--      <activity -->
 <!--         android:name="com.bugtags.library.BugtagsActivity" -->
 <!--         android:configChanges="keyboardHidden|orientation|screenSize" -->
