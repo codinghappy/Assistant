@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-              <shape xmlns:android="http://schemas.android.com/apk/res/android">
-               <solid android:color="#ffe7e6e5" />
-                 <corners android:radius="2dp" />
-                   <padding android:left="2dp" android:top="2dp" 
-                      android:right="2dp" android:bottom="2dp" />
-             </shape>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/clr_normal" android:state_pressed="false"/>
+    <item android:drawable="@drawable/clr_pressed" android:state_pressed="true"/>
+
+</selector>

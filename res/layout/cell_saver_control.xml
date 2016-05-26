@@ -133,7 +133,7 @@
             android:layout_below="@+id/button_mode"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/control_buton_back"       
+            android:background="@drawable/button_selector"       
             android:textSize="20dp"
             android:text="进血" />
          
@@ -146,7 +146,7 @@
             android:layout_below="@+id/button_mode"
             android:layout_toRightOf="@+id/fill"
             android:layout_marginTop="20dp"
-            android:background="@drawable/control_buton_back"       
+            android:background="@drawable/button_selector"       
             android:textSize="20dp"
             android:text="清洗" />
 
