@@ -51,18 +51,18 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.status_monitor, null, false);
         Fill_text_view= (TextView) view.findViewById(R.id.fill_ML);
-        Fill_text_view.setText("- - -" );
+        Fill_text_view.setText("00000" );
         
         Wash_text_view=(TextView) view.findViewById(R.id.wash_ML); 
-        Wash_text_view.setText("- - -" );
+        Wash_text_view.setText("00000" );
               
         Empty_text_view=(TextView) view.findViewById(R.id.empty_ML);
-        Empty_text_view.setText("- - -" );
+        Empty_text_view.setText("00000" );
         
         Bowl_text_view=(TextView) view.findViewById(R.id.Set_BOWL);
-        Bowl_text_view.setText("杯型：---");
+        Bowl_text_view.setText("225");
         Mode_text_view=(TextView) view.findViewById(R.id.Work_mode);
-        Mode_text_view.setText("模式：---");
+        Mode_text_view.setText("自动");
         WorkState_text_view=(TextView) view.findViewById(R.id.work_state);
         WorkState_text_view.setText("待机");
         Run_state_view= (TextView) view.findViewById(R.id.Run_state);
@@ -167,23 +167,23 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
 	    }
 	    //WorkState_text_view.setText(" ");
 	    if(Data.getInstance().getBowl()==225){
-	    	Bowl_text_view.setText("杯型：225");	
+	    	Bowl_text_view.setText("225");	
 	    }
 	    else if (Data.getInstance().getBowl()==125){
-	    	Bowl_text_view.setText("杯型：125");
+	    	Bowl_text_view.setText("125");
 	    }
 	    switch(Data.getInstance().getwork_mode()){
 	    case 1:
-	    	Mode_text_view.setText("模式：自动");
+	    	Mode_text_view.setText("自动");
 	    	break;
 	    case 2:
-	    	Mode_text_view.setText("模式：手动");
+	    	Mode_text_view.setText("手动");
 	    	break;
 	    case 3:
-	    	Mode_text_view.setText("模式：应急");
+	    	Mode_text_view.setText("应急");
 	    	break;
 	    case 4:
-	    	Mode_text_view.setText("模式：全血");
+	    	Mode_text_view.setText("全血");
 	    	break;
 	    	default:break;
 	    }

@@ -83,28 +83,47 @@
         android:layout_marginTop="0dp"
         android:layout_marginLeft="20dp"
         android:textColor="#F00000"
-        android:textSize="25dp"
+        android:textSize="20dp"
         android:text="暂停中" />
       <TextView
-        android:id="@+id/Work_mode"
+        android:id="@+id/Work_mode_tile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/state_backgrond"
          android:layout_toRightOf="@+id/state_backgrond"
         android:layout_marginLeft="170dp"
+         android:textColor="#BEBEBE"
+        android:textSize="15dp"
+        android:text="模式：" />
+            <TextView
+        android:id="@+id/Work_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/Work_mode_tile"
+         android:layout_toRightOf="@+id/Work_mode_tile"
+        
          android:textColor="#529BC8"
         android:textSize="20dp"
-        android:text="模式：自动" />
-      <TextView
-        android:id="@+id/Set_BOWL"
+        android:text=" " />
+         <TextView
+        android:id="@+id/Set_BOWL_tile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/state_backgrond"
          android:layout_toRightOf="@+id/state_backgrond"
         android:layout_marginLeft="170dp"
-         android:textColor="#529BC8"
+         android:textColor="#BEBEBE"
+        android:textSize="15dp"
+        android:text="杯型：" />
+      <TextView
+        android:id="@+id/Set_BOWL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/Set_BOWL_tile"
+         android:layout_toRightOf="@+id/Set_BOWL_tile"      
+         android:textColor="#236725"
         android:textSize="20dp"
-        android:text="杯型：225" />
+        android:text="225" />
 
     <TextView
         android:id="@+id/patient_number"
@@ -155,10 +174,9 @@
         android:layout_below="@+id/state_backgrond"
         android:layout_toRightOf="@+id/fill_ML"
         android:layout_alignParentBottom="@+id/fill_ML"
-        android:textColor="#529BC8"
-       
-        android:layout_marginTop="20dp"
-        android:textSize="15dp"   
+        android:textColor="#529BC8"       
+        android:layout_marginTop="25dp"
+        android:textSize="10dp"   
         android:text=" mL" />
     <TextView
         android:id="@+id/wash_title"
@@ -200,7 +218,7 @@
         android:textColor="#529BC8"
         android:layout_marginTop="15dp"
         android:textSize="20dp"   
-        android:text="总回收量： " />
+        android:text="总回收量：" />
    <TextView
         android:id="@+id/empty_ML"
         android:layout_width="wrap_content"
@@ -241,11 +259,12 @@
         android:layout_marginTop="5dp"
         android:textSize="15sp"
         android:text="提示信息显示11111" />
-    <ImageView
+        <ImageView
         android:id="@+id/imageView_status1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/infor_2"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="30dp"
           />
         <ImageView
@@ -254,9 +273,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/infor_2"
         android:layout_toRightOf="@+id/imageView_status1"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="50dp"
           />
-            <ImageView
+        <ImageView
         android:id="@+id/imageView_status3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

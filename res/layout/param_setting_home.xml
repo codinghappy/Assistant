@@ -40,8 +40,7 @@
             android:id="@+id/alarm_set_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/set_alarm"
-           
+            android:src="@drawable/set_alarm"         
             android:background="#00000000"
         /> 
         <TextView
@@ -217,11 +216,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/Set_pra_line3" 
         android:background="@drawable/set_backgrond2" 
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="1dp"
         android:layout_marginLeft="0dp"
         android:textColor="#529BC8"
-        android:textSize="20dp"
-        android:text=" " />
+          />
         <ImageView
         android:id="@+id/Set_pra_line4_Title_image"
         android:layout_width="wrap_content"
@@ -272,12 +270,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/Set_pra_line4" 
-        android:background="@drawable/set_backgrond2" 
-        android:layout_marginTop="5dp"
+        android:background="@drawable/set_backgrond1" 
+        android:layout_marginTop="1dp"
         android:layout_marginLeft="0dp"
         android:textColor="#529BC8"
-        android:textSize="20dp"
-        android:text=" " />
+        />
         <ImageView
         android:id="@+id/Set_pra_line5_Title_image"
         android:layout_width="wrap_content"
@@ -327,7 +324,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/Set_pra_line5" 
         android:background="@drawable/set_backgrond1" 
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="1dp"
         android:layout_marginLeft="0dp"
         android:textColor="#529BC8"
         android:textSize="20dp"
@@ -358,8 +355,8 @@
         android:layout_height="wrap_content"          
         android:layout_alignTop   ="@+id/Set_pra_line6"  
         android:layout_marginTop="7dp"  
-        android:layout_toRightOf="@+id/Set_pra_line6_Title"     
-        android:layout_marginLeft="2dp"
+        android:layout_toRightOf="@+id/Set_pra_line6_Title_image"     
+        android:layout_marginLeft="100dp"
         android:textColor="#529BC8"
         android:textSize="20dp"
         android:text="800 "/>          
@@ -369,8 +366,8 @@
         android:layout_height="wrap_content"          
         android:layout_alignTop   ="@+id/Set_pra_line6"  
         android:layout_marginTop="17dp"  
-        android:layout_toRightOf="@+id/Set_pra_line6_Value"     
-        android:layout_marginLeft="2dp"
+        android:layout_toRightOf="@+id/Set_pra_line6_Title_image"     
+        android:layout_marginLeft="150dp"
         android:textColor="#000000"
         android:textSize="10dp"
         android:text="mL"/> 
@@ -403,14 +400,120 @@
         android:layout_below="@+id/alarm_set" 
         android:gravity= "center"
         android:visibility="gone">
-     <TextView
+                 
+    
+    <TextView
+        android:id="@+id/Set_alarm_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/set_backgrond1" 
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="0dp"        
+        android:text=" " />
+      <ImageView
+        android:id="@+id/Set_Alarm_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"                    
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/set_title1"
+        />
+      <TextView
         android:id="@+id/alert_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"           
         android:layout_marginTop="12dp"  
         android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/Set_Alarm_image" 
         android:textColor="#000000"
         android:textSize="15dp"
-        android:text="报警"/>
+        android:text="废液报警："/>
+       <ImageView
+        android:id="@+id/Set_Alarm_image_on"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"                    
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="180dp"
+        android:src="@drawable/set_title1"
+        />
+       
+       <TextView
+        android:id="@+id/Set_alarm_AIR_Grond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/set_backgrond1" 
+        android:layout_below="@id/Set_alarm_background"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="0dp"        
+        android:text=" " />
+      <ImageView
+        android:id="@+id/Set_Alarm_AIR_Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+         android:layout_below="@id/Set_alarm_background"                   
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/set_title1"        
+        />
+      <TextView
+        android:id="@+id/Set_Alarm_AIR_Title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"           
+        android:layout_marginTop="12dp"  
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/Set_Alarm_AIR_Title" 
+        android:layout_alignTop="@+id/Set_Alarm_AIR_Title"
+        android:textColor="#000000"
+        android:textSize="15dp"
+        android:text="断流报警"/>
+       <ImageView
+        android:id="@+id/Set_Alarm_louye_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:layout_toRightOf="@+id/Set_Alarm_AIR_Title"   
+        android:layout_alignTop="@+id/Set_Alarm_AIR_Title"                 
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="180dp"
+        android:src="@drawable/set_title1"
+        />
+              <TextView
+        android:id="@+id/Set_alarm_louye_Grond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/set_backgrond1" 
+        android:layout_below="@id/Set_alarm_AIR_Grond"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="0dp"        
+        android:text=" " />
+      <ImageView
+        android:id="@+id/Set_Alarm_LOUYE_Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+         android:layout_below="@id/Set_alarm_louye_Grond"                   
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/set_title1"        
+        />
+      <TextView
+        android:id="@+id/Set_Alarm_LOUYE_Title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"           
+        android:layout_marginTop="12dp"  
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/Set_Alarm_LOUYE_Title" 
+        android:layout_alignTop="@+id/Set_Alarm_LOUYE_Title"
+        android:textColor="#000000"
+        android:textSize="15dp"
+        android:text="断流报警"/>
+       <ImageView
+        android:id="@+id/Set_Alarm_LOUYE_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:layout_toRightOf="@+id/Set_Alarm_LOUYE_Title"   
+        android:layout_alignTop="@+id/Set_Alarm_LOUYE_Title"                 
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="180dp"
+        android:src="@drawable/image_on"
+        />
  </RelativeLayout>                  
 </RelativeLayout>
