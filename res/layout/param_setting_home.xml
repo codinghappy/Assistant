@@ -3,517 +3,660 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E6E6E6"
-    android:orientation="vertical" > 
-   <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+    android:orientation="vertical" >
+
+    <LinearLayout
         android:id="@+id/params_set"
-        
-        android:gravity= "center">
-
-    <ImageView
-        android:id="@+id/ImageView01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#00000000"
-        android:src="@drawable/set_params" />
+        android:gravity="center"
+        android:orientation="vertical" >
 
-         
-    <TextView
-         android:id="@+id/params_set_txt"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:text="参数设置"
-         android:paddingLeft="20px"
-        /> 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/ImageView01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:src="@drawable/set_params" />
 
- <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+        <TextView
+            android:id="@+id/params_set_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20px"
+            android:text="参数设置" />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/alarm_set"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/params_set"
-        android:gravity= "center"> 
+        android:gravity="center"
+        android:orientation="vertical" >
+
         <ImageView
             android:id="@+id/alarm_set_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/set_alarm"         
             android:background="#00000000"
-        /> 
+            android:src="@drawable/set_alarm" />
+
         <TextView
             android:id="@+id/alarm_set_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="报警设置"
-        /> 
- </LinearLayout>
- 
+            android:text="报警设置" />
+    </LinearLayout>
+
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:id="@+id/params_set_details"
-        android:layout_below="@+id/alarm_set" 
-        android:gravity= "center">
-       <TextView
-        android:id="@+id/Set_pra_line1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/set_backgrond1"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="0dp"
-        android:textColor="#529BC8"
-        android:textSize="20dp"      
-        />
-        <ImageView
-        android:id="@+id/Set_pra_line1_Title_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"         
-        android:layout_alignTop   ="@+id/Set_pra_line1"         
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="20dp"
-        android:src="@drawable/set_title1"
-        />       
-      <TextView
-        android:id="@+id/Set_pra_line1_Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"          
-        android:layout_alignTop   ="@+id/Set_pra_line1"  
-        android:layout_marginTop="10dp"  
-        android:layout_toRightOf="@+id/Set_pra_line1_Title_image"     
-        android:layout_marginLeft="10dp"
-        android:textColor="#000000"
-        android:textSize="15dp"
-        android:text="离心杯："/>   
-              <TextView
-        android:id="@+id/Set_pra_line1_Value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"          
-        android:layout_alignTop   ="@+id/Set_pra_line1"  
-        android:layout_marginTop="7dp"  
-        android:layout_toRightOf="@+id/Set_pra_line1_Title"     
-        android:layout_marginLeft="2dp"
-        android:textColor="#529BC8"
-        android:textSize="20dp"
-        android:text="225 "/>      
-       <TextView
-        android:id="@+id/Set_pra_line2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Set_pra_line1" 
-        android:background="@drawable/set_backgrond2" 
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="0dp"
-        android:textColor="#529BC8"
-        android:textSize="20dp"
-        android:text=" " />
-        <ImageView
-        android:id="@+id/Set_pra_line2_Title_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"         
-        android:layout_alignTop   ="@+id/Set_pra_line2"         
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="20dp"
-        android:src="@drawable/set_title1"
-        />
-      <TextView
-        android:id="@+id/Set_pra_line2_Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"          
-        android:layout_alignTop   ="@+id/Set_pra_line2"  
-        android:layout_marginTop="12dp"  
-        android:layout_toRightOf="@+id/Set_pra_line2_Title_image"     
-        android:layout_marginLeft="10dp"
-        android:textColor="#000000"
-        android:textSize="15dp"
-        android:text="进血泵速："/>   
-      <TextView
-        android:id="@+id/Set_pra_line2_Value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"          
-        android:layout_alignTop   ="@+id/Set_pra_line2"  
-        android:layout_marginTop="7dp"  
-        android:layout_toRightOf="@+id/Set_pra_line2_Title"     
-        android:layout_marginLeft="2dp"
-        android:textColor="#529BC8"
-        android:textSize="20dp"
-        android:text="400 "/>          
-       <TextView
-        android:id="@+id/Set_pra_line2_Unit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"          
-        android:layout_alignTop   ="@+id/Set_pra_line2"  
-        android:layout_marginTop="17dp"  
-        android:layout_toRightOf="@+id/Set_pra_line2_Value"     
-        android:layout_marginLeft="2dp"
-        android:textColor="#000000"
-        android:textSize="10dp"
-        android:text="mL/min"/>         
-        
- 
-          <TextView
-        android:id="@+id/Set_pra_line3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Set_pra_line2" 
-        android:background="@drawable/set_backgrond1" 
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="0dp"
-        android:textColor="#529BC8"
-        android:textSize="20dp"
-        android:text=" " />
-        <ImageView
-        android:id="@+id/Set_pra_line3_Title_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"         
-        android:layout_alignTop   ="@+id/Set_pra_line3"         
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="20dp"
-        android:src="@drawable/set_title1"
-        />
-      <TextView
-        android:id="@+id/Set_pra_line3_Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"          
-        android:layout_alignTop   ="@+id/Set_pra_line3"  
-        android:layout_marginTop="12dp"  
-        android:layout_toRightOf="@+id/Set_pra_line3_Title_image"     
-        android:layout_marginLeft="10dp"
-        android:textColor="#000000"
-        android:textSize="15dp"
-        android:text="进血泵速："/>   
-      <TextView
-        android:id="@+id/Set_pra_line3_Value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"          
-        android:layout_alignTop   ="@+id/Set_pra_line3"  
-        android:layout_marginTop="7dp"  
-        android:layout_toRightOf="@+id/Set_pra_line3_Title"     
-        android:layout_marginLeft="2dp"
-        android:textColor="#529BC8"
-        android:textSize="20dp"
-        android:text="400 "/>          
-       <TextView
-        android:id="@+id/Set_pra_line35_Unit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"          
-        android:layout_alignTop   ="@+id/Set_pra_line3"  
-        android:layout_marginTop="17dp"  
-        android:layout_toRightOf="@+id/Set_pra_line3_Value"     
-        android:layout_marginLeft="2dp"
-        android:textColor="#000000"
-        android:textSize="10dp"
-        android:text="mL/min"/>  
-         
-         
-         
-        <TextView
-        android:id="@+id/Set_pra_line4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Set_pra_line3" 
-        android:background="@drawable/set_backgrond2" 
-        android:layout_marginTop="1dp"
-        android:layout_marginLeft="0dp"
-        android:textColor="#529BC8"
-          />
-        <ImageView
-        android:id="@+id/Set_pra_line4_Title_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"         
-        android:layout_alignTop   ="@+id/Set_pra_line4"         
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="20dp"
-        android:src="@drawable/set_title1"
-        />
-      <TextView
-        android:id="@+id/Set_pra_line4_Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"          
-        android:layout_alignTop   ="@+id/Set_pra_line4"  
-        android:layout_marginTop="12dp"  
-        android:layout_toRightOf="@+id/Set_pra_line2_Title_image"     
-        android:layout_marginLeft="10dp"
-        android:textColor="#000000"
-        android:textSize="15dp"
-        android:text="清空泵速："/>   
-      <TextView
-        android:id="@+id/Set_pra_line4_Value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"          
-        android:layout_alignTop   ="@+id/Set_pra_line4"  
-        android:layout_marginTop="7dp"  
-        android:layout_toRightOf="@+id/Set_pra_line4_Title"     
-        android:layout_marginLeft="2dp"
-        android:textColor="#529BC8"
-        android:textSize="20dp"
-        android:text="400 "/>          
-       <TextView
-        android:id="@+id/Set_pra_line4_Unit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"          
-        android:layout_alignTop   ="@+id/Set_pra_line4"  
-        android:layout_marginTop="17dp"  
-        android:layout_toRightOf="@+id/Set_pra_line4_Value"     
-        android:layout_marginLeft="2dp"
-        android:textColor="#000000"
-        android:textSize="10dp"
-        android:text="mL/min"/>  
-        
-        
-        
-        <TextView
-        android:id="@+id/Set_pra_line5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Set_pra_line4" 
-        android:background="@drawable/set_backgrond1" 
-        android:layout_marginTop="1dp"
-        android:layout_marginLeft="0dp"
-        android:textColor="#529BC8"
-        />
-        <ImageView
-        android:id="@+id/Set_pra_line5_Title_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"         
-        android:layout_alignTop   ="@+id/Set_pra_line5"         
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="20dp"
-        android:src="@drawable/set_title1"
-        />
-      <TextView
-        android:id="@+id/Set_pra_line5_Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"          
-        android:layout_alignTop   ="@+id/Set_pra_line5"  
-        android:layout_marginTop="12dp"  
-        android:layout_toRightOf="@+id/Set_pra_line2_Title_image"     
-        android:layout_marginLeft="10dp"
-        android:textColor="#000000"
-        android:textSize="15dp"
-        android:text="单杯清洗量："/>   
-      <TextView
-        android:id="@+id/Set_pra_line5_Value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"          
-        android:layout_alignTop   ="@+id/Set_pra_line5"  
-        android:layout_marginTop="7dp"  
-        android:layout_toRightOf="@+id/Set_pra_line5_Title"     
-        android:layout_marginLeft="2dp"
-        android:textColor="#529BC8"
-        android:textSize="20dp"
-        android:text="1000"/>          
-       <TextView
-        android:id="@+id/Set_pra_line5_Unit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"          
-        android:layout_alignTop   ="@+id/Set_pra_line5"  
-        android:layout_marginTop="17dp"  
-        android:layout_toRightOf="@+id/Set_pra_line5_Value"     
-        android:layout_marginLeft="2dp"
-        android:textColor="#000000"
-        android:textSize="10dp"
-        android:text="mL"/>   
+        android:layout_below="@+id/alarm_set"
+        android:gravity="center"
+        android:orientation="vertical" >
 
         <TextView
-        android:id="@+id/Set_pra_line6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Set_pra_line5" 
-        android:background="@drawable/set_backgrond1" 
-        android:layout_marginTop="1dp"
-        android:layout_marginLeft="0dp"
-        android:textColor="#529BC8"
-        android:textSize="20dp"
-        android:text=" " />
+            android:id="@+id/Set_pra_line1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/set_backgrond1"
+            android:textColor="#529BC8"
+            android:textSize="20dp" />
+
         <ImageView
-        android:id="@+id/Set_pra_line6_Title_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"         
-        android:layout_alignTop   ="@+id/Set_pra_line6"         
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="20dp"
-        android:src="@drawable/set_title1"
-        />
-      <TextView
-        android:id="@+id/Set_pra_line6_Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"          
-        android:layout_alignTop   ="@+id/Set_pra_line6"  
-        android:layout_marginTop="12dp"  
-        android:layout_toRightOf="@+id/Set_pra_line6_Title_image"     
-        android:layout_marginLeft="10dp"
-        android:textColor="#000000"
-        android:textSize="15dp"
-        android:text="自动启动量："/>   
-      <TextView
-        android:id="@+id/Set_pra_line6_Value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"          
-        android:layout_alignTop   ="@+id/Set_pra_line6"  
-        android:layout_marginTop="7dp"  
-        android:layout_toRightOf="@+id/Set_pra_line6_Title_image"     
-        android:layout_marginLeft="100dp"
-        android:textColor="#529BC8"
-        android:textSize="20dp"
-        android:text="800 "/>          
-       <TextView
-        android:id="@+id/Set_pra_line6_Unit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"          
-        android:layout_alignTop   ="@+id/Set_pra_line6"  
-        android:layout_marginTop="17dp"  
-        android:layout_toRightOf="@+id/Set_pra_line6_Title_image"     
-        android:layout_marginLeft="150dp"
-        android:textColor="#000000"
-        android:textSize="10dp"
-        android:text="mL"/> 
+            android:id="@+id/Set_pra_line1_Title_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line1"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/set_title1" />
+
+        <TextView
+            android:id="@+id/Set_pra_line1_Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/Set_pra_line1_Title_image"
+            android:text="离心杯："
+            android:textColor="#000000"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/Set_pra_line1_Value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line1"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="7dp"
+            android:layout_toRightOf="@+id/Set_pra_line1_Title"
+            android:text="225 "
+            android:textColor="#529BC8"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/Set_pra_line2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Set_pra_line1"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="1dp"
+            android:background="@drawable/set_backgrond2"
+            android:text=" "
+            android:textColor="#529BC8"
+            android:textSize="20dp" />
+
         <ImageView
-        android:id="@+id/Set_pra_line6_button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"          
-        android:layout_alignTop   ="@+id/Set_pra_line6"  
-        android:layout_marginTop="5dp"  
-        android:layout_toRightOf="@+id/Set_pra_line6_Title_image"     
-        android:layout_marginLeft="170dp"   
-        android:src="@drawable/set_title"     
-        /> 
-         <ImageView
-        android:id="@+id/Set_pra_line6_button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"          
-        android:layout_alignTop   ="@+id/Set_pra_line6"  
-        android:layout_marginTop="5dp"  
-        android:layout_toRightOf="@+id/Set_pra_line6_Title_image"     
-        android:layout_marginLeft="230dp"   
-        android:src="@drawable/set_title"     
-        />
- </RelativeLayout>
-<RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+            android:id="@+id/Set_pra_line2_Title_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line2"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/set_title1" />
+
+        <TextView
+            android:id="@+id/Set_pra_line2_Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line2"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="12dp"
+            android:layout_toRightOf="@+id/Set_pra_line2_Title_image"
+            android:text="进血泵速："
+            android:textColor="#000000"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/Set_pra_line2_Value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line2"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="7dp"
+            android:layout_toRightOf="@+id/Set_pra_line2_Title"
+            android:text="400 "
+            android:textColor="#529BC8"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/Set_pra_line2_Unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line2"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="17dp"
+            android:layout_toRightOf="@+id/Set_pra_line2_Value"
+            android:text="mL/min"
+            android:textColor="#000000"
+            android:textSize="10dp" />
+
+        <TextView
+            android:id="@+id/Set_pra_line3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Set_pra_line2"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="1dp"
+            android:background="@drawable/set_backgrond1"
+            android:text=" "
+            android:textColor="#529BC8"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/Set_pra_line3_Title_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line3"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/set_title1" />
+
+        <TextView
+            android:id="@+id/Set_pra_line3_Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line3"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="12dp"
+            android:layout_toRightOf="@+id/Set_pra_line3_Title_image"
+            android:text="进血泵速："
+            android:textColor="#000000"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/Set_pra_line3_Value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line3"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="7dp"
+            android:layout_toRightOf="@+id/Set_pra_line3_Title"
+            android:text="400 "
+            android:textColor="#529BC8"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/Set_pra_line3_Unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line3"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="17dp"
+            android:layout_toRightOf="@+id/Set_pra_line3_Value"
+            android:text="mL/min"
+            android:textColor="#000000"
+            android:textSize="10dp" />
+        <ImageView
+            android:id="@+id/Set_pra_line3_Inc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line3"
+            android:layout_marginLeft="190dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/Set_pra_line3_Title_image"
+            android:src="@drawable/button_inc" />
+
+        <ImageView
+            android:id="@+id/Set_pra_line3_dec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line3"
+            android:layout_marginLeft="240dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/Set_pra_line3_Title_image"
+            android:src="@drawable/button_dec" />
+        <TextView
+            android:id="@+id/Set_pra_line4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Set_pra_line3"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="1dp"
+            android:background="@drawable/set_backgrond2"
+            android:textColor="#529BC8" />
+
+        <ImageView
+            android:id="@+id/Set_pra_line4_Title_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line4"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/set_title1" />
+
+        <TextView
+            android:id="@+id/Set_pra_line4_Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line4"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="12dp"
+            android:layout_toRightOf="@+id/Set_pra_line2_Title_image"
+            android:text="清空泵速："
+            android:textColor="#000000"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/Set_pra_line4_Value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line4"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="7dp"
+            android:layout_toRightOf="@+id/Set_pra_line4_Title"
+            android:text="400 "
+            android:textColor="#529BC8"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/Set_pra_line4_Unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line4"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="17dp"
+            android:layout_toRightOf="@+id/Set_pra_line4_Value"
+            android:text="mL/min"
+            android:textColor="#000000"
+            android:textSize="10dp" />
+
+        <ImageView
+            android:id="@+id/Set_pra_line4_Inc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line4"
+            android:layout_marginLeft="190dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/Set_pra_line4_Title_image"
+            android:src="@drawable/button_inc" />
+
+        <ImageView
+            android:id="@+id/Set_pra_line4_dec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line4"
+            android:layout_marginLeft="240dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/Set_pra_line4_Title_image"
+            android:src="@drawable/button_dec" />
+
+        <TextView
+            android:id="@+id/Set_pra_line5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Set_pra_line4"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="1dp"
+            android:background="@drawable/set_backgrond1"
+            android:textColor="#529BC8" />
+
+        <ImageView
+            android:id="@+id/Set_pra_line5_Title_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line5"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/set_title1" />
+
+        <TextView
+            android:id="@+id/Set_pra_line5_Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line5"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="12dp"
+            android:layout_toRightOf="@+id/Set_pra_line2_Title_image"
+            android:text="单杯清洗量："
+            android:textColor="#000000"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/Set_pra_line5_Value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line5"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="7dp"
+            android:layout_toRightOf="@+id/Set_pra_line5_Title"
+            android:text="1000"
+            android:textColor="#529BC8"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/Set_pra_line5_Unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line5"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="17dp"
+            android:layout_toRightOf="@+id/Set_pra_line5_Value"
+            android:text="mL"
+            android:textColor="#000000"
+            android:textSize="10dp" />
+
+        <ImageView
+            android:id="@+id/Set_pra_line5_Inc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line5"
+            android:layout_marginLeft="190dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/Set_pra_line5_Title_image"
+            android:src="@drawable/button_inc" />
+
+        <ImageView
+            android:id="@+id/Set_pra_line5_dec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line5"
+            android:layout_marginLeft="240dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/Set_pra_line5_Title_image"
+            android:src="@drawable/button_dec" />
+
+        <TextView
+            android:id="@+id/Set_pra_line6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Set_pra_line5"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="1dp"
+            android:background="@drawable/set_backgrond1"
+            android:text=" "
+            android:textColor="#529BC8"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/Set_pra_line6_Title_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line6"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/set_title1" />
+
+        <TextView
+            android:id="@+id/Set_pra_line6_Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line6"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="12dp"
+            android:layout_toRightOf="@+id/Set_pra_line6_Title_image"
+            android:text="自动启动量："
+            android:textColor="#000000"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/Set_pra_line6_Value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line6"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="7dp"
+            android:layout_toRightOf="@+id/Set_pra_line6_Title_image"
+            android:text="800 "
+            android:textColor="#529BC8"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/Set_pra_line6_Unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line6"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="17dp"
+            android:layout_toRightOf="@+id/Set_pra_line6_Title_image"
+            android:text="mL"
+            android:textColor="#000000"
+            android:textSize="10dp" />
+
+        <ImageView
+            android:id="@+id/Set_pra_line6_Inc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line6"
+            android:layout_marginLeft="190dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/Set_pra_line6_Title_image"
+            android:src="@drawable/button_inc" />
+
+        <ImageView
+            android:id="@+id/Set_pra_line6_dec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line6"
+            android:layout_marginLeft="240dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/Set_pra_line6_Title_image"
+            android:src="@drawable/button_dec" />
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/params_set_alert"
-        android:layout_below="@+id/alarm_set" 
-        android:gravity= "center"
-        android:visibility="gone">
-                 
-    
-    <TextView
-        android:id="@+id/Set_alarm_background"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/set_backgrond1" 
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="0dp"        
-        android:text=" " />
-      <ImageView
-        android:id="@+id/Set_Alarm_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"                    
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="20dp"
-        android:src="@drawable/set_title1"
-        />
-      <TextView
-        android:id="@+id/alert_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"           
-        android:layout_marginTop="12dp"  
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/Set_Alarm_image" 
-        android:textColor="#000000"
-        android:textSize="15dp"
-        android:text="废液报警："/>
-       <ImageView
-        android:id="@+id/Set_Alarm_image_on"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"                    
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="180dp"
-        android:src="@drawable/set_title1"
-        />
-       
-       <TextView
-        android:id="@+id/Set_alarm_AIR_Grond"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/set_backgrond1" 
-        android:layout_below="@id/Set_alarm_background"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="0dp"        
-        android:text=" " />
-      <ImageView
-        android:id="@+id/Set_Alarm_AIR_Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
-         android:layout_below="@id/Set_alarm_background"                   
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="20dp"
-        android:src="@drawable/set_title1"        
-        />
-      <TextView
-        android:id="@+id/Set_Alarm_AIR_Title_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"           
-        android:layout_marginTop="12dp"  
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/Set_Alarm_AIR_Title" 
-        android:layout_alignTop="@+id/Set_Alarm_AIR_Title"
-        android:textColor="#000000"
-        android:textSize="15dp"
-        android:text="断流报警"/>
-       <ImageView
-        android:id="@+id/Set_Alarm_louye_state"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
-        android:layout_toRightOf="@+id/Set_Alarm_AIR_Title"   
-        android:layout_alignTop="@+id/Set_Alarm_AIR_Title"                 
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="180dp"
-        android:src="@drawable/set_title1"
-        />
-              <TextView
-        android:id="@+id/Set_alarm_louye_Grond"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/set_backgrond1" 
-        android:layout_below="@id/Set_alarm_AIR_Grond"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="0dp"        
-        android:text=" " />
-      <ImageView
-        android:id="@+id/Set_Alarm_LOUYE_Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
-         android:layout_below="@id/Set_alarm_louye_Grond"                   
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="20dp"
-        android:src="@drawable/set_title1"        
-        />
-      <TextView
-        android:id="@+id/Set_Alarm_LOUYE_Title_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"           
-        android:layout_marginTop="12dp"  
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/Set_Alarm_LOUYE_Title" 
-        android:layout_alignTop="@+id/Set_Alarm_LOUYE_Title"
-        android:textColor="#000000"
-        android:textSize="15dp"
-        android:text="断流报警"/>
-       <ImageView
-        android:id="@+id/Set_Alarm_LOUYE_state"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
-        android:layout_toRightOf="@+id/Set_Alarm_LOUYE_Title"   
-        android:layout_alignTop="@+id/Set_Alarm_LOUYE_Title"                 
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="180dp"
-        android:src="@drawable/image_on"
-        />
- </RelativeLayout>                  
+        android:layout_below="@+id/alarm_set"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <RelativeLayout
+            android:id="@+id/params_set_alert_wast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/Set_alarm_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="1dp"
+                android:background="@drawable/set_backgrond1"
+                android:text=" " />
+
+            <ImageView
+                android:id="@+id/Set_Alarm_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/set_title1" />
+
+            <TextView
+                android:id="@+id/alert_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="12dp"
+                android:layout_toRightOf="@+id/Set_Alarm_image"
+                android:text="废液报警："
+                android:textColor="#000000"
+                android:textSize="15dp" />
+
+            <ImageView
+                android:id="@+id/Set_Alarm_image_on"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="180dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/set_title1" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/params_set_alert_AIR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/params_set_alert_wast"
+            android:layout_marginTop="1dp"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/Set_alarm_AIR_Grond"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:background="@drawable/set_backgrond1"
+                android:text=" " />
+
+            <ImageView
+                android:id="@+id/Set_Alarm_AIR_Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/set_title1" />
+
+            <TextView
+                android:id="@+id/Set_Alarm_AIR_Title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/Set_Alarm_AIR_Title"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="12dp"
+                android:layout_toRightOf="@+id/Set_Alarm_AIR_Title"
+                android:text="断流报警"
+                android:textColor="#000000"
+                android:textSize="15dp" />
+
+            <ImageView
+                android:id="@+id/Set_Alarm_Air_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/Set_Alarm_AIR_Title"
+                android:layout_marginLeft="180dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/Set_Alarm_AIR_Title"
+                android:src="@drawable/image_off" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/params_set_alert_louye"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/params_set_alert_AIR"
+            android:layout_marginTop="1dp"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/Set_alarm_louye_Grond"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:background="@drawable/set_backgrond1"
+                android:text=" " />
+
+            <ImageView
+                android:id="@+id/Set_Alarm_LOUYE_Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/set_title1" />
+
+            <TextView
+                android:id="@+id/Set_Alarm_LOUYE_Title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/Set_Alarm_LOUYE_Title"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="12dp"
+                android:layout_toRightOf="@+id/Set_Alarm_LOUYE_Title"
+                android:text="断流报警"
+                android:textColor="#000000"
+                android:textSize="15dp" />
+
+            <ImageView
+                android:id="@+id/Set_Alarm_LOUYE_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/Set_Alarm_LOUYE_Title"
+                android:layout_marginLeft="180dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/Set_Alarm_LOUYE_Title"
+                android:src="@drawable/image_off" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/params_set_alert_cell"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/params_set_alert_louye"
+            android:layout_marginTop="1dp"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/Set_alarm_cell_Grond"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/set_backgrond1"
+                android:text=" " />
+
+            <ImageView
+                android:id="@+id/Set_Alarm_cell_Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/set_title1" />
+
+            <TextView
+                android:id="@+id/Set_Alarm_cell_Title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/Set_Alarm_cell_Title"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="12dp"
+                android:layout_toRightOf="@+id/Set_Alarm_cell_Title"
+                android:text="血层报警"
+                android:textColor="#000000"
+                android:textSize="15dp" />
+
+            <ImageView
+                android:id="@+id/Set_Alarm_cell_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/Set_Alarm_cell_Title"
+                android:layout_marginLeft="180dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/Set_Alarm_cell_Title"
+                android:src="@drawable/image_on" />
+        </RelativeLayout>
+    </RelativeLayout>
+
 </RelativeLayout>

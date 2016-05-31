@@ -107,9 +107,9 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
         	 
         });
         
-        image_status1.setOnClickListener(new OnClickListener() {
+        WorkState_text_view.setOnClickListener(new OnClickListener() {
        	 public void onClick(View v) {
-       		Toast toast=Toast.makeText(getActivity(), "点击了图片", Toast.LENGTH_SHORT);
+       		Toast toast=Toast.makeText(getActivity(), "请在设备操作进行设备操控", Toast.LENGTH_SHORT);
        		toast.show();
        	 }
        });
@@ -193,7 +193,7 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
 			image_status1.setImageResource(R.drawable.imageblood);
 			image_status2.setImageResource(R.drawable.image_arrow_left);
 			image_status3.setImageResource(R.drawable.imagebwol);
-			
+			Pump_speed_text_view.setText("300");
 			break;
 		case 1:
 			WorkState_text_view.setText("预冲");

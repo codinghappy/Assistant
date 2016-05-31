@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="hello">Hello World, UIActivity!</string>
-    <string name="app_name">Assistant</string>
+    <string name="app_name">万东康源</string>
     <color name="Red_">#ff0000</color>
     <!-- Options Menu -->
     <string name="connect">连接</string>
@@ -64,6 +64,8 @@
     
     <string name="Fill_title">总进血量：</string>
     <string name="Wash_title">总清洗量：</string>
+    <string name="Empty_title">总回收量：</string>
+    
     <string name="scan_text">将二维码放入框内, 即可自动扫描</string>
     
 </resources>

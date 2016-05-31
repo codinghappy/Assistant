@@ -32,7 +32,8 @@ public class Data {
 	public static final byte TAG_FILL_SPEED_SET = 0x31;
 	public static final byte TAG_WASH_SPEED_SET = 0x32;
 	public static final byte TAG_EMPTY_SPEED_SET = 0x33;
-	
+	public static final byte TAG_WASH_VOLUME_SET = 0x34;
+	public static final byte TAG_AUTO_RUN_SET = 0x35;
 	
 	
 	public abstract interface DataChangeListener {
@@ -55,6 +56,11 @@ public class Data {
 	private static int mWashSpeed;
 	private static int mEmptySpeed;
 	private static int mPumpSpeed;
+	
+	
+	private static int mMaxWashVolume;
+	private static int mAutoRunVolume;
+	
 	
 	private static byte[] pa;
 	private void notifyChanged(){
@@ -118,6 +124,14 @@ public class Data {
 		mEmptySpeed = emptyspeed;
 		notifyChanged();
 	}
+	public void SetMaxWahVolume(int MaxWahVolume) {
+		mMaxWashVolume = MaxWahVolume;
+		notifyChanged();
+	}
+	public void SetAutoRunVolume(int AutoRunVolume) {
+		mAutoRunVolume = AutoRunVolume;
+		notifyChanged();
+	}
 	public int getCurrentSpeed() {
 		return mCurrentSpeed;
 	}
@@ -142,7 +156,11 @@ public class Data {
 			break;	
 		case TAG_RUN_STATE:
 			info = "暂停:" + String.valueOf(mRunState);
-			break;	
+			break;
+		case TAG_WASH_VOLUME_SET:
+			info = "最大清洗量" + String.valueOf(mMaxWashVolume);
+			break;			
+			
 		default:
 			break;
 		}
@@ -189,6 +207,12 @@ public class Data {
 	}
 	public int GetEmptyspeed() {
 		return mEmptySpeed;
+	}
+	public int GetMaxWashVolume() {
+		return mMaxWashVolume;
+	}
+	public int GetAutoRunVolume() {
+		return mAutoRunVolume;
 	}
 	public String hex2str(int datatochange){
 		return  String.valueOf(datatochange);

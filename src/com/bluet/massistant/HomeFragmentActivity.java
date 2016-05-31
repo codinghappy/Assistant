@@ -282,7 +282,7 @@ public class HomeFragmentActivity extends FragmentActivity implements BluetoothC
 	public void write_head() {
 		String head;
 		auto_file_name = initial_name();
-		head = "目标地址,速度,加速度,电量,左转向,高度,时间\r\n";
+		head = "时间,状态,进血量,清洗量,清空量,报警\r\n";
 		auto_file_name = "Rec-" + auto_file_name;
 		Write_File(head, auto_file_name);
 		mAutoSave.restart();
@@ -293,6 +293,10 @@ public class HomeFragmentActivity extends FragmentActivity implements BluetoothC
 	// 数据内容
 	void Write_a_list() {
 		String data = initial_name() + ":";
+		data += Data.getInstance().getWork_State() + ",";
+		data += Data.getInstance().GetInfo_Fill()+ ",";
+		data += Data.getInstance().GetFillspeed()+ ",";
+		data += Data.getInstance().getWork_State() + ",";
 		data += Data.getInstance().getWork_State() + ",";
 		data +="\r\n";
 		Write_File(data, auto_file_name);

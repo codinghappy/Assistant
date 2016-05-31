@@ -27,16 +27,19 @@ public class BluetoothClient {
 	public Context mContext = null;
 	public static final int MESSAGE_STATE_CHANGE = 1;
 	public static final int MESSAGE_READ = 2;
-	
+
 	private BluetoothStateChange mBluetoothStateChange;
+
 	public interface BluetoothStateChange {
 		void onStateChanged(int state);
 	}
-	public BluetoothClient(Context context,BluetoothStateChange bluetoothStateChange) {
+
+	public BluetoothClient(Context context,
+			BluetoothStateChange bluetoothStateChange) {
 		mContext = context;
 		mBluetoothStateChange = bluetoothStateChange;
 	}
-	
+
 	private final Handler mHandler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
@@ -85,6 +88,25 @@ public class BluetoothClient {
 		buf[6] = (byte) 0x04;
 		sendMessage(buf);
 	}
+
+	public void sendContent(int contentTag, int contentLen, byte[] content) {
+		byte[] buf = new byte[contentLen + 4];
+		//byte contentvsein = 1;
+		int temp;
+		int crc_sum = 0;
+		
+		buf[0] = (byte) contentTag;
+		buf[1] = (byte) contentLen;
+		for (temp = 0; temp < contentLen; temp++) {
+			buf[2 + temp] = content[temp];
+			crc_sum += content[temp];
+		}
+		buf[contentLen + 4 - 2] = (byte) (crc_sum / 256);
+		buf[contentLen + 4 - 1] = (byte) (crc_sum % 256);
+
+		sendMessage(buf);
+	}
+
 	public void sendTail() {
 		byte[] buf = new byte[2];
 		buf[0] = (byte) 0xcc;
@@ -100,7 +122,6 @@ public class BluetoothClient {
 		// Reset out string buffer to zero and clear the edit text field
 		mOutStringBuffer.setLength(0);
 	}
-
 
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		switch (requestCode) {
@@ -132,13 +153,14 @@ public class BluetoothClient {
 		// Initialize the buffer for outgoing messages
 		mOutStringBuffer = new StringBuffer("");
 	}
-	
+
 	int findhead = 0;
 	int buf_index = 0;
 	int frame_len = 0;
 	boolean head_en = false;
 	byte[] databuf = new byte[1024];
 	byte my_add = 0x01, target_add = 0x02;
+
 	private void decode(byte[] buf, int len) {
 		for (int i = 0; i < len; i++) {
 			if (head_en == false) {
@@ -204,7 +226,7 @@ public class BluetoothClient {
 			}
 		}
 	}
-	
+
 	void get_data(byte[] in, int len) {
 		int i, isget = 0;
 		short sum = 0, temp;
@@ -223,12 +245,12 @@ public class BluetoothClient {
 		do { // 提取数据
 			Log.i("Decode", "当前   " + index);
 			int tag_id = index;
-			
+
 			index++; // 字节数量
 			if (in[index] == (byte) 0x01) {
 				temp = (short) (in[index + 1] & 0xff);
 				Log.i("Decode", "1字节 ");
-				
+
 				index += 2;
 				isget += 3;
 			} else if (in[index] == (byte) 0x02) {
@@ -238,7 +260,7 @@ public class BluetoothClient {
 				isget += 4;
 			}
 			Log.i("Value = ", String.valueOf(temp));
-			
+
 			switch (in[tag_id]) {
 			case Data.TAG_FILL:
 				Data.getInstance().setFillTotalVolume(temp);
@@ -254,16 +276,16 @@ public class BluetoothClient {
 				break;//
 			case Data.TAG_WORK_MODE:
 				Data.getInstance().GetWorkmodeFromBlue(temp);
-				break;//				//TAG_WORK_MODE
+				break;// //TAG_WORK_MODE
 			case Data.TAG_RUN_STATE:
 				Data.getInstance().GetRunStateFromBlue(temp);
-				break;//				//TAG_WORK_MODE GetBowlFromBlue
+				break;// //TAG_WORK_MODE GetBowlFromBlue
 			case Data.TAG_BWOL:
 				Data.getInstance().GetBowlFromBlue(temp);
 				break;//
 			case Data.TAG_PUMP_SPEED:
 				Data.getInstance().SetPmpSpeed(temp);
-				break;//	//TAG_PUMP_SPEED
+				break;// //TAG_PUMP_SPEED
 			case Data.TAG_FILL_SPEED_SET:
 				Data.getInstance().SetFillSpeed(temp);
 				break;
@@ -273,26 +295,31 @@ public class BluetoothClient {
 			case Data.TAG_EMPTY_SPEED_SET:
 				Data.getInstance().SetEmptySpeed(temp);
 				break;
+			case Data.TAG_WASH_VOLUME_SET:
+				Data.getInstance().SetMaxWahVolume(temp);
+				break;
+			case Data.TAG_AUTO_RUN_SET:
+				Data.getInstance().SetAutoRunVolume(temp);
+				break;
 			default:
 				break;
 			}
-			
+
 			Log.i("Decode", Data.getInstance().GetCurrentInfo(in[tag_id]));
-			
-//			if (in[index] == (byte) 0x01) {// 速度
-//				Log.i("Decode", "速度 ");
-//			} else if (in[index] == (byte) 0x02) {// 加速度
-//				Log.i("Decode", "加速度 ");
-//			} else if (in[index] == (byte) 0x03) {// 高度
-//				Log.i("Decode", "高度 ");
-//			} else if (in[index] == (byte) 0x04) {// 电量
-//				Log.i("Decode", "电量 ");
-//			} else if (in[index] == (byte) 0x05) {// 左转向
-//				Log.i("Decode", "左转向 ");
-//			}
+
+			// if (in[index] == (byte) 0x01) {// 速度
+			// Log.i("Decode", "速度 ");
+			// } else if (in[index] == (byte) 0x02) {// 加速度
+			// Log.i("Decode", "加速度 ");
+			// } else if (in[index] == (byte) 0x03) {// 高度
+			// Log.i("Decode", "高度 ");
+			// } else if (in[index] == (byte) 0x04) {// 电量
+			// Log.i("Decode", "电量 ");
+			// } else if (in[index] == (byte) 0x05) {// 左转向
+			// Log.i("Decode", "左转向 ");
+			// }
 		} while (isget < len - 6);
 
 	}
-	
-	
+
 }

@@ -41,8 +41,13 @@ public class BaseFragment extends Fragment {
     public void sendMessage(byte[] message) {
     	homeFragment.getBluetoothClient().sendHead();
 		homeFragment.getBluetoothClient().sendMessage(message);
+		//homeFragment.getBluetoothClient().sendTail();
     }
-    
+    public void sendMessage_fromat(int contentTag,int contentLen,byte[] message) {
+    	homeFragment.getBluetoothClient().sendHead();
+		homeFragment.getBluetoothClient().sendContent(contentTag, contentLen, message);
+		homeFragment.getBluetoothClient().sendTail();
+    }  
     public void setTitle() {
     	getActivity().getWindow().setTitle("自体血液回收机");
     }
