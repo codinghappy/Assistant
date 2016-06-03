@@ -26,8 +26,10 @@ import com.example.qr_codescan.MipcaActivityCapture;
 public class StatusMonitor extends BaseFragment implements Data.DataChangeListener {
 	private final static int SCANNIN_CONSUMABLES = 10;
 	private final static int SCANN_PATIENT = 20;
+	
 	Button begin;
 	Button stop;	
+	Button control_contiune;
 	byte[] message_button = new byte[8];
 	ImageView image_status1;
 	ImageView image_status2;
@@ -106,7 +108,22 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
         	 }
         	 
         });
-        
+        control_contiune=(Button) view.findViewById(R.id.button_contiue);
+        control_contiune.setOnClickListener(new OnClickListener() {
+       	 public void onClick(View v) {  				
+       		 message_button[0] = (byte) 0x50;
+       		 message_button[1] = (byte) 0x02;
+       		 message_button[2] = (byte) 0x02;
+       		 message_button[3] = (byte) 0x02;
+       		 message_button[4] = (byte) 0x09;
+       		 message_button[5] = (byte) 0x00;
+       		 message_button[6] = (byte) 0xCC;
+       		 message_button[7] = (byte) 0x33;
+				sendMessage(message_button);             
+
+       	 }
+       	 
+       });       
         WorkState_text_view.setOnClickListener(new OnClickListener() {
        	 public void onClick(View v) {
        		Toast toast=Toast.makeText(getActivity(), "请在设备操作进行设备操控", Toast.LENGTH_SHORT);
@@ -154,13 +171,18 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
 	    switch(Data.getInstance().getRun_State()){
 	    case 0 :
 	    	Run_state_view.setText("  ");
+	    	begin.setVisibility(begin.VISIBLE);
+	    	control_contiune.setVisibility(control_contiune.GONE);
 	    	break;
 	    case 1:
 	    	Run_state_view.setText("暂停中");
-	    	begin.getBackground();
+	    	begin.setVisibility(begin.GONE);
+	    	control_contiune.setVisibility(control_contiune.VISIBLE);
 	    	break;
 	    case 2:
 	    	Run_state_view.setText("暂停中");
+	    	begin.setVisibility(begin.GONE);
+	    	control_contiune.setVisibility(control_contiune.VISIBLE);
 	    	break;
 	    	default:break;
 	    

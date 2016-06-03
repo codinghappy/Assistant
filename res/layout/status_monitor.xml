@@ -137,7 +137,6 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/Work_mode_tile"
         android:layout_toRightOf="@+id/Work_mode_tile"
-        android:text=" "
         android:textColor="#529BC8"
         android:textSize="20dp" />
 
@@ -213,7 +212,7 @@
         android:layout_below="@+id/state_backgrond"
         android:layout_marginTop="25dp"
         android:layout_toRightOf="@+id/fill_ML"
-        android:text=" mL"
+        android:text="@string/Str_uint"
         android:textColor="#529BC8"
         android:textSize="10dp" />
 
@@ -247,7 +246,7 @@
         android:layout_below="@+id/fill_TEXT"
         android:layout_marginTop="25dp"
         android:layout_toRightOf="@+id/wash_ML"
-        android:text=" mL"
+        android:text="@string/Str_uint"
         android:textColor="#529BC8"
         android:textSize="10dp" />
 
@@ -258,7 +257,7 @@
         android:layout_alignLeft="@+id/state_backgrond"
         android:layout_below="@+id/wash_title"
         android:layout_marginTop="15dp"
-        android:text="总回收量："
+        android:text="@string/Empty_title"
         android:textColor="#529BC8"
         android:textSize="20dp" />
 
@@ -281,7 +280,7 @@
         android:layout_below="@+id/wash_title"
         android:layout_marginTop="25dp"
         android:layout_toRightOf="@+id/empty_ML"
-        android:text=" mL"
+        android:text="@string/Str_uint"
         android:textColor="#529BC8"
         android:textSize="10dp" />
 
@@ -365,7 +364,7 @@
             android:layout_marginLeft="0dp"
              android:layout_weight="1"
             android:background="@drawable/control_pause"
-            android:visibility="gone" />
+             />
 
         <Button
             android:id="@+id/button_contiue"
@@ -373,7 +372,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
              android:layout_weight="1"
-            android:background="@drawable/control_pause" />
+             android:visibility="gone" 
+            android:background="@drawable/control_contiue" />
 
         <Button
             android:id="@+id/button_stop"

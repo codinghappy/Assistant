@@ -1,5 +1,6 @@
 package com.bluet.utils;
 
+
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -218,7 +219,7 @@ public class BluetoothClient {
 
 				if (buf_index == (frame_len + 5)) { // 收完一帧了。
 					get_data(databuf, frame_len + 5);
-					findhead = 0;
+					findhead = 0; 
 					head_en = false;
 					buf_index = 0;
 					frame_len = 0;
@@ -230,15 +231,18 @@ public class BluetoothClient {
 	void get_data(byte[] in, int len) {
 		int i, isget = 0;
 		short sum = 0, temp;
+		
 		Log.i("Decode", "本帧需要校验字节" + ((in[0] & 0xff)));
 		for (i = 0; i < (in[0] & 0xff); i++) {
 			sum += (in[i + 1] & 0xff);
 		}
 		temp = (short) (((in[len - 3] & 0xff) << 8) | ((in[len - 4] & 0xff)));
-		if (temp != sum) {
-			Log.i("Decode", "check sum err!");
-			return;
-		}
+//		if (temp != sum) {
+//			Log.i("Decode", "check sum err!");
+//			head_en = false;
+//			
+//			return;
+//		}
 		Log.i("Decode", "check sum OK!");
 		int index = 2;
 		isget = 0;

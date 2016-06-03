@@ -70,8 +70,10 @@
         android:id="@+id/control_work_state_show"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="70dp"
-        android:layout_marginTop="70dp"
+        android:layout_alignTop="@+id/control_print"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="40dp"
+        android:textColor="#1f1f1f"
         android:text="待机"
         android:textSize="30dp" />
 
@@ -79,8 +81,9 @@
         android:id="@+id/control_Run_state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="100dp"
+        android:layout_alignTop="@+id/control_work_state_show"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="5dp"
         android:layout_toRightOf="@+id/control_work_state_show"
         android:text="   "
         android:textColor="#F00000"
@@ -141,7 +144,7 @@
         android:layout_marginTop="15dp"
         android:background="@drawable/button_selector"
         android:text="进血"
-        android:textSize="20dp" />
+        android:textSize="15dp" />
 
     <!-- 清洗   键值 020A -->
 
@@ -166,7 +169,7 @@
         android:layout_toRightOf="@+id/wash"
         android:background="@drawable/button_selector"
         android:text="清空"
-        android:textSize="20dp" />
+        android:textSize="15dp" />
 
     <Button
         android:id="@+id/coin"
@@ -177,7 +180,7 @@
         android:layout_marginLeft="40dp"
         android:background="@drawable/button_selector"
         android:text="浓缩"
-        android:textSize="20dp" />
+        android:textSize="15dp" />
 
     <Button
         android:id="@+id/contorl_title"
@@ -189,7 +192,7 @@
         android:background="@drawable/control_buton_back_null"
         android:text="操控"
         android:textColor="#A0A0C0"
-        android:textSize="20dp" />
+        android:textSize="15dp" />
 
     <Button
         android:id="@+id/control_return"
@@ -201,7 +204,7 @@
         android:layout_toRightOf="@+id/contorl_title"
         android:background="@drawable/button_selector"
         android:text="回血"
-        android:textSize="20dp" />
+        android:textSize="15dp" />
 
     <Button
         android:id="@+id/control_pump_inc"
@@ -213,7 +216,7 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/button_selector"
         android:text="  +  "
-        android:textSize="25dp" />
+        android:textSize="15dp" />
 
     <Button
         android:id="@+id/control_pump"
@@ -225,7 +228,7 @@
         android:background="@drawable/control_buton_back_null"
         android:text="泵速 "
         android:textColor="#A0A0C0"
-        android:textSize="22dp" />
+        android:textSize="15dp" />
 
     <Button
         android:id="@+id/control_pump_dec"
@@ -237,7 +240,7 @@
         android:layout_toRightOf="@+id/control_pump"
         android:background="@drawable/button_selector"
         android:text="  -  "
-        android:textSize="25dp" />
+        android:textSize="15dp" />
 
     <Button
         android:id="@+id/control_pause"
@@ -260,7 +263,7 @@
         android:layout_toRightOf="@+id/control_pause"
         android:textColor="#A0A0C0"
         android:layout_marginTop="10dp"
-        android:textSize="22dp"
+        android:textSize="15dp"
         android:text="操控"
         android:background="@drawable/control_buton_back_null" />
 

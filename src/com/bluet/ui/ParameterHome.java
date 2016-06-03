@@ -32,6 +32,13 @@ public class ParameterHome extends BaseFragment implements DataChangeListener {
 	RelativeLayout param_layout;
 	RelativeLayout alert_layout;
 	ImageView MaxWash_volume_dec;
+	ImageView Fill_speed_inc;
+	ImageView Fill_speed_dec;
+	ImageView Wash_speed_inc;
+	ImageView Wash_speed_dec;
+	ImageView Empty_speed_inc;
+	ImageView Empty_speed_dec;
+
 	int temp;
 
 	@Override
@@ -51,10 +58,21 @@ public class ParameterHome extends BaseFragment implements DataChangeListener {
 				.findViewById(R.id.Set_pra_line6_Value);
 		Max_wash_volume_text_view = (TextView) view
 				.findViewById(R.id.Set_pra_line5_Value);
-		Auto_run_volume_inc = (ImageView) view.findViewById(R.id.Set_pra_line6_Inc);
-		Auto_run_volume_dec = (ImageView) view.findViewById(R.id.Set_pra_line6_dec);
-		ImageView MaxWash_volume_inc = (ImageView) view.findViewById(R.id.Set_pra_line5_Inc);
-		 MaxWash_volume_dec = (ImageView) view.findViewById(R.id.Set_pra_line5_dec);		
+		Auto_run_volume_inc = (ImageView) view
+				.findViewById(R.id.Set_pra_line6_Inc);
+		Auto_run_volume_dec = (ImageView) view
+				.findViewById(R.id.Set_pra_line6_dec);
+		ImageView MaxWash_volume_inc = (ImageView) view
+				.findViewById(R.id.Set_pra_line5_Inc);
+		MaxWash_volume_dec = (ImageView) view
+				.findViewById(R.id.Set_pra_line5_dec);
+		Empty_speed_inc = (ImageView) view.findViewById(R.id.Set_pra_line4_Inc);
+		Empty_speed_dec = (ImageView) view.findViewById(R.id.Set_pra_line4_dec);
+		Wash_speed_inc = (ImageView) view.findViewById(R.id.Set_pra_line3_Inc);
+		Wash_speed_dec = (ImageView) view.findViewById(R.id.Set_pra_line3_dec);
+		Fill_speed_inc = (ImageView) view.findViewById(R.id.Set_pra_line2_Inc);
+		Fill_speed_dec = (ImageView) view.findViewById(R.id.Set_pra_line2_dec);
+		
 		param_setting = (ImageView) view.findViewById(R.id.ImageView01);
 		param_layout = (RelativeLayout) view
 				.findViewById(R.id.params_set_details);
@@ -71,6 +89,111 @@ public class ParameterHome extends BaseFragment implements DataChangeListener {
 			public void onClick(View v) {
 				param_layout.setVisibility(RelativeLayout.GONE);
 				alert_layout.setVisibility(RelativeLayout.VISIBLE);
+			}
+		});
+		Wash_speed_inc.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				if ((Data.getInstance().GetWashspeed() >= 1000)) {
+					Toast toast = Toast.makeText(getActivity(), "已到最大值",
+							Toast.LENGTH_SHORT);
+
+					toast.show();
+				} else {
+					message_button[1] = (byte) ((Data.getInstance()
+							.GetWashspeed() + 10) / 256);
+					message_button[0] = (byte) ((Data.getInstance()
+							.GetWashspeed() + 10) % 256);
+					sendMessage_fromat(0x32, 2, message_button);
+				}
+
+			}
+		});
+
+		Fill_speed_dec.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				if ((Data.getInstance().GetFillspeed() <= 50)) {
+					Toast toast = Toast.makeText(getActivity(), "已到最xiao值",
+							Toast.LENGTH_SHORT);
+
+					toast.show();
+				} else {
+					message_button[1] = (byte) ((Data.getInstance()
+							.GetFillspeed() - 10) / 256);
+					message_button[0] = (byte) ((Data.getInstance()
+							.GetFillspeed() - 10) % 256);
+					sendMessage_fromat(0x31, 2, message_button);
+				}
+
+			}
+		});
+		Fill_speed_inc.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				if ((Data.getInstance().GetFillspeed() >= 1000)) {
+					Toast toast = Toast.makeText(getActivity(), "已到最大值",
+							Toast.LENGTH_SHORT);
+
+					toast.show();
+				} else {
+					message_button[1] = (byte) ((Data.getInstance()
+							.GetFillspeed() + 10) / 256);
+					message_button[0] = (byte) ((Data.getInstance()
+							.GetFillspeed() + 10) % 256);
+					sendMessage_fromat(0x31, 2, message_button);
+				}
+
+			}
+		});
+
+		Wash_speed_dec.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				if ((Data.getInstance().GetWashspeed() <= 50)) {
+					Toast toast = Toast.makeText(getActivity(), "已到最xiao值",
+							Toast.LENGTH_SHORT);
+
+					toast.show();
+				} else {
+					message_button[1] = (byte) ((Data.getInstance()
+							.GetWashspeed() - 10) / 256);
+					message_button[0] = (byte) ((Data.getInstance()
+							.GetWashspeed() - 10) % 256);
+					sendMessage_fromat(0x32, 2, message_button);
+				}
+
+			}
+		});
+		Empty_speed_inc.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				if ((Data.getInstance().GetEmptyspeed() >= 1000)) {
+					Toast toast = Toast.makeText(getActivity(), "已到最大值",
+							Toast.LENGTH_SHORT);
+
+					toast.show();
+				} else {
+					message_button[1] = (byte) ((Data.getInstance()
+							.GetEmptyspeed() + 10) / 256);
+					message_button[0] = (byte) ((Data.getInstance()
+							.GetEmptyspeed() + 10) % 256);
+					sendMessage_fromat(0x33, 2, message_button);
+				}
+
+			}
+		});
+
+		Empty_speed_dec.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				if ((Data.getInstance().GetEmptyspeed() <= 50)) {
+					Toast toast = Toast.makeText(getActivity(), "已到最xiao值",
+							Toast.LENGTH_SHORT);
+
+					toast.show();
+				} else {
+					message_button[1] = (byte) ((Data.getInstance()
+							.GetEmptyspeed() - 10) / 256);
+					message_button[0] = (byte) ((Data.getInstance()
+							.GetEmptyspeed() - 10) % 256);
+					sendMessage_fromat(0x33, 2, message_button);
+				}
+
 			}
 		});
 		Auto_run_volume_inc.setOnClickListener(new OnClickListener() {

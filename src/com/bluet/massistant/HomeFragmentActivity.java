@@ -304,7 +304,7 @@ public class HomeFragmentActivity extends FragmentActivity implements BluetoothC
 	}
 
 	String initial_name() {
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss");
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd-HH:mm:ss");
 		return format.format(new Date());
 	}
 

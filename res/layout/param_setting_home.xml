@@ -99,6 +99,25 @@
             android:text="225 "
             android:textColor="#529BC8"
             android:textSize="20dp" />
+        <ImageView
+            android:id="@+id/Set_pra_line1_Inc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line1"
+            android:layout_marginLeft="190dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/Set_pra_line1_Title_image"
+            android:src="@drawable/button_inc" />
+
+        <ImageView
+            android:id="@+id/Set_pra_line1_dec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line1"
+            android:layout_marginLeft="240dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/Set_pra_line1_Title_image"
+            android:src="@drawable/button_dec" />
 
         <TextView
             android:id="@+id/Set_pra_line2"
@@ -156,6 +175,25 @@
             android:text="mL/min"
             android:textColor="#000000"
             android:textSize="10dp" />
+        <ImageView
+            android:id="@+id/Set_pra_line2_Inc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line2"
+            android:layout_marginLeft="190dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/Set_pra_line2_Title_image"
+            android:src="@drawable/button_inc" />
+
+        <ImageView
+            android:id="@+id/Set_pra_line2_dec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/Set_pra_line2"
+            android:layout_marginLeft="240dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/Set_pra_line2_Title_image"
+            android:src="@drawable/button_dec" />
 
         <TextView
             android:id="@+id/Set_pra_line3"

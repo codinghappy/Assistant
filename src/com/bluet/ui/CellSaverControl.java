@@ -100,6 +100,34 @@ public class CellSaverControl extends BaseFragment implements DataChangeListener
 				sendMessage(message_wash);
 			}
 		});
+        coin =(Button) view.findViewById(R.id.coin);
+        coin.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				message_wash[0] = (byte) 0x50;
+				message_wash[1] = (byte) 0x02;
+				message_wash[2] = (byte) 0x02;
+				message_wash[3] = (byte) 0x0c;
+				message_wash[4] = (byte) 0x09;
+				message_wash[5] = (byte) 0x00;
+				message_wash[6] = (byte) 0xCC;
+				message_wash[7] = (byte) 0x33;
+				sendMessage(message_wash);
+			}
+		});
+        control_return =(Button) view.findViewById(R.id.control_return);
+        control_return.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				message_wash[0] = (byte) 0x50;
+				message_wash[1] = (byte) 0x02;
+				message_wash[2] = (byte) 0x02;
+				message_wash[3] = (byte) 0x0d;
+				message_wash[4] = (byte) 0x09;
+				message_wash[5] = (byte) 0x00;
+				message_wash[6] = (byte) 0xCC;
+				message_wash[7] = (byte) 0x33;
+				sendMessage(message_wash);
+			}
+		});
         Pump_inc =(Button) view.findViewById(R.id.control_pump_inc);
         Pump_inc.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
@@ -178,6 +206,12 @@ public class CellSaverControl extends BaseFragment implements DataChangeListener
         	break;
         case 4:
         	WorkState_text_view.setText("清空");
+        	break;
+        case 5:
+        	WorkState_text_view.setText("浓缩");
+        	break;
+        case 6:
+        	WorkState_text_view.setText("回血");
         	break;
         default:break;
         }
