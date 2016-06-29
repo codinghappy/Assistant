@@ -231,6 +231,7 @@ public class BluetoothClient {
 	void get_data(byte[] in, int len) {
 		int i, isget = 0;
 		short sum = 0, temp;
+		byte[] Temp_byte={0,0,0};
 		
 		Log.i("Decode", "本帧需要校验字节" + ((in[0] & 0xff)));
 		for (i = 0; i < (in[0] & 0xff); i++) {
@@ -262,7 +263,15 @@ public class BluetoothClient {
 				temp = (short) (((in[index + 2] & 0xff) << 8) | ((in[index + 1] & 0xff)));
 				index += 3;
 				isget += 4;
+			}else if((in[index] > (byte) 0x02)){
+				Log.i("Decode", "大于2字节 ");
+				for(int j=0;j<in[index];j++){
+					Temp_byte[j]=in[index + j + 1];
+				}
+				
+				
 			}
+			
 			Log.i("Value = ", String.valueOf(temp));
 
 			switch (in[tag_id]) {
@@ -279,13 +288,13 @@ public class BluetoothClient {
 				Data.getInstance().setWork_state(temp);
 				break;//
 			case Data.TAG_WORK_MODE:
-				Data.getInstance().GetWorkmodeFromBlue(temp);
+				Data.getInstance().SetWorkmode (temp);
 				break;// //TAG_WORK_MODE
 			case Data.TAG_RUN_STATE:
-				Data.getInstance().GetRunStateFromBlue(temp);
+				Data.getInstance().SetRunState (temp);
 				break;// //TAG_WORK_MODE GetBowlFromBlue
 			case Data.TAG_BWOL:
-				Data.getInstance().GetBowlFromBlue(temp);
+				Data.getInstance().SetBowl (temp);
 				break;//
 			case Data.TAG_PUMP_SPEED:
 				Data.getInstance().SetPmpSpeed(temp);
@@ -304,6 +313,9 @@ public class BluetoothClient {
 				break;
 			case Data.TAG_AUTO_RUN_SET:
 				Data.getInstance().SetAutoRunVolume(temp);
+				break;
+			case Data.TAG_PATIENT_NAME:
+				Data.getInstance().setPatient_name(Temp_byte);
 				break;
 			default:
 				break;

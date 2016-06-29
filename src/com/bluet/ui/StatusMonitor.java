@@ -2,13 +2,12 @@ package com.bluet.ui;
 
 import com.bluet.massistant.BaseFragment;
 import com.bluet.massistant.R;
-import com.bluet.massistant.R.drawable;
-import com.bluet.massistant.R.id;
-import com.bluet.massistant.R.layout;
+import com.bluet.massistant.Timer;
+
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +25,10 @@ import com.example.qr_codescan.MipcaActivityCapture;
 public class StatusMonitor extends BaseFragment implements Data.DataChangeListener {
 	private final static int SCANNIN_CONSUMABLES = 10;
 	private final static int SCANN_PATIENT = 20;
+	private final static int TAG_SEND_BUTTON = 0X50;
+	
+	private Timer mAutoSav;
+	private int  shift_time_flag=0;
 	
 	Button begin;
 	Button stop;	
@@ -53,13 +56,13 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.status_monitor, null, false);
         Fill_text_view= (TextView) view.findViewById(R.id.fill_ML);
-        Fill_text_view.setText("00000" );
+        Fill_text_view.setText("00" );
         
         Wash_text_view=(TextView) view.findViewById(R.id.wash_ML); 
-        Wash_text_view.setText("00000" );
+        Wash_text_view.setText("00" );
               
         Empty_text_view=(TextView) view.findViewById(R.id.empty_ML);
-        Empty_text_view.setText("00000" );
+        Empty_text_view.setText("00" );
         
         Bowl_text_view=(TextView) view.findViewById(R.id.Set_BOWL);
         Bowl_text_view.setText("225");
@@ -79,47 +82,27 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
         stop =(Button)  view.findViewById(R.id.button_stop);
         stop.setOnClickListener(new OnClickListener() {
         	 public void onClick(View v) {  				
-        		 message_button[0] = (byte) 0x50;
-        		 message_button[1] = (byte) 0x02;
-        		 message_button[2] = (byte) 0x02;
-        		 message_button[3] = (byte) 0x03;
-        		 message_button[4] = (byte) 0x09;
-        		 message_button[5] = (byte) 0x00;
-        		 message_button[6] = (byte) 0xCC;
-        		 message_button[7] = (byte) 0x33;
-				sendMessage(message_button);              
- 
-        	 }
-        	 
+        		 message_button[0] = (byte) 0x02;
+        		 message_button[1] = (byte) 0x03;				
+				sendMessage_fromat(TAG_SEND_BUTTON, 2, message_button);
+        	 }        	 
         });
+        
         begin = (Button) view.findViewById(R.id.begin);
         begin.setOnClickListener(new OnClickListener() {
         	 public void onClick(View v) {  				
-        		 message_button[0] = (byte) 0x50;
+        		 message_button[0] = (byte) 0x02;
         		 message_button[1] = (byte) 0x02;
-        		 message_button[2] = (byte) 0x02;
-        		 message_button[3] = (byte) 0x02;
-        		 message_button[4] = (byte) 0x09;
-        		 message_button[5] = (byte) 0x00;
-        		 message_button[6] = (byte) 0xCC;
-        		 message_button[7] = (byte) 0x33;
- 				sendMessage(message_button);             
- 
+        		 sendMessage_fromat(TAG_SEND_BUTTON, 2, message_button);        
         	 }
         	 
         });
         control_contiune=(Button) view.findViewById(R.id.button_contiue);
         control_contiune.setOnClickListener(new OnClickListener() {
        	 public void onClick(View v) {  				
-       		 message_button[0] = (byte) 0x50;
-       		 message_button[1] = (byte) 0x02;
-       		 message_button[2] = (byte) 0x02;
-       		 message_button[3] = (byte) 0x02;
-       		 message_button[4] = (byte) 0x09;
-       		 message_button[5] = (byte) 0x00;
-       		 message_button[6] = (byte) 0xCC;
-       		 message_button[7] = (byte) 0x33;
-				sendMessage(message_button);             
+    		 message_button[0] = (byte) 0x02;
+    		 message_button[1] = (byte) 0x02;
+    		 sendMessage_fromat(TAG_SEND_BUTTON, 2, message_button);             
 
        	 }
        	 
@@ -128,9 +111,52 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
        	 public void onClick(View v) {
        		Toast toast=Toast.makeText(getActivity(), "请在设备操作进行设备操控", Toast.LENGTH_SHORT);
        		toast.show();
+       		mAutoSav.restart();
+       		//mAutoSav.stop();
        	 }
        });
-        
+       // mAutoSav.restart();
+		mAutoSav = new Timer(800, new Runnable() {
+			public void run() {
+			    switch(Data.getInstance().getRun_State()){
+			    case 0 :
+			    	Run_state_view.setText("  ");
+			    	begin.setVisibility(begin.GONE);
+			    	control_contiune.setVisibility(control_contiune.GONE);
+			    	break;
+			    case 1:
+			    	Run_state_view.setText("暂停中");
+					if(shift_time_flag==0){
+						Run_state_view.setText("暂停中");
+						shift_time_flag=1;
+					}
+					else{
+						Run_state_view.setText("   ");
+						shift_time_flag=0;					
+					}
+			    	begin.setVisibility(begin.GONE);
+			    	control_contiune.setVisibility(control_contiune.GONE);
+			    	break;
+			    case 2:
+			    	Run_state_view.setText("暂停中");
+					if(shift_time_flag==0){
+						Run_state_view.setText("暂停中");
+						shift_time_flag=1;
+					}
+					else{
+						Run_state_view.setText("   ");
+						shift_time_flag=0;					
+					}		
+			    	begin.setVisibility(begin.GONE);
+			    	control_contiune.setVisibility(control_contiune.VISIBLE);
+			    	break;
+			    	default:break;
+			    
+			    }
+				
+			}
+		});	
+
         mScanConsumables = (Button) view.findViewById(R.id.scan_consumables);
         mScanConsumables.setOnClickListener(new View.OnClickListener() {
             
@@ -160,33 +186,39 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
         Data.getInstance().addListener(this);
         return view;
     }
+	protected void runOnUiThread(Runnable runnable) {
+		// TODO Auto-generated method stub
+		
+	}
 	@Override
 	public void dataChanged() {
 		// TODO Auto-generated method stub
 		
 		Fill_text_view.setText(Data.getInstance().GetInfo_Fill() );
-		Wash_text_view.setText(Data.getInstance().allInfo_wash() );
-	    Empty_text_view.setText(Data.getInstance().allInfo_empty() );
+		Wash_text_view.setText(Data.getInstance().GetInfo_wash() );
+	    Empty_text_view.setText(Data.getInstance().GetInfo_empty() );
 	    Pump_speed_text_view.setText(String.valueOf(Data.getInstance().getPump_speed()));
-	    switch(Data.getInstance().getRun_State()){
-	    case 0 :
-	    	Run_state_view.setText("  ");
-	    	begin.setVisibility(begin.VISIBLE);
-	    	control_contiune.setVisibility(control_contiune.GONE);
-	    	break;
-	    case 1:
-	    	Run_state_view.setText("暂停中");
-	    	begin.setVisibility(begin.GONE);
-	    	control_contiune.setVisibility(control_contiune.VISIBLE);
-	    	break;
-	    case 2:
-	    	Run_state_view.setText("暂停中");
-	    	begin.setVisibility(begin.GONE);
-	    	control_contiune.setVisibility(control_contiune.VISIBLE);
-	    	break;
-	    	default:break;
-	    
-	    }
+//	    switch(Data.getInstance().getRun_State()){
+//	    case 0 :
+//	    	Run_state_view.setText("  ");
+//	    	begin.setVisibility(begin.VISIBLE);
+//	    	control_contiune.setVisibility(control_contiune.GONE);
+//	    	break;
+//	    case 1:
+//	    	Run_state_view.setText("暂停中");
+//	    	begin.setVisibility(begin.GONE);
+//	    	control_contiune.setVisibility(control_contiune.VISIBLE);
+//	    	break;
+//	    case 2:
+//	    	Run_state_view.setText("暂停中");
+//
+//	    	begin.setVisibility(begin.GONE);
+//	    	control_contiune.setVisibility(control_contiune.VISIBLE);
+//	    	break;
+//	    	default:break;
+//	    
+//	    }
+
 	    //WorkState_text_view.setText(" ");
 	    if(Data.getInstance().getBowl()==225){
 	    	Bowl_text_view.setText("225");	
@@ -222,6 +254,7 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
 			image_status1.setImageResource(R.drawable.imagenacl);
 			image_status2.setImageResource(R.drawable.image_arrow_left);			
 			image_status3.setImageResource(R.drawable.imagebwol);
+			Pump_speed_text_view.setText("300");
 			break;
 		case 2:
 			WorkState_text_view.setText("进血");

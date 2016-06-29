@@ -30,8 +30,11 @@ import com.bluet.utils.BluetoothClient;
 import com.bluet.utils.Data;
 import com.viewpagerindicator.IconPagerAdapter;
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.util.Date;
 import java.text.SimpleDateFormat;
@@ -45,6 +48,7 @@ public class HomeFragmentActivity extends FragmentActivity implements BluetoothC
 	private BluetoothClient mClient = null;
 	private String mLastdevice;
 	private Timer mAutoSave;
+	private Timer mAutoSave_test;
 	private String auto_file_name;
 
 	private Button mConnectBluttoothBtn;
@@ -61,7 +65,12 @@ public class HomeFragmentActivity extends FragmentActivity implements BluetoothC
 			public void run() {
 				Write_a_list();
 			}
-		});		
+		});	
+//		mAutoSave_test = new Timer(500, new Runnable() {
+//			public void run() {
+//				Write_a_list();
+//			}
+//		});	
 	}
 
 	@Override
@@ -282,21 +291,23 @@ public class HomeFragmentActivity extends FragmentActivity implements BluetoothC
 	public void write_head() {
 		String head;
 		auto_file_name = initial_name();
-		head = "时间,状态,进血量,清洗量,清空量,报警\r\n";
+		head = "时间,状态,进血量,清洗量,清空量,报警,按键,传感器\r\n";
 		auto_file_name = "Rec-" + auto_file_name;
 		Write_File(head, auto_file_name);
 		mAutoSave.restart();
+		
+		//mAutoSave_test.restart();
 		Log.v("file = ", auto_file_name);
 	}
 
 	// ------------------------------------------------------------------------
 	// 数据内容
 	void Write_a_list() {
-		String data = initial_name() + ":";
+		String data = Time_Tag_name() + ",";
 		data += Data.getInstance().getWork_State() + ",";
 		data += Data.getInstance().GetInfo_Fill()+ ",";
-		data += Data.getInstance().GetFillspeed()+ ",";
-		data += Data.getInstance().getWork_State() + ",";
+		data += Data.getInstance().GetInfo_wash()+ ",";
+		data += Data.getInstance().GetInfo_empty() + ",";
 		data += Data.getInstance().getWork_State() + ",";
 		data +="\r\n";
 		Write_File(data, auto_file_name);
@@ -305,6 +316,10 @@ public class HomeFragmentActivity extends FragmentActivity implements BluetoothC
 
 	String initial_name() {
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd-HH:mm:ss");
+		return format.format(new Date());
+	}
+	String Time_Tag_name() {
+		SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
 		return format.format(new Date());
 	}
 
@@ -321,6 +336,7 @@ public class HomeFragmentActivity extends FragmentActivity implements BluetoothC
 			writer.write(str);
 			writer.flush();
 			writer.close();// 记得关闭
+		
 			outStream.close();
 		} catch (Exception e) {
 			Toast.makeText(getApplicationContext(),
@@ -329,5 +345,21 @@ public class HomeFragmentActivity extends FragmentActivity implements BluetoothC
 			Log.e("m", "file write error");
 		}
 	}
+public void Read_File(String str, String file_name) {
+//	File file =  new File("/sdcard/Assistant_Data/");
+//			   InputStream in = null;
+//			   try {
+//			     in = new BufferedInputStream(new FileInputStream(file));
+//			     
+//			   } finally {
+//			     if (in != null) {
+//			       in.close();
+//			     }
+//			   }
+			
+	
+}
 
 }
+
+

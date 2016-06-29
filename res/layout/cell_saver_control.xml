@@ -21,6 +21,7 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="2dp"
                 android:text="耗材信息："
+                
                 android:textColor="#2599FA"
                 android:textSize="12dp" />
 
