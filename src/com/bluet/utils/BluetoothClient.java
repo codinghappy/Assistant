@@ -154,6 +154,118 @@ public class BluetoothClient {
 		// Initialize the buffer for outgoing messages
 		mOutStringBuffer = new StringBuffer("");
 	}
+	
+	byte[] PacketHead = { (byte) 0xAA, 0x55 };
+	int PacketHeadLen = 1;
+	boolean FindHead_EN = false ;
+	int Frame_lenth=0;
+	byte[] RX_databuf = new byte[1024];
+	byte  Frame_ver;
+	
+	private void Decode_Packet(byte[] buf, int len) {
+		for (int i = 0; i < len; i++) {
+			if (PacketHead[0] == buf[i] && PacketHead[1] == buf[i + 1]) {
+				Log.i("Decode", "find head!");
+				FindHead_EN = true;
+				Frame_ver = buf[i + 2];
+				Frame_ver = buf[i + 3];
+				Frame_ver = buf[i + 4];
+				Frame_ver = buf[i + 5];
+				Frame_lenth = buf[i + 5]; // 待验证 查找数据帧长度
+				int RX_Crc_sum = buf[i + 5 + Frame_lenth];
+				int Crc_SUM = 0;
+				for (int j = 0; j < Frame_lenth; j++) {
+					RX_databuf[j] = buf[i + 6];
+					Crc_SUM = Crc_SUM + RX_databuf[j];
+				}
+				 if(Crc_SUM == RX_Crc_sum){ // rx right
+					 //接收数据帧正确  进行数据解析
+					 Log.i("Decode", "check sum OK!");
+					 break;
+				 }
+				 else{// rx error 
+					 Log.i("Decode", "check err!");
+				 }
+			}
+			else{
+				FindHead_EN = false;
+				
+			}
+			// if(FindHead_EN== true){
+			//
+			// }
+		}
+	}
+	private void Decode_data(byte[] databuf, int len){
+		int Read_ptr=0;//读取数据的位置
+		byte Data_tag;
+		byte Data_len;
+		byte data_temp[]={0};
+		for (int i=0 ;i<len; ){
+			Data_tag = databuf[i];
+			Data_len = databuf[i+1];
+			check_data(Data_tag,Data_len,data_temp);
+			i=i+Data_len;//准备接收下一个参数
+			
+		}
+	}
+	private void check_data(byte tag,byte len,byte data[]){
+		int temp = 0;
+		if(len==(byte)0x01){
+			temp = (short) (data[0] & 0xff);
+		}
+			
+		else if(len==(byte)0x02){
+			temp = (short) (((data[1] & 0xff) << 8) | ((data[0] & 0xff)));
+		}
+			
+		switch (tag) {
+		case Data.TAG_FILL:
+			Data.getInstance().setFillTotalVolume(temp);
+			break;
+		case Data.TAG_WASH:
+			Data.getInstance().setWashTotalVolume(temp);
+			break;
+		case Data.TAG_EMPTY:
+			Data.getInstance().setEmptyTotalVolume(temp);
+			break;
+		case Data.TAG_WORK_STATE:
+			Data.getInstance().setWork_state(temp);
+			break;//
+		case Data.TAG_WORK_MODE:
+			Data.getInstance().SetWorkmode (temp);
+			break;// //TAG_WORK_MODE
+		case Data.TAG_RUN_STATE:
+			Data.getInstance().SetRunState (temp);
+			break;// //TAG_WORK_MODE GetBowlFromBlue
+		case Data.TAG_BWOL:
+			Data.getInstance().SetBowl (temp);
+			break;//
+		case Data.TAG_PUMP_SPEED:
+			Data.getInstance().SetPmpSpeed(temp);
+			break;// //TAG_PUMP_SPEED
+		case Data.TAG_FILL_SPEED_SET:
+			Data.getInstance().SetFillSpeed(temp);
+			break;
+		case Data.TAG_WASH_SPEED_SET:
+			Data.getInstance().SetWashSpeed(temp);
+			break;
+		case Data.TAG_EMPTY_SPEED_SET:
+			Data.getInstance().SetEmptySpeed(temp);
+			break;
+		case Data.TAG_WASH_VOLUME_SET:
+			Data.getInstance().SetMaxWahVolume(temp);
+			break;
+		case Data.TAG_AUTO_RUN_SET:
+			Data.getInstance().SetAutoRunVolume(temp);
+			break;
+		case Data.TAG_PATIENT_NAME:
+		//	Data.getInstance().setPatient_name(Temp_byte);
+			break;
+		default:
+			break;
+		}
+	}
 
 	int findhead = 0;
 	int buf_index = 0;
@@ -315,7 +427,7 @@ public class BluetoothClient {
 				Data.getInstance().SetAutoRunVolume(temp);
 				break;
 			case Data.TAG_PATIENT_NAME:
-				Data.getInstance().setPatient_name(Temp_byte);
+			//	Data.getInstance().setPatient_name(Temp_byte);
 				break;
 			default:
 				break;

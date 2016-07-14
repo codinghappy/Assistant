@@ -182,6 +182,7 @@ public class CellSaverControl extends BaseFragment implements DataChangeListener
 				message_wash[6] = (byte) 0xCC;
 				message_wash[7] = (byte) 0x33;
 				sendMessage(message_wash);
+				Data.getInstance().setPatient_name(message_wash);
 			}
 		});
         Data.getInstance().addListener(this);

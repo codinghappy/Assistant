@@ -182,7 +182,6 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
             }
         });
         
-//        getActivity().getWindow().setTitle("自体血液回收机");
         Data.getInstance().addListener(this);
         return view;
     }
@@ -305,6 +304,7 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
          switch(requestCode) {
          case SCANNIN_CONSUMABLES:
         	 mETScanConsumables.setText(result); 
+        	 Data.getInstance().setPatient_name(result.getBytes());
         	 break;
          case SCANN_PATIENT:
         	 mETScanPatient.setText(result);

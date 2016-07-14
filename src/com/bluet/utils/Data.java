@@ -257,7 +257,8 @@ public class Data {
 	public  byte[] getPatient_name() {
 		String TEST;
 		TEST= "hello,word";
-		patient_name = TEST.getBytes();
+		TEST.getBytes();
+//		patient_name = TEST.getBytes();
 		return patient_name;
 	}
 

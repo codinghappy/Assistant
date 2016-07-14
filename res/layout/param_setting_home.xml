@@ -32,9 +32,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/params_set"
-        android:paddingLeft="20px"
         android:gravity="center"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:paddingLeft="20px" >
 
         <ImageView
             android:id="@+id/alarm_set_img"
@@ -55,9 +55,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/alarm_set"
-        android:paddingLeft="20px"
         android:gravity="center"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:paddingLeft="20px" >
 
         <ImageView
             android:id="@+id/buleteet_set_image"
@@ -73,14 +73,15 @@
             android:paddingLeft="20px"
             android:text="蓝牙设置" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/net_set"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/buleteet_set"
-        android:paddingLeft="20px"
         android:gravity="center"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:paddingLeft="20px" >
 
         <ImageView
             android:id="@+id/net_set_image"
@@ -96,6 +97,7 @@
             android:paddingLeft="20px"
             android:text="网络设置" />
     </LinearLayout>
+
     <RelativeLayout
         android:id="@+id/params_set_details"
         android:layout_width="wrap_content"
@@ -687,15 +689,18 @@
                 android:textColor="#000000"
                 android:textSize="15dp" />
 
-            <ImageView
-                android:id="@+id/Set_Alarm_LOUYE_state"
+   
+
+            <CheckBox
+                android:id="@+id/Alarm_louye_switch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/Set_Alarm_LOUYE_Title"
                 android:layout_marginLeft="180dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="-5dp"
                 android:layout_toRightOf="@+id/Set_Alarm_LOUYE_Title"
-                android:src="@drawable/image_off" />
+                android:checked="false" >
+            </CheckBox>
         </RelativeLayout>
 
         <RelativeLayout

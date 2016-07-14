@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -45,6 +48,17 @@ public class ParameterHome extends BaseFragment implements DataChangeListener {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.param_setting_home, null, false);
+		CheckBox Alarm_louye_switch = (CheckBox)this.findViewById(R.id.Alarm_louye_switch);
+		//Alarm_louye_switch.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+        //    public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
+                // TODO Auto-generated method stub
+//            	@Override
+			//Toast toast = Toast.makeText(getActivity(), arg1?"选中了":"取消了选中",
+			//			Toast.LENGTH_SHORT);
+//                Toast.makeText(MyActivity.this, 
+//                        arg1?"选中了":"取消了选中"    , Toast.LENGTH_LONG).show();
+      //     }
+      //  });
 		Bwol_text_view = (TextView) view.findViewById(R.id.Set_pra_line1_Value);
 		Bwol_text_view.setText("125");
 		Fill_speed_text_view = (TextView) view
@@ -267,6 +281,11 @@ public class ParameterHome extends BaseFragment implements DataChangeListener {
 		});
 		Data.getInstance().addListener(this);
 		return view;
+	}
+
+	private CheckBox findViewById(int alarmLouyeSwitch) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
