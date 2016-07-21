@@ -26,7 +26,7 @@ public class Utils {
         new Thread(){
             @Override
             public void run(){
-                post(file.toString(), "http://115.28.178.225:3000/post");
+                post(file.toString(), "http://121.42.193.103:3000/post");
             }
             }.start();
     }
