@@ -127,7 +127,7 @@ public class HomeFragmentActivity extends FragmentActivity implements BluetoothC
 		recordFragment.setHomeFragment(this);
 		fragments.add(recordFragment);
 
-		BaseFragment userFragment = new StatusMonitor();
+ 		BaseFragment userFragment = new StatusMonitor();
 		userFragment.setTitle("状态显示");
 		userFragment.setIconId(R.drawable.tab_user_selector);
 		userFragment.setHomeFragment(this);
@@ -324,7 +324,7 @@ public class HomeFragmentActivity extends FragmentActivity implements BluetoothC
 	}
 
 	public void Write_File(String str, String file_name) {
-		File destDir = new File("/sdcard/Assistant_Data/");
+		File destDir = new File("/sdcard/ky_Data/");
 		if (!destDir.exists()) {
 			destDir.mkdirs();// 创建文件夹
 		}

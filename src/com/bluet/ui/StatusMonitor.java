@@ -1,10 +1,13 @@
 package com.bluet.ui;
 
+import java.io.UnsupportedEncodingException;
+
 import com.bluet.massistant.BaseFragment;
 import com.bluet.massistant.R;
 import com.bluet.massistant.Timer;
 
 
+import android.R.string;
 import android.app.Activity;
 import android.content.Intent;
 
@@ -190,10 +193,12 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
 		
 	}
 	@Override
-	public void dataChanged() {
+	public void dataChanged()    {
 		// TODO Auto-generated method stub
 		
-		Fill_text_view.setText(Data.getInstance().GetInfo_Fill() );
+		Fill_text_view.setText(Data.getInstance().getHardVersen() );
+		
+		
 		Wash_text_view.setText(Data.getInstance().GetInfo_wash() );
 	    Empty_text_view.setText(Data.getInstance().GetInfo_empty() );
 	    Pump_speed_text_view.setText(String.valueOf(Data.getInstance().getPump_speed()));

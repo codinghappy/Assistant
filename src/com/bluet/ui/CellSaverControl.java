@@ -15,10 +15,20 @@ import com.bluet.utils.Data.DataChangeListener;
 
 
 public class CellSaverControl extends BaseFragment implements DataChangeListener {
+	protected static final byte[] PumpINCKey  ={0x02 ,0x07};
+	protected static final byte[] PumpDECKey  ={0x02 ,0x08};
+	protected static final byte[] PauseKey ={0x02 ,0x02};
+	protected static final byte[] StopKey ={0x02 ,0x03};
+	
+	 byte[] message_fill = new byte[8];
+	final byte[] fill_key ={0x02,0x09};
+	final byte[] ModeKey ={0x02 ,0x06};
+	final byte[] WashKey ={0x02 ,0x0A};
+	final byte[] EmptyKey ={0x02 ,0x0B};
+	final byte[] CionKey ={0x02 ,0x0C};
+	final byte[] ReturnKey ={0x02 ,0x0D};
 	Button fill;
-	byte[] message_fill = new byte[8];
 	Button wash;
-	byte[] message_wash = new byte[8];
 	Button empty;
 	Button coin;
 	Button control_return;
@@ -44,145 +54,63 @@ public class CellSaverControl extends BaseFragment implements DataChangeListener
         control_mode=(Button) view.findViewById(R.id.button_mode);
         control_mode.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-			
-				message_fill[0] = (byte) 0x50;//tag
-				message_fill[1] = (byte) 0x02;
-				message_fill[2] = (byte) 0x02;
-				message_fill[3] = (byte) 0x06;
-				message_fill[4] = (byte) 0x0B;
-				message_fill[5] = (byte) 0x00;
-				message_fill[6] = (byte) 0xCC;
-				message_fill[7] = (byte) 0x33;
-				sendMessage(message_fill);
+				sendMessage_fromat(0X50, 2, ModeKey);
 			}
 		});
         fill = (Button) view.findViewById(R.id.fill);
         fill.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-			
-				message_fill[0] = (byte) 0x50;//tag
-				message_fill[1] = (byte) 0x02;
-				message_fill[2] = (byte) 0x02;
-				message_fill[3] = (byte) 0x09;
-				message_fill[4] = (byte) 0x0B;
-				message_fill[5] = (byte) 0x00;
-				message_fill[6] = (byte) 0xCC;
-				message_fill[7] = (byte) 0x33;
-				sendMessage(message_fill);
+				sendMessage_fromat(0X50, 2, fill_key);
 			}
 		});
         
         wash = (Button) view.findViewById(R.id.wash);
         wash.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				message_wash[0] = (byte) 0x50;
-				message_wash[1] = (byte) 0x02;
-				message_wash[2] = (byte) 0x02;
-				message_wash[3] = (byte) 0x0A;
-				message_wash[4] = (byte) 0x09;
-				message_wash[5] = (byte) 0x00;
-				message_wash[6] = (byte) 0xCC;
-				message_wash[7] = (byte) 0x33;
-				sendMessage(message_wash);
+				sendMessage_fromat(0X50, 2, WashKey);
 			}
 		});
         empty =(Button) view.findViewById(R.id.empty);
         empty.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				message_wash[0] = (byte) 0x50;
-				message_wash[1] = (byte) 0x02;
-				message_wash[2] = (byte) 0x02;
-				message_wash[3] = (byte) 0x0B;
-				message_wash[4] = (byte) 0x09;
-				message_wash[5] = (byte) 0x00;
-				message_wash[6] = (byte) 0xCC;
-				message_wash[7] = (byte) 0x33;
-				sendMessage(message_wash);
+				sendMessage_fromat(0X50, 2, EmptyKey);
 			}
 		});
         coin =(Button) view.findViewById(R.id.coin);
         coin.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				message_wash[0] = (byte) 0x50;
-				message_wash[1] = (byte) 0x02;
-				message_wash[2] = (byte) 0x02;
-				message_wash[3] = (byte) 0x0c;
-				message_wash[4] = (byte) 0x09;
-				message_wash[5] = (byte) 0x00;
-				message_wash[6] = (byte) 0xCC;
-				message_wash[7] = (byte) 0x33;
-				sendMessage(message_wash);
+				sendMessage_fromat(0X50, 2, CionKey);
+				
 			}
 		});
         control_return =(Button) view.findViewById(R.id.control_return);
         control_return.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				message_wash[0] = (byte) 0x50;
-				message_wash[1] = (byte) 0x02;
-				message_wash[2] = (byte) 0x02;
-				message_wash[3] = (byte) 0x0d;
-				message_wash[4] = (byte) 0x09;
-				message_wash[5] = (byte) 0x00;
-				message_wash[6] = (byte) 0xCC;
-				message_wash[7] = (byte) 0x33;
-				sendMessage(message_wash);
+				sendMessage_fromat(0X50, 2, ReturnKey);
 			}
 		});
         Pump_inc =(Button) view.findViewById(R.id.control_pump_inc);
         Pump_inc.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				message_wash[0] = (byte) 0x50;
-				message_wash[1] = (byte) 0x02;
-				message_wash[2] = (byte) 0x02;
-				message_wash[3] = (byte) 0x07;
-				message_wash[4] = (byte) 0x09;
-				message_wash[5] = (byte) 0x00;
-				message_wash[6] = (byte) 0xCC;
-				message_wash[7] = (byte) 0x33;
-				sendMessage(message_wash);
+				sendMessage_fromat(0X50, 2, PumpINCKey);
 			}
 		});
         pump_dec =(Button) view.findViewById(R.id.control_pump_dec);
         pump_dec.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				message_wash[0] = (byte) 0x50;
-				message_wash[1] = (byte) 0x02;
-				message_wash[2] = (byte) 0x02;
-				message_wash[3] = (byte) 0x08;
-				message_wash[4] = (byte) 0x09;
-				message_wash[5] = (byte) 0x00;
-				message_wash[6] = (byte) 0xCC;
-				message_wash[7] = (byte) 0x33;
-				sendMessage(message_wash);
+				sendMessage_fromat(0X50, 2, PumpDECKey);
 			}
 		});
         control_pause =(Button) view.findViewById(R.id.control_pause);
         control_pause.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				message_wash[0] = (byte) 0x50;
-				message_wash[1] = (byte) 0x02;
-				message_wash[2] = (byte) 0x02;
-				message_wash[3] = (byte) 0x02;
-				message_wash[4] = (byte) 0x09;
-				message_wash[5] = (byte) 0x00;
-				message_wash[6] = (byte) 0xCC;
-				message_wash[7] = (byte) 0x33;
-				sendMessage(message_wash);
+				sendMessage_fromat(0X50, 2, PauseKey);
 			}
 		});
         control_stop =(Button) view.findViewById(R.id.control_stop);
         control_stop.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				message_wash[0] = (byte) 0x50;
-				message_wash[1] = (byte) 0x02;
-				message_wash[2] = (byte) 0x02;
-				message_wash[3] = (byte) 0x03;
-				message_wash[4] = (byte) 0x09;
-				message_wash[5] = (byte) 0x00;
-				message_wash[6] = (byte) 0xCC;
-				message_wash[7] = (byte) 0x33;
-				sendMessage(message_wash);
-				Data.getInstance().setPatient_name(message_wash);
+				sendMessage_fromat(0X50, 2, StopKey);
 			}
 		});
         Data.getInstance().addListener(this);

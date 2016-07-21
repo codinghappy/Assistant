@@ -47,7 +47,9 @@ public class BluetoothClient {
 			switch (msg.what) {
 			case MESSAGE_READ:
 				byte[] readBuf = (byte[]) msg.obj;
-				decode(readBuf, msg.arg1);
+				
+				 decode(readBuf, msg.arg1);
+				//Decode_Packet(readBuf, msg.arg1);
 				break;
 			case MESSAGE_STATE_CHANGE:
 				switch (msg.arg1) {
@@ -79,31 +81,32 @@ public class BluetoothClient {
 	}
 
 	public void sendHead() {
-		byte[] buf = new byte[7];
+		byte[] buf = new byte[6];
 		buf[0] = (byte) 0xAA;
 		buf[1] = (byte) 0x55;
 		buf[2] = (byte) 0x01;
 		buf[3] = (byte) my_add;
 		buf[4] = (byte) target_add;
 		buf[5] = (byte) 0x02;
-		buf[6] = (byte) 0x04;
+		//buf[6] = (byte) 0x04;
 		sendMessage(buf);
 	}
 
 	public void sendContent(int contentTag, int contentLen, byte[] content) {
-		byte[] buf = new byte[contentLen + 4];
+		byte[] buf = new byte[contentLen + 6];
 		//byte contentvsein = 1;
 		int temp;
 		int crc_sum = 0;
-		
-		buf[0] = (byte) contentTag;
-		buf[1] = (byte) contentLen;
+		buf[1] = (byte) (0X01);
+		buf[0] = (byte) (contentLen + 4);
+		buf[2] = (byte) contentTag;
+		buf[3] = (byte) contentLen;
 		for (temp = 0; temp < contentLen; temp++) {
-			buf[2 + temp] = content[temp];
+			buf[4 + temp] = content[temp];
 			crc_sum += content[temp];
 		}
-		buf[contentLen + 4 - 2] = (byte) (crc_sum / 256);
-		buf[contentLen + 4 - 1] = (byte) (crc_sum % 256);
+		buf[contentLen + 6 - 2] = (byte) (crc_sum / 256);
+		buf[contentLen + 6 - 1] = (byte) (crc_sum % 256);
 
 		sendMessage(buf);
 	}
@@ -167,11 +170,13 @@ public class BluetoothClient {
 			if (PacketHead[0] == buf[i] && PacketHead[1] == buf[i + 1]) {
 				Log.i("Decode", "find head!");
 				FindHead_EN = true;
-				Frame_ver = buf[i + 2];
+				Frame_ver = (byte) (buf[i + 2] & 0xff);
 				Frame_ver = buf[i + 3];
 				Frame_ver = buf[i + 4];
 				Frame_ver = buf[i + 5];
-				Frame_lenth = buf[i + 5]; // 待验证 查找数据帧长度
+				
+				Frame_lenth = buf[i + 6]; // 待验证 查找数据帧长度
+				Log.i("Decode", "frame_len " + Frame_lenth);
 				int RX_Crc_sum = buf[i + 5 + Frame_lenth];
 				int Crc_SUM = 0;
 				for (int j = 0; j < Frame_lenth; j++) {
@@ -196,19 +201,21 @@ public class BluetoothClient {
 			// }
 		}
 	}
-	private void Decode_data(byte[] databuf, int len){
-		int Read_ptr=0;//读取数据的位置
+
+	private void Decode_data(byte[] databuf, int len) {
+		int Read_ptr = 0;// 读取数据的位置
 		byte Data_tag;
 		byte Data_len;
-		byte data_temp[]={0};
-		for (int i=0 ;i<len; ){
+		byte data_temp[] = { 0 };
+		for (int i = 0; i < len;) {
 			Data_tag = databuf[i];
-			Data_len = databuf[i+1];
-			check_data(Data_tag,Data_len,data_temp);
-			i=i+Data_len;//准备接收下一个参数
-			
+			Data_len = databuf[i + 1];
+			check_data(Data_tag, Data_len, data_temp);
+			i = i + Data_len;// 准备接收下一个参数
+
 		}
 	}
+
 	private void check_data(byte tag,byte len,byte data[]){
 		int temp = 0;
 		if(len==(byte)0x01){
@@ -329,7 +336,7 @@ public class BluetoothClient {
 				}
 				databuf[buf_index++] = buf[i];
 
-				if (buf_index == (frame_len + 5)) { // 收完一帧了。
+				if (buf_index == (frame_len + 5)) { // 收完一帧了。 2 crc 1 len 2 tail
 					get_data(databuf, frame_len + 5);
 					findhead = 0; 
 					head_en = false;
@@ -343,7 +350,7 @@ public class BluetoothClient {
 	void get_data(byte[] in, int len) {
 		int i, isget = 0;
 		short sum = 0, temp;
-		byte[] Temp_byte={0,0,0};
+		byte[] Temp_byte=new byte [512];
 		
 		Log.i("Decode", "本帧需要校验字节" + ((in[0] & 0xff)));
 		for (i = 0; i < (in[0] & 0xff); i++) {
@@ -359,7 +366,9 @@ public class BluetoothClient {
 		Log.i("Decode", "check sum OK!");
 		int index = 2;
 		isget = 0;
-		do { // 提取数据
+		while (isget < len - 6)
+		//do { // 提取数据
+		{
 			Log.i("Decode", "当前   " + index);
 			int tag_id = index;
 
@@ -375,11 +384,13 @@ public class BluetoothClient {
 				temp = (short) (((in[index + 2] & 0xff) << 8) | ((in[index + 1] & 0xff)));
 				index += 3;
 				isget += 4;
-			}else if((in[index] > (byte) 0x02)){
+			}else if((in[index]> (byte) 0x02)){
 				Log.i("Decode", "大于2字节 ");
 				for(int j=0;j<in[index];j++){
 					Temp_byte[j]=in[index + j + 1];
 				}
+				index += in[3]+1;
+				isget += in[3]+2;
 				
 				
 			}
@@ -427,7 +438,16 @@ public class BluetoothClient {
 				Data.getInstance().SetAutoRunVolume(temp);
 				break;
 			case Data.TAG_PATIENT_NAME:
-			//	Data.getInstance().setPatient_name(Temp_byte);
+				Data.getInstance().setPatient_name(Temp_byte);
+				break;
+			case Data.TAG_PRODUCT_NUM:
+				Data.getInstance().setSerialNumber(Temp_byte);
+				break;
+			case Data.TAG_SW:
+				Data.getInstance().setSoftVersen(Temp_byte);
+				break;
+			case Data.TAG_HW:
+				Data.getInstance().setHardVersen(Temp_byte);
 				break;
 			default:
 				break;
@@ -446,7 +466,7 @@ public class BluetoothClient {
 			// } else if (in[index] == (byte) 0x05) {// 左转向
 			// Log.i("Decode", "左转向 ");
 			// }
-		} while (isget < len - 6);
+		} //while (isget < len - 6);
 
 	}
 

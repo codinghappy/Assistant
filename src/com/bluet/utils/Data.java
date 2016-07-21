@@ -1,5 +1,6 @@
 package com.bluet.utils;
 
+import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 
@@ -20,6 +21,10 @@ public class Data {
 
 	// }
 	public static final byte TAG_PATIENT_NAME = 0x01;
+	public static final byte TAG_PRODUCT_NUM = 0x02;
+	public static final byte TAG_SW = 0x03;
+	public static final byte TAG_HW = 0x04;
+	
 	public static final byte TAG_SPEED = 0x03;
 	public static final byte TAG_WORK_MODE = 0x11;
 	public static final byte TAG_WORK_STATE = 0x12;// 工作流程
@@ -64,6 +69,11 @@ public class Data {
 	private static String Save_lag;
 
 	private static byte[] patient_name;
+	private static byte[] patient_num;
+	private static byte[] SerialNumber;
+	private static byte[] ProductNum;
+	private static byte[] SoftVersen;
+	private static byte[] HardVersen;
 
 	private void notifyChanged() {
 
@@ -254,16 +264,80 @@ public class Data {
 		Save_lag = save_lag;
 	}
 
-	public  byte[] getPatient_name() {
-		String TEST;
-		TEST= "hello,word";
-		TEST.getBytes();
-//		patient_name = TEST.getBytes();
-		return patient_name;
+	public  String getPatient_name() {
+		String t = null;
+		if (patient_name != null) {
+			try {
+				t = new String(patient_name, "gb2312");
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return t;
 	}
 
 	public  void setPatient_name(byte[] patient_name) {
 		Data.patient_name = patient_name;
+
+	}
+
+	public static byte[] getPatient_num() {
+		return patient_num;
+	}
+
+	public static void setPatient_num(byte[] patient_num) {
+		Data.patient_num = patient_num;
+	}
+
+	public static byte[] getSerialNumber() {
+		return SerialNumber;
+	}
+
+	public void setSerialNumber(byte[] serialNumber) {
+		SerialNumber = serialNumber;
+	}
+
+	public static byte[] getProductNum() {
+		return ProductNum;
+	}
+
+	public static void setProductNum(byte[] productNum) {
+		ProductNum = productNum;
+	}
+
+	public String getSoftVersen() {
+		String t = null;
+		if (SoftVersen != null) {
+			try {
+				t = new String(SoftVersen, "gb2312");
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return t;
+	}
+
+	public void setSoftVersen(byte[] softVersen) {
+		SoftVersen = softVersen;
+	}
+
+	public  String getHardVersen() {
+		String t = null;
+		if (HardVersen != null) {
+			try {
+				t = new String(HardVersen, "gb2312");
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return t;
+	}
+
+	public void setHardVersen(byte[] hardVersen) {
+		HardVersen = hardVersen;
 	}
 
 }

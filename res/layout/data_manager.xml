@@ -21,5 +21,12 @@
         android:layout_below="@+id/button_debug"
         android:singleLine="false"
         android:text="debug_info" />
-    
+         <TextView
+        android:id="@+id/about_cell_server"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/debug_info"
+        android:singleLine="false"
+        android:text="关于血液回收机" />
 </RelativeLayout>
