@@ -59,7 +59,7 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.status_monitor, null, false);
         Fill_text_view= (TextView) view.findViewById(R.id.fill_ML);
-        Fill_text_view.setText("00" );
+        Fill_text_view.setText("65535" );
         
         Wash_text_view=(TextView) view.findViewById(R.id.wash_ML); 
         Wash_text_view.setText("00" );
