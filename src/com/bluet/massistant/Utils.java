@@ -4,9 +4,12 @@ import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.Charset;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpVersion;
@@ -16,17 +19,21 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.content.ContentBody;
 import org.apache.http.entity.mime.content.FileBody;
+import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.CoreProtocolPNames;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
 public class Utils {
+	//private static final String SERVER = "121.42.193.103";
+	private static final String SERVER = "192.168.0.103";
+	private static final String PORT = "3000";
     public static void RunTaskOnWorkThread(final File file) {
         new Thread(){
             @Override
             public void run(){
-                post(file.toString(), "http://121.42.193.103:3000/post");
+                post(file.toString(), "http://" + SERVER +":" + PORT +"/post");
             }
             }.start();
     }
@@ -39,11 +46,16 @@ public class Utils {
            
           HttpPost httppost = new HttpPost(urlServer);
           File file = new File(pathToOurFile);
-       
+          String dir_name = file.getParentFile().getName();
           MultipartEntity mpEntity = new MultipartEntity(); 
           ContentBody cbFile = new FileBody(file);
           mpEntity.addPart("userfile", cbFile);
-       
+          try {
+			mpEntity.addPart("dirname", new StringBody(dir_name, Charset.forName("UTF-8")));
+		} catch (UnsupportedEncodingException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
        
           httppost.setEntity(mpEntity);
           System.out.println("executing request " + httppost.getRequestLine());

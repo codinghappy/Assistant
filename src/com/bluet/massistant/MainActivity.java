@@ -34,8 +34,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends BaseActivity {
+	private static final String ASSISTANT_FILE_PATH = "/Assistant_Data/";
 	private static final String TAG = "BT_Demo";
-	private static final boolean D = true;
+	private static final boolean D = true;  //TODO Remove it.
 	public static final int MESSAGE_STATE_CHANGE = 1;
 	public static final int MESSAGE_READ = 2;
 	public static final int MESSAGE_WRITE = 3;
@@ -50,6 +51,7 @@ public class MainActivity extends BaseActivity {
 	// Intent request codes
 	private static final int REQUEST_CONNECT_DEVICE = 1;
 	private static final int REQUEST_ENABLE_BT = 2;
+	protected static final int FILE_SELECT_CODE = 0;
 
 	boolean Savebytes = false;
 	// Array adapter for the conversation thread
@@ -95,7 +97,11 @@ public class MainActivity extends BaseActivity {
 	byte[] send6 = new byte[8];
 	byte[] send7 = new byte[8];
 	byte[] send8 = new byte[8];
+	
+	private String dir_name = "notexist";
 
+	private String full_path_;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -266,8 +272,7 @@ public class MainActivity extends BaseActivity {
 		butta.setText("上传文件");// 按钮字符
 		butta.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				File root = new File(Environment.getExternalStorageDirectory()
-						.toString().concat("/Assistant_Data/"));
+				File root = new File(full_path_);
 				File[] files = root.listFiles();
 				for (File file : files) {
 					file.getName();
@@ -275,6 +280,23 @@ public class MainActivity extends BaseActivity {
 				}
 			}
 		});
+
+		CircleButton btn_select_dir = (CircleButton) findViewById(R.id.select_dir);
+		btn_select_dir.setColor(c); // 设置按钮的着色
+		btn_select_dir.setText("选择文件夹");// 按钮字符
+		btn_select_dir.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+			    Intent intent = new Intent(Intent.ACTION_GET_CONTENT); 
+			    intent.setType("*/*"); 
+			    intent.addCategory(Intent.CATEGORY_OPENABLE);
+			 
+			    try {
+			        startActivityForResult( Intent.createChooser(intent, "Select a File to Upload"), FILE_SELECT_CODE);
+			    } catch (android.content.ActivityNotFoundException ex) {
+			    }
+			}
+		});
+
 		// check update
 		butta = (CircleButton) findViewById(R.id.check_update);
 		butta.setColor(c); // 设置按钮的着色
@@ -343,9 +365,19 @@ public class MainActivity extends BaseActivity {
 			if (isnumber(temp))
 				target_add = (byte) (Integer.parseInt(temp) & 0xff);
 		}
+		
+		full_path_ = Environment.getExternalStorageDirectory()
+				.toString().concat(ASSISTANT_FILE_PATH + dir_name);
 
 	}
-
+    
+	void UpdateFullPath(String full_path) {
+		full_path_ = full_path;
+		File destDir = new File(full_path_);
+		if (!destDir.exists()) {
+			destDir.mkdirs();
+		}
+	}
 	boolean frist_conect = false;
 
 	void Save_config(String name, String Value) {
@@ -1105,7 +1137,6 @@ public class MainActivity extends BaseActivity {
 	void Write_a_list() {
 		String data = target_add + ",";
 		TextView view;
-		// data = "测试版本的软件，没有记录功能"+Latitude+","+Longitude;
 		view = (TextView) findViewById(R.id.sp);
 		data += view.getText() + ",";
 
@@ -1130,16 +1161,14 @@ public class MainActivity extends BaseActivity {
 	String mual_file, auto_file = "", csv_fname;
 
 	public void Write_File(String str, String file_name) {
-		// Calendar c = Calendar.getInstance();
-		// Date date = c.getTime();
-		// File destDir = new File("/data/data/lisn3188.chip7/files/");
-		File destDir = new File("/sdcard/Assistant_Data/");
+		File destDir = new File(full_path_);
 		if (!destDir.exists()) {
-			destDir.mkdirs();// 创建文件夹
+			//destDir.mkdirs();// 创建文件夹
+			return;
 		}
 		try {
 			FileOutputStream outStream = new FileOutputStream(
-					"/sdcard/Assistant_Data/" + file_name + ".txt", true);
+					full_path_ + file_name + ".txt", true);
 			OutputStreamWriter writer = new OutputStreamWriter(outStream,
 					"gb2312");
 			writer.write(str);
@@ -1148,9 +1177,8 @@ public class MainActivity extends BaseActivity {
 			outStream.close();
 		} catch (Exception e) {
 			Toast.makeText(getApplicationContext(),
-					"/sdcard/Assistant_Data/" + ".txt 错误", Toast.LENGTH_SHORT)
+					full_path_ + " not exist!", Toast.LENGTH_SHORT)
 					.show();
-			// show_msg("/sdcard/GPS Save/"+file_name+".txt 错误");
 			Log.e("m", "file write error");
 		}
 	}
