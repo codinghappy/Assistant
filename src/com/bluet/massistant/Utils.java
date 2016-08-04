@@ -40,7 +40,7 @@ public class Utils {
     public static void UploadFile(File file) {
         RunTaskOnWorkThread(file);
    }
-    public static String post(String pathToOurFile,String urlServer) {
+    public static void post(String pathToOurFile,String urlServer) {
           HttpClient httpclient = new DefaultHttpClient();
           httpclient.getParams().setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
            
@@ -66,43 +66,21 @@ public class Utils {
         } catch (IOException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
-            return "";
+            return;
         }
-          HttpEntity resEntity = response.getEntity();
+        
+        if(response.getStatusLine().getStatusCode() == 200) {
+        	String back_path = file.getParentFile().toString() + "_back";
+        	File back_dir = new File(back_path);
+        	if(!back_dir.exists()){
+        		back_dir.mkdirs();
+        	}
+        	file.renameTo(new File(back_dir + File.separator + file.getName()));
+        	
+        }
        
-          System.out.println(response.getStatusLine());//ͨ��Ok
-          String json="";
-          String path="";
-          if (resEntity != null) {
-            try {
-                json=EntityUtils.toString(resEntity,"utf-8");
-            } catch (ParseException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-            } catch (IOException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-                
-            }
-            JSONObject p=null;
-            try{
-                p=new JSONObject(json);
-                path=(String) p.get("path");
-            }catch(Exception e){
-                e.printStackTrace();
-            }
-          }
-          if (resEntity != null) {
-            try {
-                resEntity.consumeContent();
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-          }
-       
-          httpclient.getConnectionManager().shutdown();
-          return path;
+        httpclient.getConnectionManager().shutdown();
+        return;
         }
     
     public static void PostFile(File file) {
