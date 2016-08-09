@@ -14,14 +14,7 @@ public class BaseFragment extends Fragment {
     private String full_path_;
     
     protected HomeFragmentActivity homeFragment;
-    
-    public String getFullPath() {
-        return full_path_;
-    }
-    
-    public void setFullPath(String full_path) {
-    	full_path_ = full_path;
-    }
+
     
     public String getTitle() {
         return title;

@@ -1,6 +1,9 @@
 package com.bluet.utils;
 
 
+import java.io.File;
+import java.io.UnsupportedEncodingException;
+
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -13,9 +16,12 @@ import android.widget.Toast;
 
 import com.bluet.massistant.BluetoothChatService;
 import com.bluet.massistant.DeviceListActivity;
+import com.bluet.massistant.HomeFragmentActivity;
 import com.bluet.massistant.R;
+import com.bluet.massistant.Utils;
 
 public class BluetoothClient {
+	private HomeFragmentActivity homeActivity = null;
 	// Intent request codes
 	public static final int REQUEST_CONNECT_DEVICE = 1;
 	public static final int REQUEST_ENABLE_BT = 2;
@@ -35,8 +41,10 @@ public class BluetoothClient {
 		void onStateChanged(int state);
 	}
 
-	public BluetoothClient(Context context,
+	public BluetoothClient(HomeFragmentActivity homeActivity,
+			Context context,
 			BluetoothStateChange bluetoothStateChange) {
+		homeActivity = homeActivity;
 		mContext = context;
 		mBluetoothStateChange = bluetoothStateChange;
 	}
@@ -441,7 +449,23 @@ public class BluetoothClient {
 				Data.getInstance().setPatient_name(Temp_byte);
 				break;
 			case Data.TAG_PRODUCT_NUM:
-				Data.getInstance().setSerialNumber(Temp_byte);
+				String dirName = null;
+				try {
+					dirName = new String(Temp_byte, "ISO-8859-1");
+				} catch (UnsupportedEncodingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					return;
+				}
+				dirName = dirName.trim();
+				Data.getInstance().setSerialNumber(dirName.getBytes());
+				String dataDir = Utils.GetDataDir().concat(dirName) + File.separator;
+				if (Utils.MakeDir(dataDir)) {
+					Utils.setFullPath(dataDir);
+					sendHead();
+					sendContent(Data.TAG_PRODUCT_NUM, dirName.getBytes().length,dirName.getBytes());
+					sendTail();
+				}
 				break;
 			case Data.TAG_SW:
 				Data.getInstance().setSoftVersen(Temp_byte);

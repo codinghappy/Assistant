@@ -77,7 +77,7 @@ public class HomeFragmentActivity extends FragmentActivity implements BluetoothC
 	protected void onStart() {
 		super.onStart();
 		if (mClient == null) {
-		  mClient = new BluetoothClient(this, this);
+		  mClient = new BluetoothClient(this, this, this);
 		  mClient.init();
 		}
 		if (mClient.mBluetoothAdapter == null)
@@ -324,13 +324,14 @@ public class HomeFragmentActivity extends FragmentActivity implements BluetoothC
 	}
 
 	public void Write_File(String str, String file_name) {
-		File destDir = new File("/sdcard/ky_Data/");
-		if (!destDir.exists()) {
-			destDir.mkdirs();// 创建文件夹
-		}
+		if (Utils.getFullPath().isEmpty())
+			return;
+		File file = new File(Utils.getFullPath());
+		if ( !file.exists())
+			return;
 		try {
 			FileOutputStream outStream = new FileOutputStream(
-					"/sdcard/Assistant_Data/" + file_name + ".txt", true);
+					Utils.getFullPath() + "/" + file_name + ".txt", true);
 			OutputStreamWriter writer = new OutputStreamWriter(outStream,
 					"gb2312");
 			writer.write(str);
@@ -340,7 +341,7 @@ public class HomeFragmentActivity extends FragmentActivity implements BluetoothC
 			outStream.close();
 		} catch (Exception e) {
 			Toast.makeText(getApplicationContext(),
-					"/sdcard/Assistant_Data/" + ".txt 错误", Toast.LENGTH_SHORT)
+					Utils.getFullPath() + "不存在", Toast.LENGTH_SHORT)
 					.show();
 			Log.e("m", "file write error");
 		}

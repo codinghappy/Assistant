@@ -25,10 +25,34 @@ import org.apache.http.params.CoreProtocolPNames;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
+import android.os.Environment;
+
 public class Utils {
 	//private static final String SERVER = "121.42.193.103";
 	private static final String SERVER = "192.168.0.103";
 	private static final String PORT = "3000";
+	private static final String ASSISTANT_FILE_PATH = "/sdcard/Assistant_Data/";
+    private static String full_path_ = "";
+    
+    public static String getFullPath() {
+        return full_path_;
+    }
+    
+    public static void setFullPath(String full_path) {
+    	full_path_ = full_path;
+    }
+    
+	public static String GetDataDir() {
+		return ASSISTANT_FILE_PATH;
+	}
+	public static boolean MakeDir(String dir) {
+		File back_dir = new File(dir);
+    	if(!back_dir.exists()){
+    		  return back_dir.mkdirs();
+    	}
+    	
+    	return true;
+	}
     public static void RunTaskOnWorkThread(final File file) {
         new Thread(){
             @Override
