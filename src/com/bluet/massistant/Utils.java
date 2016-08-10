@@ -28,8 +28,8 @@ import org.json.JSONObject;
 import android.os.Environment;
 
 public class Utils {
-	//private static final String SERVER = "121.42.193.103";
-	private static final String SERVER = "192.168.0.103";
+	private static final String SERVER = "121.42.193.103";
+	//private static final String SERVER = "192.168.0.103";
 	private static final String PORT = "3000";
 	private static final String ASSISTANT_FILE_PATH = "/sdcard/Assistant_Data/";
     private static String full_path_ = "";
