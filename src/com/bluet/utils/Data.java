@@ -48,32 +48,32 @@ public class Data {
 
 	private ArrayList<DataChangeListener> listeners = new ArrayList<DataChangeListener>();
 
-	private static int mCurrentSpeed;
-	private static int mFillTotalVolume;
-	private static int mWashTotalVolume;
-	private static int mEmptyTotalVolume;
+	private static int mCurrentSpeed = 0;
+	private static int mFillTotalVolume = 0;
+	private static int mWashTotalVolume = 0;
+	private static int mEmptyTotalVolume = 0;
 
-	private static int mWorkState;
-	private static int mRunState;
-	private static int mBowl;
-	private static int mWorkMOde;
+	private static int mWorkState = 0;
+	private static int mRunState = 0;
+	private static int mBowl = 0;
+	private static int mWorkMOde = 0;
 
-	private static int mFillSpeed;
-	private static int mWashSpeed;
-	private static int mEmptySpeed;
-	private static int mPumpSpeed;
+	private static int mFillSpeed = 0;
+	private static int mWashSpeed = 0;
+	private static int mEmptySpeed = 0;
+	private static int mPumpSpeed = 0;
 
-	private static int mMaxWashVolume;
-	private static int mAutoRunVolume;
+	private static int mMaxWashVolume = 0;
+	private static int mAutoRunVolume = 0;
 
-	private static String Save_lag;
+	private static String Save_lag = "";
 
-	private static byte[] patient_name;
-	private static byte[] patient_num;
-	private static byte[] SerialNumber;
-	private static byte[] ProductNum;
-	private static byte[] SoftVersen;
-	private static byte[] HardVersen;
+	private static byte[] patient_name = null;
+	private static byte[] patient_num = null;
+	private static byte[] SerialNumber = null;
+	private static byte[] ProductNum = null;
+	private static byte[] SoftVersen = null;
+	private static byte[] HardVersen = null;
 
 	private void notifyChanged() {
 
@@ -260,7 +260,6 @@ public class Data {
 	}
 
 	public static void setSave_lag(String save_lag) {
-		// save_lag=(String) patient_name;
 		Save_lag = save_lag;
 	}
 
