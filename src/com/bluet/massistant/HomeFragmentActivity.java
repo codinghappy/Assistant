@@ -274,6 +274,7 @@ public class HomeFragmentActivity extends FragmentActivity implements BluetoothC
 			break;
 		case BluetoothChatService.STATE_LISTEN:
 			mConnectBluttoothBtn.setText("连接已断开");
+			Utils.backDirector(Utils.GetDataDir());
 			break;
 		case BluetoothChatService.STATE_NONE:
 			mConnectBluttoothBtn.setText("无状态");

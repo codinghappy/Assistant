@@ -94,19 +94,38 @@ public class Utils {
         }
         
         if(response.getStatusLine().getStatusCode() == 200) {
-        	String back_path = file.getParentFile().toString() + "_back";
-        	File back_dir = new File(back_path);
-        	if(!back_dir.exists()){
-        		back_dir.mkdirs();
-        	}
-        	file.renameTo(new File(back_dir + File.separator + file.getName()));
+        	backUpFile(file);
         	
         }
        
         httpclient.getConnectionManager().shutdown();
         return;
         }
+
+	private static void backUpFile(File file) {
+		String back_path = file.getParentFile().toString() + "_back";
+		File back_dir = new File(back_path);
+		if(!back_dir.exists()){
+			back_dir.mkdirs();
+		}
+		file.renameTo(new File(back_dir + File.separator + file.getName()));
+	}
     
+	public static void backDirector(String rootPath) {
+		File root = new File(rootPath);
+		if (!root.exists() || root.isFile())
+		   return;
+		
+		for(File file : root.listFiles()) {
+			if (file.isDirectory() && !file.getName().endsWith("_back")) {
+				for (File dataFile : file.listFiles()) {
+					Utils.UploadFile(dataFile);
+					//backUpFile(dataFile);
+				}
+			}
+		}
+	}
+	
     public static void PostFile(File file) {
             HttpURLConnection con;  
             URL url = null;

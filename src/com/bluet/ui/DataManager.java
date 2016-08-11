@@ -54,12 +54,7 @@ private TextView debugInfo;
         uploadFiles = (Button) view.findViewById(R.id.button_upload_files);
         uploadFiles.setOnClickListener(new OnClickListener() {
       			public void onClick(View v) {
-      				        File root = new File(Utils.getFullPath());
-                      File[] files = root.listFiles();
-                      for (File file : files) {
-                          file.getName();
-                          Utils.UploadFile(file);
-                      }
+      				Utils.backDirector(Utils.GetDataDir());
       			}
 		});
         return view;
