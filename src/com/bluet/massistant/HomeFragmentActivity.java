@@ -48,7 +48,6 @@ public class HomeFragmentActivity extends FragmentActivity implements BluetoothC
 	private BluetoothClient mClient = null;
 	private String mLastdevice;
 	private Timer mAutoSave;
-	private Timer mAutoSave_test;
 	private String auto_file_name;
 
 	private Button mConnectBluttoothBtn;

@@ -43,7 +43,7 @@ public class Utils {
     }
     
 	public static String GetDataDir() {
-		return Environment.getExternalStorageDirectory().toString().concat(ASSISTANT_FILE_PATH）;
+		return Environment.getExternalStorageDirectory().toString().concat(ASSISTANT_FILE_PATH);
 	}
 	public static boolean MakeDir(String dir) {
 		File back_dir = new File(dir);
