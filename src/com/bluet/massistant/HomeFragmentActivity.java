@@ -66,11 +66,6 @@ public class HomeFragmentActivity extends FragmentActivity implements BluetoothC
 				Write_a_list();
 			}
 		});	
-//		mAutoSave_test = new Timer(500, new Runnable() {
-//			public void run() {
-//				Write_a_list();
-//			}
-//		});	
 	}
 
 	@Override
@@ -274,7 +269,7 @@ public class HomeFragmentActivity extends FragmentActivity implements BluetoothC
 		case BluetoothChatService.STATE_CONNECTED:
 			mConnectBluttoothBtn.setText("已连接");
 			write_head();
-            break;
+      break;
 		case BluetoothChatService.STATE_CONNECTING:
 			mConnectBluttoothBtn.setText("连接中");
 			break;
