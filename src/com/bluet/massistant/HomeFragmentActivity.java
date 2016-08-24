@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -49,7 +50,7 @@ public class HomeFragmentActivity extends FragmentActivity implements BluetoothC
 	private String mLastdevice;
 	private Timer mAutoSave;
 	private String auto_file_name;
-
+    private Handler handler;
 	private Button mConnectBluttoothBtn;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -114,7 +115,7 @@ public class HomeFragmentActivity extends FragmentActivity implements BluetoothC
 
 	private List<BaseFragment> initFragments() {
 		List<BaseFragment> fragments = new ArrayList<BaseFragment>();
-
+         
 		BaseFragment recordFragment = new CellSaverControl();
 		recordFragment.setTitle("设备操作");
 		recordFragment.setIconId(R.drawable.tab_record_selector);
@@ -138,7 +139,7 @@ public class HomeFragmentActivity extends FragmentActivity implements BluetoothC
 		contactFragment.setIconId(R.drawable.tab_user_selector);
 		contactFragment.setHomeFragment(this);
 		fragments.add(contactFragment);
-
+		handler = contactFragment.getHandler();
 		return fragments;
 	}
 
@@ -274,7 +275,7 @@ public class HomeFragmentActivity extends FragmentActivity implements BluetoothC
 			break;
 		case BluetoothChatService.STATE_LISTEN:
 			mConnectBluttoothBtn.setText("连接已断开");
-			Utils.backDirector(Utils.GetDataDir());
+			Utils.backDirector(Utils.GetDataDir(), handler);
 			break;
 		case BluetoothChatService.STATE_NONE:
 			mConnectBluttoothBtn.setText("无状态");

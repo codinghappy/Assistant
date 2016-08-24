@@ -1,21 +1,40 @@
 package com.bluet.massistant;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class BaseFragment extends Fragment {
     private String title;
     private int iconId;
     private String full_path_;
-    
+    private static final int HTTP_SERVER_REFUED = 0;
     protected HomeFragmentActivity homeFragment;
 
+    protected Handler handler = new Handler() {
+        public void handleMessage(Message msg) {   
+            switch (msg.what) {   
+                 case HTTP_SERVER_REFUED:   
+              	   ShowToast("服务器未开启");
+                      break;   
+            }   
+            super.handleMessage(msg);   
+       } 
+    };
     
+    public Handler getHandler() {
+  	  return handler;
+    }
+    public void ShowToast(String content) {
+  	  Toast.makeText(getActivity(), content, Toast.LENGTH_SHORT).show();
+    }
     public String getTitle() {
         return title;
     }

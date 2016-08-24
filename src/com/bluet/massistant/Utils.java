@@ -26,10 +26,12 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 
 public class Utils {
 	private static final String SERVER = "121.42.193.103";
-	//private static final String SERVER = "192.168.0.103";
+	// private static final String SERVER = "192.168.0.106";
 	private static final String PORT = "3000";
 	private static final String ASSISTANT_FILE_PATH = "/Assistant_Data/";
     private static String full_path_ = "";
@@ -53,18 +55,18 @@ public class Utils {
     	
     	return true;
 	}
-    public static void RunTaskOnWorkThread(final File file) {
+    public static void RunTaskOnWorkThread(final File file, final Handler handler) {
         new Thread(){
             @Override
             public void run(){
-                post(file.toString(), "http://" + SERVER +":" + PORT +"/post");
+                post(file.toString(), "http://" + SERVER +":" + PORT +"/post", handler);
             }
             }.start();
     }
-    public static void UploadFile(File file) {
-        RunTaskOnWorkThread(file);
+    public static void UploadFile(File file, Handler hander) {
+        RunTaskOnWorkThread(file, hander);
    }
-    public static void post(String pathToOurFile,String urlServer) {
+    public static void post(String pathToOurFile,String urlServer, Handler handler) {
           HttpClient httpclient = new DefaultHttpClient();
           httpclient.getParams().setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
            
@@ -89,13 +91,15 @@ public class Utils {
             response = httpclient.execute(httppost);
         } catch (IOException e1) {
             // TODO Auto-generated catch block
+        	Message msg = handler.obtainMessage();
+        	msg.what = 0;
+        	handler.sendMessage(msg);
             e1.printStackTrace();
             return;
         }
         
         if(response.getStatusLine().getStatusCode() == 200) {
         	backUpFile(file);
-        	
         }
        
         httpclient.getConnectionManager().shutdown();
@@ -111,7 +115,7 @@ public class Utils {
 		file.renameTo(new File(back_dir + File.separator + file.getName()));
 	}
     
-	public static void backDirector(String rootPath) {
+	public static void backDirector(String rootPath, Handler handler) {
 		File root = new File(rootPath);
 		if (!root.exists() || root.isFile())
 		   return;
@@ -119,7 +123,7 @@ public class Utils {
 		for(File file : root.listFiles()) {
 			if (file.isDirectory() && !file.getName().endsWith("_back")) {
 				for (File dataFile : file.listFiles()) {
-					Utils.UploadFile(dataFile);
+					Utils.UploadFile(dataFile, handler);
 				}
 			}
 		}

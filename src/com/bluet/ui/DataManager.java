@@ -10,6 +10,8 @@ import org.apache.http.util.EncodingUtils;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.TextureView;
@@ -18,6 +20,7 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bluet.massistant.BaseFragment;
 import com.bluet.massistant.R;
@@ -28,11 +31,14 @@ import com.bluet.utils.Data;
 public class DataManager extends BaseFragment {
   protected static final int FILE_PATH_SELECT_CODE = 0;
   protected static final int FILE_SELECT_CODE = 1;
+ 
   private TextView debugInfo;
   private Button debug;
   private Button uploadFiles;
   private Button selectDir;
   private Button selectFile;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.data_manager, null, false);
@@ -75,7 +81,7 @@ public class DataManager extends BaseFragment {
         uploadFiles = (Button) view.findViewById(R.id.button_upload_files);
         uploadFiles.setOnClickListener(new OnClickListener() {
       			public void onClick(View v) {
-      				Utils.backDirector(Utils.GetDataDir());
+      				Utils.backDirector(Utils.GetDataDir(), handler);
       			}
 		});
         return view;

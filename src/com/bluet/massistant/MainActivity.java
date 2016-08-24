@@ -276,7 +276,7 @@ public class MainActivity extends BaseActivity {
 				File[] files = root.listFiles();
 				for (File file : files) {
 					file.getName();
-					Utils.UploadFile(file);
+					// Utils.UploadFile(file);
 				}
 			}
 		});
