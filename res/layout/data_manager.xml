@@ -7,12 +7,18 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".UpdateActivity" >
-    
+    <Button android:id="@+id/button_select_file"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="选择文件"
+    />
     <Button android:id="@+id/button_select_dir"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/button_select_file"
         android:text="选择文件夹"
     />
+    
     <Button android:id="@+id/button_upload_files"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,6 +39,8 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/button_debug"
         android:singleLine="false"
+        android:scrollbars="vertical"
+        android:maxLines="10"
         android:text="debug_info" />
          <TextView
         android:id="@+id/about_cell_server"

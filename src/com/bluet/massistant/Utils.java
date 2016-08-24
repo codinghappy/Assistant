@@ -120,7 +120,6 @@ public class Utils {
 			if (file.isDirectory() && !file.getName().endsWith("_back")) {
 				for (File dataFile : file.listFiles()) {
 					Utils.UploadFile(dataFile);
-					//backUpFile(dataFile);
 				}
 			}
 		}

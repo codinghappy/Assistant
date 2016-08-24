@@ -1,10 +1,16 @@
 package com.bluet.ui;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import org.apache.http.util.EncodingUtils;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.TextureView;
 import android.view.View;
@@ -20,11 +26,13 @@ import com.bluet.utils.Data;
 
 
 public class DataManager extends BaseFragment {
-  protected static final int FILE_SELECT_CODE = 0;
-private TextView debugInfo;
+  protected static final int FILE_PATH_SELECT_CODE = 0;
+  protected static final int FILE_SELECT_CODE = 1;
+  private TextView debugInfo;
   private Button debug;
   private Button uploadFiles;
   private Button selectDir;
+  private Button selectFile;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.data_manager, null, false);
@@ -45,7 +53,20 @@ private TextView debugInfo;
                         intent.addCategory(Intent.CATEGORY_OPENABLE);
        
                         try {
-                            startActivityForResult( Intent.createChooser(intent, "Select a File to Upload"), FILE_SELECT_CODE);
+                            startActivityForResult( Intent.createChooser(intent, "Select a File to Upload"), FILE_PATH_SELECT_CODE);
+                        } catch (android.content.ActivityNotFoundException ex) {
+                        }
+      			        }
+		   });
+        selectFile = (Button) view.findViewById(R.id.button_select_file);
+        selectFile.setOnClickListener(new OnClickListener() {
+      			public void onClick(View v) {
+      				    Intent intent = new Intent(Intent.ACTION_GET_CONTENT); 
+                        intent.setType("*/*"); 
+                        intent.addCategory(Intent.CATEGORY_OPENABLE);
+       
+                        try {
+                            startActivityForResult( Intent.createChooser(intent, "Select a File to Read"), FILE_SELECT_CODE);
                         } catch (android.content.ActivityNotFoundException ex) {
                         }
       			        }
@@ -69,7 +90,7 @@ private TextView debugInfo;
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data)  {
 	    switch (requestCode) {
-	        case FILE_SELECT_CODE: {
+	        case FILE_PATH_SELECT_CODE: {
 	        	if(resultCode == -1 && "file".equalsIgnoreCase(data.getData().getScheme())) {
 	              // Get the Uri of the selected file 
 	              Uri uri = data.getData();
@@ -77,6 +98,31 @@ private TextView debugInfo;
                   File file = new File(path);
                   path = file.getParent();
                   Utils.setFullPath(path);
+	        	}
+	        }           
+	        break;
+	        case FILE_SELECT_CODE: {
+	        	if(resultCode == -1 && "file".equalsIgnoreCase(data.getData().getScheme())) {
+	              // Get the Uri of the selected file 
+	              Uri uri = data.getData();
+                  String path = uri.getPath();
+                  try {
+					FileInputStream fin = new FileInputStream(path);
+					int len = fin.available();
+					byte[] buffer = new byte[len];
+					
+					fin.read(buffer);
+					String res = EncodingUtils.getString(buffer, "UTF-8");   
+					debugInfo.setText(res);
+					debugInfo.setMovementMethod(ScrollingMovementMethod.getInstance()); 
+			        fin.close(); 
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 	        	}
 	        }           
 	        break;
