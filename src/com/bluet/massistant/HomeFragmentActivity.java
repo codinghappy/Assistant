@@ -268,7 +268,7 @@ public class HomeFragmentActivity extends FragmentActivity implements BluetoothC
 		switch(state) {
 		case BluetoothChatService.STATE_CONNECTED:
 			mConnectBluttoothBtn.setText("已连接");
-			write_head();
+			//write_head();
       break;
 		case BluetoothChatService.STATE_CONNECTING:
 			mConnectBluttoothBtn.setText("连接中");
@@ -289,7 +289,7 @@ public class HomeFragmentActivity extends FragmentActivity implements BluetoothC
 		auto_file_name = initial_name();
 		head = "时间,状态,进血量,清洗量,清空量,报警,按键,传感器\r\n";
 		auto_file_name = "Rec-" + auto_file_name;
-		Write_File(head, auto_file_name);
+		Utils.Write_File(head, auto_file_name);
 		mAutoSave.restart();
 		
 		//mAutoSave_test.restart();
@@ -306,7 +306,7 @@ public class HomeFragmentActivity extends FragmentActivity implements BluetoothC
 		data += Data.getInstance().GetInfo_empty() + ",";
 		data += Data.getInstance().getWork_State() + ",";
 		data +="\r\n";
-		Write_File(data, auto_file_name);
+		Utils.Write_File(data, auto_file_name);
 		Log.v("file", "Write_a_list");
 	}
 
@@ -319,29 +319,7 @@ public class HomeFragmentActivity extends FragmentActivity implements BluetoothC
 		return format.format(new Date());
 	}
 
-	public void Write_File(String str, String file_name) {
-		if (Utils.getFullPath().isEmpty())
-			return;
-		File file = new File(Utils.getFullPath());
-		if ( !file.exists())
-			return;
-		try {
-			FileOutputStream outStream = new FileOutputStream(
-					Utils.getFullPath() + "/" + file_name + ".txt", true);
-			OutputStreamWriter writer = new OutputStreamWriter(outStream,
-					"gb2312");
-			writer.write(str);
-			writer.flush();
-			writer.close();// 记得关闭
-		
-			outStream.close();
-		} catch (Exception e) {
-			Toast.makeText(getApplicationContext(),
-					Utils.getFullPath() + "不存在", Toast.LENGTH_SHORT)
-					.show();
-			Log.e("m", "file write error");
-		}
-	}
+
 public void Read_File(String str, String file_name) {
 //	File file =  new File("/sdcard/Assistant_Data/");
 //			   InputStream in = null;

@@ -3,7 +3,9 @@ package com.bluet.massistant;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -25,9 +27,12 @@ import org.apache.http.params.CoreProtocolPNames;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
+import android.content.Context;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
+import android.widget.Toast;
 
 public class Utils {
 	private static final String SERVER = "121.42.193.103";
@@ -35,8 +40,37 @@ public class Utils {
 	private static final String PORT = "3000";
 	private static final String ASSISTANT_FILE_PATH = "/Assistant_Data/";
     private static String full_path_ = "";
+    private static String current_file_name = "";
     
-    public static String getFullPath() {
+	public static void Write_File(String str, String file_name) {
+		if (Utils.getFullPath().isEmpty())
+			return;
+		File file = new File(Utils.getFullPath());
+		if ( !file.exists())
+			return;
+		
+//		File data_file = new File(Utils.getFullPath() + "/" + file_name + ".txt");
+//		if ( !data_file.exists())
+//			data_file.mkdirs();
+		try {
+			FileOutputStream outStream = new FileOutputStream(
+					Utils.getFullPath() + "/" + file_name + ".txt", true);
+			OutputStreamWriter writer = new OutputStreamWriter(outStream,
+					"gb2312");
+			writer.write(str);
+			writer.flush();
+			writer.close();// 记得关闭
+		
+			outStream.close();
+			current_file_name = file_name;
+		} catch (Exception e) {
+			Log.e("m", "file write error");
+		}
+	}
+	public static String getCurrentFileName() {
+		return current_file_name;
+	}
+     public static String getFullPath() {
         return full_path_;
     }
     

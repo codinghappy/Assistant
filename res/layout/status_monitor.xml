@@ -116,7 +116,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="0dp"
         android:layout_toRightOf="@+id/state_backgrond"
-        android:text="暂停中"
+        android:text=" "
         android:textColor="#F00000"
         android:textSize="20dp" />
 
@@ -189,7 +189,7 @@
         android:layout_below="@+id/state_backgrond"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="20dp"
-        android:text="第1杯数据"
+        android:text="第--杯"
         android:textColor="#529BC8"
         android:textSize="15dp" />
         <TextView
@@ -199,7 +199,7 @@
         android:layout_alignLeft="@+id/BOWLdata_TEXT"
         android:layout_below="@+id/state_backgrond"
         android:layout_marginTop="20dp"
-         android:layout_marginLeft="160dp"
+        android:layout_marginLeft="160dp"
         android:text="总计"
         android:textColor="#529BC8"
         android:textSize="15dp" />
@@ -221,9 +221,9 @@
         android:layout_alignParentBottom="@+id/fill_TEXT"
         android:layout_below="@+id/BOWLdata_TEXT"
         android:layout_marginTop="2dp"
-        android:layout_alignLeft="@+id/fill_ML_Text"
-        android:layout_marginLeft="100dp"
-         android:text="000"
+        android:layout_alignLeft="@+id/fill_TEXT"
+        android:layout_marginLeft="200dp"
+         android:text="65535"
         android:textColor="#529BC8"
         android:textSize="30dp" />
     <TextView
@@ -269,6 +269,17 @@
         android:text="  "
         android:textColor="#529BC8"
         android:textSize="30dp" />
+        <TextView
+        android:id="@+id/totalwash_ML"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fill_TEXT"
+        android:layout_marginTop="2dp"
+        android:layout_toRightOf="@+id/wash_title"
+        android:layout_marginLeft="140dp"
+        android:text="12345"
+        android:textColor="#529BC8"
+        android:textSize="30dp" />
 
     <TextView
         android:id="@+id/wash_ML_Text"
@@ -300,7 +311,18 @@
         android:layout_below="@+id/wash_title"
         android:layout_marginTop="2dp"
         android:layout_toRightOf="@+id/empty_titile"
-        android:text=" "
+        android:text="12345"
+        android:textColor="#529BC8"
+        android:textSize="30dp" />
+        <TextView
+        android:id="@+id/Totalempty_ML"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/wash_title"
+        android:layout_marginTop="2dp"
+        android:layout_toRightOf="@+id/empty_titile"
+        android:layout_marginLeft="140dp"
+        android:text="12345"
         android:textColor="#529BC8"
         android:textSize="30dp" />
 
@@ -323,7 +345,7 @@
         android:layout_alignLeft="@+id/state_backgrond"
         android:layout_below="@+id/empty_titile"
         android:layout_marginTop="7dp"
-        android:text="该处添加报警信息"
+        android:text="  "
         android:textSize="15sp" />
 
     <TextView
@@ -333,7 +355,7 @@
         android:layout_alignLeft="@+id/state_backgrond"
         android:layout_below="@+id/infor_1"
         android:layout_marginTop="5dp"
-        android:text="提示信息显示11111"
+        android:text=" "
         android:textSize="15sp" />
 
     <ImageView
@@ -341,7 +363,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/infor_2"
-        android:layout_marginLeft="40dp"
+        android:layout_marginLeft="60dp"
         android:layout_marginTop="30dp" />
 
     <ImageView

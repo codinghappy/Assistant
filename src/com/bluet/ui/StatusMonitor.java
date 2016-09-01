@@ -62,10 +62,10 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
         Fill_text_view.setText("65535" );
         
         Wash_text_view=(TextView) view.findViewById(R.id.wash_ML); 
-        Wash_text_view.setText("00" );
+        Wash_text_view.setText("12345" );
               
         Empty_text_view=(TextView) view.findViewById(R.id.empty_ML);
-        Empty_text_view.setText("00" );
+        Empty_text_view.setText("12345" );
         
         Bowl_text_view=(TextView) view.findViewById(R.id.Set_BOWL);
         Bowl_text_view.setText("225");

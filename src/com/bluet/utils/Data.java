@@ -41,6 +41,10 @@ public class Data {
 	public static final byte TAG_WASH_VOLUME_SET = 0x34;
 	public static final byte TAG_AUTO_RUN_SET = 0x35;
 	
+	public static final byte TAG_ALARM = 0x40;
+	public static final byte TAG_FILENAME= (byte)0xe0;
+	public static final byte TAG_FILEDATA= (byte)0xe1;
+	
 
 	public abstract interface DataChangeListener {
 		public abstract void dataChanged();
@@ -74,6 +78,7 @@ public class Data {
 	private static byte[] ProductNum = null;
 	private static byte[] SoftVersen = null;
 	private static byte[] HardVersen = null;
+	private static byte[] AlarmState = null;
 
 	private void notifyChanged() {
 
@@ -337,6 +342,14 @@ public class Data {
 
 	public void setHardVersen(byte[] hardVersen) {
 		HardVersen = hardVersen;
+	}
+
+	public static byte[] getAlarmState() {
+		return AlarmState;
+	}
+
+	public void setAlarmState(byte[] alarmState) {
+		AlarmState = alarmState;
 	}
 
 }

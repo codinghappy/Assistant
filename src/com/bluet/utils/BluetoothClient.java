@@ -473,6 +473,26 @@ public class BluetoothClient {
 			case Data.TAG_HW:
 				Data.getInstance().setHardVersen(Temp_byte);
 				break;
+			case Data.TAG_ALARM:
+				Data.getInstance().setAlarmState(Temp_byte);
+				break;
+			case Data.TAG_FILENAME:
+				try {
+					Utils.Write_File("", new String(Temp_byte, "gb2312").trim());
+				} catch (UnsupportedEncodingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				 break;
+			case Data.TAG_FILEDATA:
+				try {
+					Utils.Write_File(new String(Temp_byte, "gb2312").trim(), Utils.getCurrentFileName());
+				} catch (UnsupportedEncodingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+				
 			default:
 				break;
 			}

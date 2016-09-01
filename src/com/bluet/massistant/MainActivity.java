@@ -136,7 +136,7 @@ public class MainActivity extends BaseActivity {
 
 		autosavet = new Timer(5000, new Runnable() {
 			public void run() {
-				Write_a_list();
+				 Write_a_list();
 			}
 		});
 
@@ -661,9 +661,9 @@ public class MainActivity extends BaseActivity {
 					buf_index = 0;
 					frame_len = 0;
 					head_en = false;
-					if (Save_file_en == false)
-						write_head();
-					autosavet.restart();
+//					if (Save_file_en == false)
+//						write_head();
+//					autosavet.restart();
 					break;
 				case BluetoothChatService.STATE_CONNECTING:
 					// mTitle.setText(R.string.title_connecting);
