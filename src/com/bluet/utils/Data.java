@@ -34,6 +34,10 @@ public class Data {
 	public static final byte TAG_EMPTY = 0x16;
 	public static final byte TAG_RUN_STATE = 0x17;
 	public static final byte TAG_PUMP_SPEED = 0x18;
+	public static final byte TAG_BOWL_FILL = 0x20;
+	public static final byte TAG_BOWL_WASH = 0x21;
+	public static final byte TAG_BOWL_EMPTY = 0x22;
+	public static final byte TAG_BOWL_NUM = 0x23;
 
 	public static final byte TAG_FILL_SPEED_SET = 0x31;
 	public static final byte TAG_WASH_SPEED_SET = 0x32;
@@ -42,8 +46,8 @@ public class Data {
 	public static final byte TAG_AUTO_RUN_SET = 0x35;
 	
 	public static final byte TAG_ALARM = 0x40;
-	public static final byte TAG_FILENAME= (byte)0xe0;
-	public static final byte TAG_FILEDATA= (byte)0xe1;
+	public static final byte TAG_FILENAME = (byte)0xe0;
+	public static final byte TAG_FILEDATA = (byte)0xe1;
 	
 
 	public abstract interface DataChangeListener {
@@ -56,6 +60,10 @@ public class Data {
 	private static int mFillTotalVolume = 0;
 	private static int mWashTotalVolume = 0;
 	private static int mEmptyTotalVolume = 0;
+	private static int mBowlFillTotalVolume = 0;
+	private static int mBowlWashTotalVolume = 0;
+	private static int mBowlEmptyTotalVolume = 0;
+	private static int mBowlNum = 0;
 
 	private static int mWorkState = 0;
 	private static int mRunState = 0;
@@ -350,6 +358,38 @@ public class Data {
 
 	public void setAlarmState(byte[] alarmState) {
 		AlarmState = alarmState;
+	}
+
+	public  int getmBowlFillTotalVolume() {
+		return mBowlFillTotalVolume;
+	}
+
+	public  void setmBowlFillTotalVolume(int mBowlFillTotalVolume) {
+		Data.mBowlFillTotalVolume = mBowlFillTotalVolume;
+	}
+
+	public  int getmBowlEmptyTotalVolume() {
+		return mBowlEmptyTotalVolume;
+	}
+
+	public  void setmBowlEmptyTotalVolume(int mBowlEmptyTotalVolume) {
+		Data.mBowlEmptyTotalVolume = mBowlEmptyTotalVolume;
+	}
+
+	public  int getmBowlWashTotalVolume() {
+		return mBowlWashTotalVolume;
+	}
+
+	public  void setmBowlWashTotalVolume(int mBowlWashTotalVolume) {
+		Data.mBowlWashTotalVolume = mBowlWashTotalVolume;
+	}
+
+	public  int getmBowlNum() {
+		return mBowlNum;
+	}
+
+	public  void setmBowlNum(int mBowlNum) {
+		Data.mBowlNum = mBowlNum;
 	}
 
 }

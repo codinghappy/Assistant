@@ -476,6 +476,18 @@ public class BluetoothClient {
 			case Data.TAG_ALARM:
 				Data.getInstance().setAlarmState(Temp_byte);
 				break;
+			case Data.TAG_BOWL_FILL:
+				Data.getInstance().setmBowlFillTotalVolume(temp);
+				break;
+			case Data.TAG_BOWL_WASH:
+				Data.getInstance().setmBowlWashTotalVolume(temp);
+				break;
+			case Data.TAG_BOWL_EMPTY:
+				Data.getInstance().setmBowlEmptyTotalVolume(temp);
+				break;
+			case Data.TAG_BOWL_NUM:
+				Data.getInstance().setmBowlNum(temp);
+				break;
 			case Data.TAG_FILENAME:
 				try {
 					Utils.Write_File("", new String(Temp_byte, "gb2312").trim());
@@ -486,7 +498,11 @@ public class BluetoothClient {
 				 break;
 			case Data.TAG_FILEDATA:
 				try {
+					//if(Temp_byte!=null)
+					//{
 					Utils.Write_File(new String(Temp_byte, "gb2312").trim(), Utils.getCurrentFileName());
+					Utils.Write_File("\r\n", Utils.getCurrentFileName());
+					//}
 				} catch (UnsupportedEncodingException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

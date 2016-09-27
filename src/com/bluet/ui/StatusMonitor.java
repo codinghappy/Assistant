@@ -44,6 +44,10 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
 	TextView  Fill_text_view;
 	TextView  Wash_text_view;
 	TextView  Empty_text_view;
+	TextView  Bowl_Fill_text_view;
+	TextView  Bowl_Wash_text_view;
+	TextView  Bowl_Empty_text_view;
+	TextView  Wash_Bowl_Num_view;
 	TextView  Bowl_text_view;
 	TextView  Mode_text_view;
 	TextView  WorkState_text_view;
@@ -58,14 +62,27 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.status_monitor, null, false);
-        Fill_text_view= (TextView) view.findViewById(R.id.fill_ML);
-        Fill_text_view.setText("65535" );
-        
-        Wash_text_view=(TextView) view.findViewById(R.id.wash_ML); 
-        Wash_text_view.setText("12345" );
+        Bowl_Fill_text_view= (TextView) view.findViewById(R.id.fill_ML);
+        Bowl_Fill_text_view.setText("-" );        
+        Bowl_Wash_text_view=(TextView) view.findViewById(R.id.wash_ML); 
+        Bowl_Wash_text_view.setText("-" );
               
-        Empty_text_view=(TextView) view.findViewById(R.id.empty_ML);
-        Empty_text_view.setText("12345" );
+        Bowl_Empty_text_view=(TextView) view.findViewById(R.id.empty_ML);
+        Bowl_Empty_text_view.setText("-" );
+        
+        Fill_text_view= (TextView) view.findViewById(R.id.totla_fill_ML);
+        Fill_text_view.setText("-" );        
+        Wash_text_view=(TextView) view.findViewById(R.id.totalwash_ML); 
+        Wash_text_view.setText("-" );
+              
+        Empty_text_view=(TextView) view.findViewById(R.id.Totalempty_ML);
+        Empty_text_view.setText("-" );
+        
+       // Bowl_Fill_text_view= (TextView) view.findViewById(R.id.totla_fill_ML);
+       // Bowl_Wash_text_view= (TextView) view.findViewById(R.id.totla_fill_ML);
+       // Bowl_Empty_text_view= (TextView) view.findViewById(R.id.totla_fill_ML);
+        
+        Wash_Bowl_Num_view=(TextView) view.findViewById(R.id.BOWLdata_TEXT);
         
         Bowl_text_view=(TextView) view.findViewById(R.id.Set_BOWL);
         Bowl_text_view.setText("225");
@@ -151,7 +168,7 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
 						shift_time_flag=0;					
 					}		
 			    	begin.setVisibility(begin.GONE);
-			    	control_contiune.setVisibility(control_contiune.VISIBLE);
+			    	control_contiune.setVisibility(control_contiune.GONE);
 			    	break;
 			    	default:break;
 			    
@@ -196,11 +213,15 @@ public class StatusMonitor extends BaseFragment implements Data.DataChangeListen
 	public void dataChanged()    {
 		// TODO Auto-generated method stub
 		
-		Fill_text_view.setText(Data.getInstance().getHardVersen() );
+		Fill_text_view.setText(Data.getInstance().GetInfo_Fill() );				
+		Wash_text_view .setText(Data.getInstance().GetInfo_wash() );
+		Empty_text_view.setText(Data.getInstance().GetInfo_empty() );
 		
+		Bowl_Fill_text_view.setText(String.valueOf(Data.getInstance().getmBowlFillTotalVolume()));
+		Bowl_Wash_text_view.setText(String.valueOf(Data.getInstance().getmBowlWashTotalVolume()));
+		Bowl_Empty_text_view .setText(String.valueOf(Data.getInstance().getmBowlEmptyTotalVolume()));
 		
-		Wash_text_view.setText(Data.getInstance().GetInfo_wash() );
-	    Empty_text_view.setText(Data.getInstance().GetInfo_empty() );
+		Wash_Bowl_Num_view.setText("第"+String.valueOf(Data.getInstance().getmBowlNum() + 1)+"杯");
 	    Pump_speed_text_view.setText(String.valueOf(Data.getInstance().getPump_speed()));
 //	    switch(Data.getInstance().getRun_State()){
 //	    case 0 :
