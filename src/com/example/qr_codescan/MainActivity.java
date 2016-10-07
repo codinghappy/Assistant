@@ -54,7 +54,7 @@ public class MainActivity extends Activity {
 		case SCANNIN_GREQUEST_CODE:
 			if(resultCode == RESULT_OK){
 				Bundle bundle = data.getExtras();
-				//��ʾɨ�赽������
+				//
 				mTextView.setText(bundle.getString("result"));
 				//��ʾ
 				mImageView.setImageBitmap((Bitmap) data.getParcelableExtra("bitmap"));
